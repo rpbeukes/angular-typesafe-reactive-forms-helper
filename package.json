@@ -35,5 +35,8 @@
   },
   "files": [
     "lib/**/*"
-  ]
+  ],
+  "dependencies": {
+    "@angular/forms": "^9.0.6"
+  }
 }
