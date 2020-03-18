@@ -20,6 +20,21 @@ export class FormControlTypeSafe<T> extends FormControl {
     public value: T | undefined;
 }
 
+export const generateGetSafeFunction = <T extends unknown>(gr: FormGroupTypeSafe<T>) => {
+    return (propertyFunction: (typeVal: T) => any): AbstractControl => {
+        const getStr = getPropertyName(propertyFunction.toString());
+        const p = gr.get(getStr) as FormGroupTypeSafe<T>;
+        return p;
+    };
+};
+
+export const generateSetControlSafeFunction = <T extends unknown>(gr: FormGroupTypeSafe<T>) => {
+    return (propertyFunction: (typeVal: T) => any, control: AbstractControl): void => {
+        const getStr = getPropertyName(propertyFunction.toString());
+        gr.setControl(getStr, control);
+    };
+};
+
 // tslint:disable-next-line: max-classes-per-file
 export class FormBuilderTypeSafe extends FormBuilder {
     // override group to be type safe
@@ -32,18 +47,9 @@ export class FormBuilderTypeSafe extends FormBuilder {
 
         if (gr) {
             // implement getSafe method
-            gr.getSafe = (propertyFunction: (typeVal: T) => any): AbstractControl => {
-                const getStr = getPropertyName(propertyFunction.toString());
-                const p = gr.get(getStr) as FormGroupTypeSafe<T>;
-                return p;
-            };
-
+            gr.getSafe = generateGetSafeFunction(gr);
             // implement setControlSafe
-            gr.setControlSafe = (propertyFunction: (typeVal: T) => any, control: AbstractControl): void => {
-                const getStr = getPropertyName(propertyFunction.toString());
-                gr.setControl(getStr, control);
-            };
-
+            gr.setControlSafe = generateSetControlSafeFunction(gr);
             // implement more functions as needed
         }
 
