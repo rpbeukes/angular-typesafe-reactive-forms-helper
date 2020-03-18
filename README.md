@@ -1,4 +1,4 @@
-# angular-typesafe-reactive-forms-helper
+# angular-typesafe-reactive-forms-helper [![Build Status](https://travis-ci.org/rpbeukes/angular-typesafe-reactive-forms-helper.svg?branch=master)](https://travis-ci.org/rpbeukes/angular-typesafe-reactive-forms-helper)
 
 ### Pack
 
