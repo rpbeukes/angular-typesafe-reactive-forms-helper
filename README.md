@@ -1,4 +1,4 @@
-# Typescript npm package template
+# angular-typesafe-reactive-forms-helper
 
 ### Pack
 
