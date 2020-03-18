@@ -1,7 +1,8 @@
 import { getPropertyName } from "../getPropertyName";
 
-describe('getPropertyName should return when', () => {
-  const expectedProperty = 'hero.address.postcode';
+const expectedProperty = 'hero.address.postcode';
+
+describe(`getPropertyName should return '${expectedProperty}' when`, () => {
 
   test('function(x) { return x.hero.address.postcode;}', () => {
     const testScenario = 'function(x) { return x.hero.address.postcode;}'
