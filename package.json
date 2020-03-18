@@ -18,7 +18,8 @@
     "version": "npm run format"
   },
   "repository": {
-    "type": "git"
+    "type": "git",
+    "url": "https://github.com/rpbeukes/angular-typesafe-reactive-forms-helper"
   },
   "keywords": ["angular", "reactive", "forms", "angular reactive forms", "typesafe"],
   "author": "Ruan Beukes <ruan.coder@gmail.com>",
