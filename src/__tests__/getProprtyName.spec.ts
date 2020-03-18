@@ -9,7 +9,7 @@ describe(`getPropertyName should return '${expectedProperty}' when`, () => {
     expect(getPropertyName(testScenario)).toBe(expectedProperty);
   });
 
-  test('function(x) { return x.hero.address.postcode;}', () => {
+  test('x => x.hero.address.postcode', () => {
     const testScenario = 'x => x.hero.address.postcode'
     expect(getPropertyName(testScenario)).toBe(expectedProperty);
   });
