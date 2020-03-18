@@ -1,4 +1,4 @@
-import { FormGroup } from '@angular/forms';
+import { AbstractControl, FormGroup } from '@angular/forms';
 
 export abstract class FormGroupTypeSafe<T> extends FormGroup {
     // give the value a custom type s
