@@ -1,11 +1,12 @@
 {
   "name": "angular-typesafe-reactive-forms-helper",
-  "version": "1.0.0",
-  "description": "npm typescript template",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "version": "0.0.1",
+  "description": "Use angular reactive forms with type-safety.",
+  "main": "lib/angularTypesafeReactiveFormsHelper.js",
+  "types": "lib/angularTypesafeReactiveFormsHelper.d.ts",
   "scripts": {
     "build": "npm-run-all --sequential build:**",
+    "build:remove-lib": "rimraf ./lib",
     "build:tsc": "tsc",
     "build:remove-test-from-lib": "rimraf ./lib/__tests__",
     "test": "jest --config jestconfig.json",
@@ -17,23 +18,25 @@
     "version": "npm run format"
   },
   "repository": {
-    "type": "git"
+    "type": "git",
+    "url": "https://github.com/rpbeukes/angular-typesafe-reactive-forms-helper"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "angular",
+    "reactive",
+    "forms",
+    "angular reactive forms",
+    "typesafe"
+  ],
+  "author": "Ruan Beukes <ruan.coder@gmail.com>",
+  "contributors": ["Matt <howiempt>"],
   "license": "MIT",
-  "dependencies": {
-    "@angular/forms": ">=9.0.6",
-    "@angular/core": "9.0.6",
-    "@angular/common": "9.0.6",
-    "@angular/platform-browser": "9.0.6",
-    "rxjs": "^6.5.3",
-    "tslib": "^1.10.0"
-  },
+  "dependencies": {},
   "peerDependencies": {
-    "@angular/core": "9.0.6",
-    "@angular/common": "9.0.6",
-    "@angular/platform-browser": "9.0.6",
+    "@angular/forms": "^9.0.6",
+    "@angular/core": "^9.0.6",
+    "@angular/common": "^9.0.6",
+    "@angular/platform-browser": "^9.0.6",
     "rxjs": "^6.5.3",
     "tslib": "^1.10.0"
   },
@@ -46,7 +49,13 @@
     "ts-jest": "^24.0.2",
     "tslint": "^5.19.0",
     "tslint-config-prettier": "^1.18.0",
-    "typescript": "^3.6.2"
+    "typescript": "^3.6.2",
+    "@angular/forms": "^9.0.6",
+    "@angular/core": "^9.0.6",
+    "@angular/common": "^9.0.6",
+    "@angular/platform-browser": "^9.0.6",
+    "rxjs": "^6.5.3",
+    "tslib": "^1.10.0"
   },
   "files": [
     "lib/**/*"
