@@ -1,7 +1,7 @@
 {
   "name": "angular-typesafe-reactive-forms-helper",
   "version": "0.0.1",
-  "description": "npm typescript template",
+  "description": "Use angular reactive forms with type-safety.",
   "main": "lib/angularTypesafeReactiveFormsHelper.js",
   "types": "lib/angularTypesafeReactiveFormsHelper.d.ts",
   "scripts": {
@@ -21,14 +21,19 @@
     "type": "git",
     "url": "https://github.com/rpbeukes/angular-typesafe-reactive-forms-helper"
   },
-  "keywords": ["angular", "reactive", "forms", "angular reactive forms", "typesafe"],
+  "keywords": [
+    "angular",
+    "reactive",
+    "forms",
+    "angular reactive forms",
+    "typesafe"
+  ],
   "author": "Ruan Beukes <ruan.coder@gmail.com>",
-  "contributors": ["Matt (howiempt)"],
+  "contributors": ["Matt <howiempt>"],
   "license": "MIT",
-  "dependencies": {
-    "@angular/forms": "^9.0.6"
-  },
+  "dependencies": {},
   "peerDependencies": {
+    "@angular/forms": "^9.0.6",
     "@angular/core": "^9.0.6",
     "@angular/common": "^9.0.6",
     "@angular/platform-browser": "^9.0.6",
@@ -45,6 +50,7 @@
     "tslint": "^5.19.0",
     "tslint-config-prettier": "^1.18.0",
     "typescript": "^3.6.2",
+    "@angular/forms": "^9.0.6",
     "@angular/core": "^9.0.6",
     "@angular/common": "^9.0.6",
     "@angular/platform-browser": "^9.0.6",
