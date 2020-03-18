@@ -1,10 +1,9 @@
 import { FormBuilder } from '@angular/forms';
-import { getPropertyName } from './getPropertyName';
+import { FormGroupControlsOf } from './formGroupControlsOf';
+import { FormGroupTypeSafe } from './formGroupTypeSafe';
 import { generateGetSafeFunction } from './generateGetSafeFunction';
 import { generateSetControlSafeFunction } from './generateSetControlSafeFunction';
-import { FormGroupTypeSafe } from './formGroupTypeSafe';
-import { FormGroupControlsOf } from './formGroupControlsOf';
-import { FormControlTypeSafe } from './formControlTypeSafe';
+import { getPropertyName } from './getPropertyName';
 
 // tslint:disable-next-line: max-classes-per-file
 export class FormBuilderTypeSafe extends FormBuilder {
