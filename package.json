@@ -1,9 +1,9 @@
 {
   "name": "angular-typesafe-reactive-forms-helper",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "npm typescript template",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "main": "lib/angularTypesafeReactiveFormsHelper.js",
+  "types": "lib/angularTypesafeReactiveFormsHelper.d.ts",
   "scripts": {
     "build": "npm-run-all --sequential build:**",
     "build:tsc": "tsc",
@@ -19,21 +19,17 @@
   "repository": {
     "type": "git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["angular", "reactive", "forms", "angular reactive forms", "typesafe"],
+  "author": "Ruan Beukes <ruan.coder@gmail.com>",
+  "contributors": ["Matt (howiempt)"],
   "license": "MIT",
   "dependencies": {
-    "@angular/forms": ">=9.0.6",
-    "@angular/core": "9.0.6",
-    "@angular/common": "9.0.6",
-    "@angular/platform-browser": "9.0.6",
-    "rxjs": "^6.5.3",
-    "tslib": "^1.10.0"
+    "@angular/forms": "^9.0.6"
   },
   "peerDependencies": {
-    "@angular/core": "9.0.6",
-    "@angular/common": "9.0.6",
-    "@angular/platform-browser": "9.0.6",
+    "@angular/core": "^9.0.6",
+    "@angular/common": "^9.0.6",
+    "@angular/platform-browser": "^9.0.6",
     "rxjs": "^6.5.3",
     "tslib": "^1.10.0"
   },
@@ -46,7 +42,12 @@
     "ts-jest": "^24.0.2",
     "tslint": "^5.19.0",
     "tslint-config-prettier": "^1.18.0",
-    "typescript": "^3.6.2"
+    "typescript": "^3.6.2",
+    "@angular/core": "^9.0.6",
+    "@angular/common": "^9.0.6",
+    "@angular/platform-browser": "^9.0.6",
+    "rxjs": "^6.5.3",
+    "tslib": "^1.10.0"
   },
   "files": [
     "lib/**/*"
