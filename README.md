@@ -84,13 +84,13 @@ interface ICustomerModel {
 
 ## Blog
 
-For a more in detail description of the benefits of this package, read my blog - [Angular reactive forms](https://ruanbeukes.net/angular-typesafe-reactive-forms/).
+For a more in detail description of the benefits of this package, read my blog - [Angular typesafe reactive forms](https://ruanbeukes.net/angular-typesafe-reactive-forms/).
 
 ## Developer notes
 
 `npm pack` will create `angular-typesafe-reactive-forms-helper-1.0.0.tgz`
 
-## Consume in another app for testing
+### Consume in another app for testing
 
 `~/workspace/some-application$` `npm install ~/angular-typesafe-reactive-forms-helper-0.0.0.tgz`
 
