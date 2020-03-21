@@ -24,7 +24,7 @@ describe(`When the FormBuilderTypeSafe initialises a group with FormBuilderTypeS
     expect(sut.value && sut.value.name).toBe('Hi-Man');
   });
 
-  test('the sut.setControlSafe should return the correct values', () => {
+  test('the sut.setControlSafe should set a new FormControl', () => {
     // set a new control with no validator
     sut.setControlSafe(x => x.name, new FormControl('Hulk'));
     expect(sut.value && sut.value.name).toBe('Hulk');
