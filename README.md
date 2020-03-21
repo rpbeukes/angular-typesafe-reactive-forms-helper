@@ -99,3 +99,12 @@ interface ICustomerModel {
 ## Blog
 
 For a more in detail description of the benefits of this package, read my blog - [Angular typesafe reactive forms](https://ruanbeukes.net/angular-typesafe-reactive-forms/).
+
+## Contrutions
+
+Contributions welcome.
+I only added features required by my projects, but I know more could be added.
+
+## Lastly
+
+Use it…don’t use it :)
