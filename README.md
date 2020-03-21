@@ -103,7 +103,7 @@ interface ICustomerModel {
 
 ## Peer Dependencies 
 
-`@angular/forms` and all it's peer dependencies.
+`@angular/forms` and all its peer dependencies.
 
 ## Blog
 
