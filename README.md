@@ -1,6 +1,7 @@
 # angular-typesafe-reactive-forms-helper [![Build Status](https://travis-ci.org/rpbeukes/angular-typesafe-reactive-forms-helper.svg?branch=master)](https://travis-ci.org/rpbeukes/angular-typesafe-reactive-forms-helper)
 
-## Why
+## Quick Syntax
+
 Instead of:
 ```javascript
 this.form.get('heroName').patchValue('He-Man');
@@ -11,7 +12,15 @@ angular-typesafe-reactive-forms-helper allows:
 this.form.get(x => x.heroName).patchValue('He-Man');
 ```
 
-## Sample
+## Why
+- Get intellisense
+- No more misspelled property names
+- Refactoring Reactive Forms is back to a trivial IDE rename task
+
+## Demo
+
+In order to make this work as closely as possible to the Angular way, an abstract class `FormGroupTypeSafe<T>` was derived from Angular’s `FormGroup` with the intent not to break existing code.
+
 
 Intellisense on FormGroupTypeSafe<T>.value:
 
@@ -21,7 +30,7 @@ Intellisense on FormGroupTypeSafe<T>.getSafe and then patching the value:
 
 ![FormGroupTypeSafe.getSafe Intellisense](./assets/PatchValueSample.gif)
 
-## Example on how to use:
+## How to use:
 
 ###  1. Define an interface of your form model.
 ```javascript
@@ -100,7 +109,7 @@ interface ICustomerModel {
 
 For a more in detail description of the benefits of this package, read my blog - [Angular typesafe reactive forms](https://ruanbeukes.net/angular-typesafe-reactive-forms/).
 
-## Contrutions
+## Contributions
 
 Contributions welcome.
 I only added features required by my projects, but I know more could be added.
