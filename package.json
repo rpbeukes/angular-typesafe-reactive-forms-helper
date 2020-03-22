@@ -15,7 +15,11 @@
     "prepare": "npm run build",
     "prepublishOnly": "npm test && npm run lint",
     "perversion": "npm run lint",
-    "version": "npm run format"
+    "version": "npm run format",
+    "package-version":"npm show ./ version",
+    "integration-tests:clean": "rm -rf angular-typesafe-reactive-forms-helper-*.tgz",
+    "integration-tests:pack": "npm pack",
+    "integration-tests:copy-to-tests":"cp angular-typesafe-reactive-forms-helper-`npm run package-version --silent`.tgz ./intergationTests/angular-typesafe-reactive-forms-helper.tgz"
   },
   "repository": {
     "type": "git",
