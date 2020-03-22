@@ -24,5 +24,5 @@ export class TestFormComponent implements OnInit {
   }
 
   getHeroName = () => this.testForm.value.heroName;
-  
+
 }
