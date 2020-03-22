@@ -16,10 +16,13 @@
     "prepublishOnly": "npm test && npm run lint",
     "perversion": "npm run lint",
     "version": "npm run format",
-    "package-version":"npm show ./ version",
+    "package-version-published": "npm show ./ version",
+    "package-json-version": "cat package.json | grep version | head -1 | awk -F: '{print $2}' | sed 's/[\",]//g' | sed 's/[ ]//g'",
+    "integration-tests" : "npm-run-all --sequential integration-tests:**",  
     "integration-tests:clean": "rm -rf angular-typesafe-reactive-forms-helper-*.tgz",
     "integration-tests:pack": "npm pack",
-    "integration-tests:copy-to-tests":"cp angular-typesafe-reactive-forms-helper-`npm run package-version --silent`.tgz ./intergationTests/angular-typesafe-reactive-forms-helper.tgz"
+    "integration-tests:copy-to-tests": "cp angular-typesafe-reactive-forms-helper-`npm run package-json-version --silent`.tgz ./intergationTests/angular-typesafe-reactive-forms-helper.tgz",
+    "integration-tests:install:ng6": "cd ./intergationTests/ng6/test-package-with-ng6 && npm i && npm i ../../angular-typesafe-reactive-forms-helper.tgz"
   },
   "repository": {
     "type": "git",
@@ -33,7 +36,9 @@
     "typesafe"
   ],
   "author": "Ruan Beukes <ruan.coder@gmail.com>",
-  "contributors": ["Matt <howiempt>"],
+  "contributors": [
+    "Matt <howiempt>"
+  ],
   "license": "MIT",
   "dependencies": {},
   "peerDependencies": {
@@ -45,21 +50,21 @@
     "tslib": "^1.10.0"
   },
   "devDependencies": {
+    "@angular/common": "^9.0.6",
+    "@angular/core": "^9.0.6",
+    "@angular/forms": "^9.0.6",
+    "@angular/platform-browser": "^9.0.6",
     "@types/jest": "^24.0.18",
     "jest": "^24.9.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^1.18.2",
     "rimraf": "^3.0.0",
+    "rxjs": "^6.5.3",
     "ts-jest": "^24.0.2",
+    "tslib": "^1.10.0",
     "tslint": "^5.19.0",
     "tslint-config-prettier": "^1.18.0",
-    "typescript": "^3.6.2",
-    "@angular/forms": "^9.0.6",
-    "@angular/core": "^9.0.6",
-    "@angular/common": "^9.0.6",
-    "@angular/platform-browser": "^9.0.6",
-    "rxjs": "^6.5.3",
-    "tslib": "^1.10.0"
+    "typescript": "^3.6.2"
   },
   "files": [
     "lib/**/*"
