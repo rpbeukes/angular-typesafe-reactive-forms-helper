@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { /*FormGroup, FormBuilder,*/ Validators, FormControl } from '@angular/forms';
+import {FormBuilderTypeSafe, FormGroupTypeSafe} from 'angular-typesafe-reactive-forms-helper';
+
+interface HeroFormModel {
+  heroName: string;
+}
 
 @Component({
   selector: 'app-test-form',
@@ -9,20 +14,19 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 export class TestFormComponent implements OnInit {
   title = 'test-package-with-ng6';
 
-  testForm: FormGroup;
+  testForm: FormGroupTypeSafe<HeroFormModel>;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilderTypeSafe) { }
 
-  }
   ngOnInit(): void {
-    this.testForm = this.fb.group({
+    this.testForm = this.fb.group<HeroFormModel>({
       heroName: new FormControl('Hi-Man', Validators.required),
     });
 
-    console.log(this.testForm);
-    console.log(this.testForm.value);
+    console.log(this.testForm.getSafe(x => x.heroName));
   }
 
-  getHeroName = () => this.testForm.value.heroName;
+  getHeroNameByValue = () => this.testForm.value.heroName;
+  getHeroNameByGetSafe = () => this.testForm.getSafe(x => x.heroName).value;
 
 }

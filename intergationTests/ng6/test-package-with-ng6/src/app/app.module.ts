@@ -4,6 +4,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { TestFormComponent } from './form/testform.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FormBuilderTypeSafe } from 'angular-typesafe-reactive-forms-helper';
 @NgModule({
   declarations: [
     AppComponent,
@@ -14,7 +15,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [FormBuilderTypeSafe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
