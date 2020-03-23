@@ -1,6 +1,5 @@
 language: node_js
 node_js:
-  - '9'
   - '10'
 
 install:
@@ -8,6 +7,9 @@ install:
 
 script:
   - npm run test
+
+script:
+  - npm run integration-tests
   
 script:
   - npm run build
