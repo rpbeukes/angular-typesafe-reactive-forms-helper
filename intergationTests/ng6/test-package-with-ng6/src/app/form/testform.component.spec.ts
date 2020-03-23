@@ -26,5 +26,5 @@ describe('TestFormComponent', () => {
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('#getHeroNameByGetSafe').textContent).toContain('Hi-Man');
   }));
- 
+
 });

@@ -22,8 +22,6 @@ export class TestFormComponent implements OnInit {
     this.testForm = this.fb.group<HeroFormModel>({
       heroName: new FormControl('Hi-Man', Validators.required),
     });
-
-    console.log(this.testForm.getSafe(x => x.heroName));
   }
 
   getHeroNameByValue = () => this.testForm.value.heroName;
