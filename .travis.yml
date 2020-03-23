@@ -2,16 +2,10 @@ language: node_js
 node_js:
   - '10'
 
-install:
+script:
   - npm install
-
-script:
   - npm run test
-
-script:
   - npm run integration-tests
-  
-script:
   - npm run build
 
 cache:
