@@ -6,14 +6,18 @@
 `npx @angular/cli@6.2.1 new test-package-with-ng6`
 
 
-## Add the Reactive Test Forms
+## Add the Reactive Test Forms to ng6 app
 
 1. delete content `app.component.html` and replace with <router-outlet></router-outlet> 
-2. Add forms directory to app
-3. add the testform.component
+2. add `~/src/app/forms` directory to app
+3. add the `testform.component`
+4. add some karma test to verify functionality
+5. change `karma.conf.js` to support `puppeteer` so that the test can run on build server.
+   1. `npm i puppeteer -D`
+   2. 
 
 
-## Some issues I fouind in ng6
+## Some issues I found in ng6
 
 ### Cannot find name 'unknown'
 
