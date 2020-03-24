@@ -22,7 +22,6 @@
     "integration-tests:clean": "rm -rf angular-typesafe-reactive-forms-helper-*.tgz",
     "integration-tests:pack": "npm pack",
     "integration-tests:copy-to-tests": "cp -R angular-typesafe-reactive-forms-helper*.tgz ./intergationTests/angular-typesafe-reactive-forms-helper.tgz",
-    "integration-tests:uninstall:ng6": "cd ./intergationTests/ng6/test-package-with-ng6 && npm i && npm uninstall ../../angular-typesafe-reactive-forms-helper.tgz",
     "integration-tests:install:ng6": "cd ./intergationTests/ng6/test-package-with-ng6 && npm i && npm i ../../angular-typesafe-reactive-forms-helper.tgz",
     "integration-tests:test-ci:ng6": "cd ./intergationTests/ng6/test-package-with-ng6 && cross-env CI=true ng test --watch=false"
   },
