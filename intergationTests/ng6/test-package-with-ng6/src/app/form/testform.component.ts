@@ -24,7 +24,7 @@ export class TestFormComponent implements OnInit {
     });
   }
 
-  getHeroNameByValue = () => this.testForm.value.heroName + 'R';
+  getHeroNameByValue = () => this.testForm.value.heroName;
   getHeroNameByGetSafe = () => this.testForm.getSafe(x => x.heroName).value;
 
 }
