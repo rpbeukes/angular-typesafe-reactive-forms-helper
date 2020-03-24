@@ -105,6 +105,8 @@ interface ICustomerModel {
 
 `@angular/forms` and all its peer dependencies.
 
+This package also works with Angular 6.
+
 ## Blog
 
 For a more in detail description of the benefits of this package, read my blog - [Angular typesafe reactive forms](https://ruanbeukes.net/angular-typesafe-reactive-forms/).
