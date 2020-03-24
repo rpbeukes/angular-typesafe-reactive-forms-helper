@@ -17,14 +17,14 @@ describe('TestFormComponent', () => {
     const fixture = TestBed.createComponent(TestFormComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('#getHeroNameByValue').textContent).toContain('Hi-Man');
+    expect(compiled.querySelector('#getHeroNameByValue').textContent).toBe('Hi-Man');
   }));
 
   it('should use typesafe getHeroNameByGetSafe', async(() => {
     const fixture = TestBed.createComponent(TestFormComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('#getHeroNameByGetSafe').textContent).toContain('Hi-Man');
+    expect(compiled.querySelector('#getHeroNameByGetSafe').textContent).toBe('Hi-Man');
   }));
 
 });
