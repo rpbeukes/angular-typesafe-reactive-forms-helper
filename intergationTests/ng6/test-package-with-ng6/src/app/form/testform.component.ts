@@ -20,7 +20,7 @@ export class TestFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.testForm = this.fb.group<HeroFormModel>({
-      heroName: new FormControl('Hi-Man', Validators.required),
+      heroName: new FormControl('He-Man', Validators.required),
     });
   }
 
