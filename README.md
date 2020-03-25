@@ -105,7 +105,7 @@ interface ICustomerModel {
 
 `@angular/forms` and all its peer dependencies.
 
-This package also works with Angular 6.
+This package also works with Angular 6, 8.
 
 ## Blog
 

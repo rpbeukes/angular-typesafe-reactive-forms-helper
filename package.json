@@ -1,6 +1,6 @@
 {
   "name": "angular-typesafe-reactive-forms-helper",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Use angular reactive forms with type-safety.",
   "main": "lib/angularTypesafeReactiveFormsHelper.js",
   "types": "lib/angularTypesafeReactiveFormsHelper.d.ts",
