@@ -13,7 +13,7 @@
 3. add the `testform.component`
 4. add some karma test to verify functionality
 5. change `karma.conf.js` to support `puppeteer` so that the test can run on build server.
-   1. `npm i puppeteer -D`
+   - `npm i puppeteer -D`
    
 
 
