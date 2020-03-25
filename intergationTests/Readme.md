@@ -8,7 +8,7 @@
 
 ## Add the Reactive Test Forms to ng6 app
 
-1. delete content `app.component.html` and replace with <router-outlet></router-outlet> 
+1. delete content `app.component.html` and replace with `<router-outlet></router-outlet>`
 2. add `~/src/app/forms` directory to app
 3. add the `testform.component`
 4. add some karma test to verify functionality
