@@ -14,8 +14,6 @@
 4. add some karma test to verify functionality
 5. change `karma.conf.js` to support `puppeteer` so that the test can run on build server.
    - `npm i puppeteer -D`
-   
-
 
 ## Some issues I found in ng6
 
