@@ -1,3 +1,4 @@
+import { Injectable } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { getPropertyName } from './getPropertyName';
 
@@ -36,6 +37,7 @@ export const generateSetControlSafeFunction = <T extends unknown>(gr: FormGroupT
 };
 
 // tslint:disable-next-line: max-classes-per-file
+@Injectable()
 export class FormBuilderTypeSafe extends FormBuilder {
   // override group to be type safe
   public group<T>(
