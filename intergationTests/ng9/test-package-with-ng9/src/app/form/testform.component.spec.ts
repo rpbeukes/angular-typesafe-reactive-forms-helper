@@ -33,10 +33,10 @@ describe('TestFormComponent', () => {
     expect(compiled.querySelector('#getHeroNameByGetSafe').textContent).toBe('He-Man');
   }));
 
-  it(`should have as title 'test-package-with-ng8'`, () => {
+  it(`should have as title 'test-package-with-ng9'`, () => {
     const fixture = TestBed.createComponent(TestFormComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('test-package-with-ng8');
+    expect(app.title).toEqual('test-package-with-ng9');
   });
 
 });
