@@ -1,6 +1,6 @@
 {
   "name": "angular-typesafe-reactive-forms-helper",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Use angular reactive forms with type-safety.",
   "main": "lib/angularTypesafeReactiveFormsHelper.js",
   "types": "lib/angularTypesafeReactiveFormsHelper.d.ts",
@@ -25,7 +25,10 @@
     "integration-tests:install:ng6": "cd ./intergationTests/ng6/test-package-with-ng6 && npm i && npm i ../../angular-typesafe-reactive-forms-helper.tgz",
     "integration-tests:test-ci:ng6": "cd ./intergationTests/ng6/test-package-with-ng6 && cross-env CI=true ng test --watch=false",
     "integration-tests:install:ng8": "cd ./intergationTests/ng8/test-package-with-ng8 && npm i && npm i ../../angular-typesafe-reactive-forms-helper.tgz",
-    "integration-tests:test-ci:ng8": "cd ./intergationTests/ng8/test-package-with-ng8 && cross-env CI=true ng test --watch=false"
+    "integration-tests:test-ci:ng8": "cd ./intergationTests/ng8/test-package-with-ng8 && cross-env CI=true ng test --watch=false",
+    "integration-tests:install:ng9": "cd ./intergationTests/ng9/test-package-with-ng9 && npm i && npm i ../../angular-typesafe-reactive-forms-helper.tgz",
+    "integration-tests:test-ci:ng9": "cd ./intergationTests/ng9/test-package-with-ng9 && cross-env CI=true ng test --watch=false"
+
   },
   "repository": {
     "type": "git",
