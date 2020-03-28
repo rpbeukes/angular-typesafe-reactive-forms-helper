@@ -2,7 +2,7 @@
 
 ## Never commit integration test package.json with angular-typesafe-reactive-forms-helper
 
-Until I find a better way to skip this particular change, 
+There is a unit test to prevent it `packageLockFile.spec.ts`.
 
 package.json
 ```javascript
