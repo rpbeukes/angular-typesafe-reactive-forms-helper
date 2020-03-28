@@ -10,7 +10,7 @@ import {exec} from 'shelljs';
 
   This is my hack to get around it...at least for now :)
 */
-describe('intergationTests Package-lock.json', () => {
+describe('integrationTests Package-lock.json', () => {
       test('Should not have the angular-typesafe-reactive-forms package dependency installed', () => {
         const lockFiles = exec(`ls ***/**/*/package-lock.json`)
         .stdout

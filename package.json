@@ -21,13 +21,13 @@
     "integration-tests": "npm-run-all --sequential integration-tests:**",
     "integration-tests:clean": "rm -rf angular-typesafe-reactive-forms-helper-*.tgz",
     "integration-tests:pack": "npm pack",
-    "integration-tests:copy-to-tests": "cp -R angular-typesafe-reactive-forms-helper*.tgz ./intergationTests/angular-typesafe-reactive-forms-helper.tgz",
-    "integration-tests:install:ng6": "cd ./intergationTests/ng6/test-package-with-ng6 && npm i && npm i ../../angular-typesafe-reactive-forms-helper.tgz",
-    "integration-tests:test-ci:ng6": "cd ./intergationTests/ng6/test-package-with-ng6 && cross-env CI=true ng test --watch=false",
-    "integration-tests:install:ng8": "cd ./intergationTests/ng8/test-package-with-ng8 && npm i && npm i ../../angular-typesafe-reactive-forms-helper.tgz",
-    "integration-tests:test-ci:ng8": "cd ./intergationTests/ng8/test-package-with-ng8 && cross-env CI=true ng test --watch=false",
-    "integration-tests:install:ng9": "cd ./intergationTests/ng9/test-package-with-ng9 && npm i && npm i ../../angular-typesafe-reactive-forms-helper.tgz",
-    "integration-tests:test-ci:ng9": "cd ./intergationTests/ng9/test-package-with-ng9 && cross-env CI=true ng test --watch=false"
+    "integration-tests:copy-to-tests": "cp -R angular-typesafe-reactive-forms-helper*.tgz ./integrationTests/angular-typesafe-reactive-forms-helper.tgz",
+    "integration-tests:install:ng6": "cd ./integrationTests/ng6/test-package-with-ng6 && npm i && npm i ../../angular-typesafe-reactive-forms-helper.tgz",
+    "integration-tests:test-ci:ng6": "cd ./integrationTests/ng6/test-package-with-ng6 && cross-env CI=true ng test --watch=false",
+    "integration-tests:install:ng8": "cd ./integrationTests/ng8/test-package-with-ng8 && npm i && npm i ../../angular-typesafe-reactive-forms-helper.tgz",
+    "integration-tests:test-ci:ng8": "cd ./integrationTests/ng8/test-package-with-ng8 && cross-env CI=true ng test --watch=false",
+    "integration-tests:install:ng9": "cd ./integrationTests/ng9/test-package-with-ng9 && npm i && npm i ../../angular-typesafe-reactive-forms-helper.tgz",
+    "integration-tests:test-ci:ng9": "cd ./integrationTests/ng9/test-package-with-ng9 && cross-env CI=true ng test --watch=false"
   },
   "repository": {
     "type": "git",
