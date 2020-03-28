@@ -20,12 +20,10 @@ describe('intergationTests Package-lock.json', () => {
         const dependencyDetectedList = lockFiles.map(lockFile => {
           const hasDependencyOnLock = exec(`cat ${lockFile} | grep angular-typesafe-reactive-forms`).stdout && true || false;
           const hasDependency = exec(`cat ${lockFile.replace('-lock.json','.json')} | grep angular-typesafe-reactive-forms`).stdout && true || false;
-          if (hasDependency || hasDependencyOnLock){
+          if (hasDependency || hasDependencyOnLock) {
             return `- Please remove 'angular-typesafe-reactive-forms' dependency from ${lockFile.replace('-lock.json','.json')} and ${lockFile}.`
           }
-
           return null;
-
         })
         .filter(found => found);
 
