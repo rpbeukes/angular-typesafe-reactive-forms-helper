@@ -7,7 +7,7 @@ interface TestContract {
 }
 
 describe(`When the FormBuilderTypeSafe initialises a group with FormBuilderTypeSafe.group<T>`, () => {
-  let sut: FormGroupTypeSafe<TestContract>;
+  let sut: FormGroupTypeSafe<TestContract>; // system under test
 
   beforeEach(() => {
     const formBuilderTypeSafe = new FormBuilderTypeSafe();
