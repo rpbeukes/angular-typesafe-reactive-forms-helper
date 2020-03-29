@@ -7,13 +7,13 @@ export type FormGroupControlsOf<T> = {
 };
 
 export abstract class FormGroupTypeSafe<T> extends FormGroup {
-  // give the value a custom type s
+  // give the value a custom type
   public value: T | undefined;
-
-  // create helper methods to achieve this syntax eg: this.form.getSafe(x => x.heroName).patchValue('Himan')
+  // create helper methods to achieve this syntax 
+  //  eg: this.form.getSafe(x => x.heroName).patchValue('He-Man')
   public abstract getSafe(propertyFunction: (typeVal: T) => any): AbstractControl;
   public abstract setControlSafe(propertyFunction: (typeVal: T) => any, control: AbstractControl): void;
-  // If you need more function implement declare them here but implement them on FormBuilderTypeSafe.group instantiation.
+
 }
 
 // tslint:disable-next-line:max-classes-per-file
@@ -46,7 +46,7 @@ export class FormBuilderTypeSafe extends FormBuilder {
       [key: string]: any;
     } | null,
   ): FormGroupTypeSafe<T> {
-    /*NOTE the return FormGroupTypeSafe<T> */
+    /* NOTE the return FormGroupTypeSafe<T> */
 
     // instantiate group from angular type
     const gr = super.group(controlsConfig, extra) as FormGroupTypeSafe<T>;
@@ -56,7 +56,6 @@ export class FormBuilderTypeSafe extends FormBuilder {
       gr.getSafe = generateGetSafeFunction(gr);
       // implement setControlSafe
       gr.setControlSafe = generateSetControlSafeFunction(gr);
-      // implement more functions as needed
     }
 
     return gr;
