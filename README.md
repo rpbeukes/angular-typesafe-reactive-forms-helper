@@ -111,6 +111,9 @@ This package has been tested with Angular 6, 7, 8, 9.
 ## Release notes
 ### FormGroupTypeSafe\<T> extends Angular's FormGroup class and support these extra functions
 
+#### V1.1.0
+- setValue
+
 #### V1.0.0
 - getSafe
 - setControlSafe
