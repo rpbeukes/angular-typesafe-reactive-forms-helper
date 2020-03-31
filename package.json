@@ -18,6 +18,10 @@
     "version": "npm run format",
     "package-version-published": "npm show ./ version",
     "package-json-version": "cat package.json | grep version | head -1 | awk -F: '{print $2}' | sed 's/[\",]//g' | sed 's/[ ]//g'",
+    "update-latest-integration-tests": "npm-run-all --sequential update-latest-integration-tests:**",
+    "update-latest-integration-tests:ng8": "cp -R ./integrationTests/ng9/test-package-with-ng9/src/app/form/testform.component.spec.ts ./integrationTests/ng8/test-package-with-ng8/src/app/form/",
+    "update-latest-integration-tests:ng7": "cp -R ./integrationTests/ng9/test-package-with-ng9/src/app/form/testform.component.spec.ts ./integrationTests/ng7/test-package-with-ng7/src/app/form/",
+    "update-latest-integration-tests:ng6": "cp -R ./integrationTests/ng9/test-package-with-ng9/src/app/form/testform.component.spec.ts ./integrationTests/ng6/test-package-with-ng6/src/app/form/",
     "integration-tests": "npm-run-all --sequential integration-tests:**",
     "integration-tests:clean": "rm -rf angular-typesafe-reactive-forms-helper-*.tgz",
     "integration-tests:pack": "npm pack",
@@ -70,5 +74,8 @@
   },
   "files": [
     "lib/**/*"
-  ]
+  ],
+  "jest": {
+    "testEnvironment": "node"
+ }
 }
