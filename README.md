@@ -112,7 +112,23 @@ This package has been tested with Angular 6, 7, 8, 9.
 ### FormGroupTypeSafe\<T> extends Angular's FormGroup class and support these extra functions
 
 #### V1.1.0
-- setValue
+- setValue, just a function signature update. 
+
+Angular's `forms.d.ts` function signature:
+```javascript
+    public setValue(value: {
+        [key: string]: any;
+    }, options?: {
+        onlySelf?: boolean;
+        emitEvent?: boolean;
+    }): void;
+```
+
+angular-typesafe-reactive-forms-helper signature:
+
+```javascript
+setValue(value: T, options?: { onlySelf?: boolean; emitEvent?: boolean }): void;
+```
 
 #### V1.0.0
 - getSafe
