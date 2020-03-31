@@ -35,8 +35,8 @@ describe('TestFormComponent', () => {
     expect(fixture.nativeElement.querySelector('#getHeroNameByGetSafe').textContent).toBe('He-Man');
   }));
 
-  it(`should have as title 'test-package-with-ng6'`, () => {
-    expect(component.title).toEqual('test-package-with-ng6');
+  it(`should use setValue with typesafty`, () => {
+    component.testForm.setValue({ heroName : 'Hulk'}, { onlySelf: true, emitEvent: true });
+    expect(component.testForm.value.heroName).toEqual('Hulk');
   });
-
 });

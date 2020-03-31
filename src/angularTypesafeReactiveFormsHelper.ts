@@ -13,7 +13,7 @@ export abstract class FormGroupTypeSafe<T> extends FormGroup {
   //  eg: this.form.getSafe(x => x.heroName).patchValue('He-Man')
   public abstract getSafe(propertyFunction: (typeVal: T) => any): AbstractControl;
   public abstract setControlSafe(propertyFunction: (typeVal: T) => any, control: AbstractControl): void;
-
+  public abstract setValue(value: T, options?: { onlySelf?: boolean; emitEvent?: boolean }): void;
 }
 
 // tslint:disable-next-line:max-classes-per-file

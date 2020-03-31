@@ -30,4 +30,12 @@ describe(`When the FormBuilderTypeSafe initialises a group with FormBuilderTypeS
     expect(sut.value && sut.value.name).toBe('Hulk');
     expect(sut.getSafe(x => x.name).validator).toBeFalsy();
   });
+
+  test('the sut.setValue should be typesafe and set the value', () => {
+    // the test is basically...meh
+    // if you want to test the typesafty, 
+    // change the 'a new value' to 1, and the typescript compiler should shout at you.
+    sut.setValue({name: 'a new value'});
+    expect(sut.value && sut.value.name).toBe('a new value');
+  });
 });
