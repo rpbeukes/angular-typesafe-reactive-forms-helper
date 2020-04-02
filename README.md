@@ -112,7 +112,7 @@ This package has been tested with Angular 6, 7, 8, 9.
 ### FormGroupTypeSafe\<T> extends Angular's FormGroup class 
 
 #### V1.2.0
-- valueChanges, function returns Observable\<T>;
+- valueChanges, function returns Observable\<T>
 
 Angular's `forms.d.ts`:
 ```javascript
