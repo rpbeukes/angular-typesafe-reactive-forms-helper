@@ -111,6 +111,18 @@ This package has been tested with Angular 6, 7, 8, 9.
 ## Release notes
 ### FormGroupTypeSafe\<T> extends Angular's FormGroup class and support these extra functions
 
+#### V1.2.0
+- valueChanges, function returns Observable\<T>;
+
+Angular's `forms.d.ts`:
+```javascript
+valueChanges: Observable<any>;
+```
+angular-typesafe-reactive-forms-helper signature:
+```javascript
+valueChanges: Observable<T>;
+```
+
 #### V1.1.0
 - setValue, just a function signature update. 
 
