@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Observable } from 'rxjs';
 import { getPropertyName } from './getPropertyName';
 
 export type FormGroupControlsOf<T> = {
@@ -8,7 +9,8 @@ export type FormGroupControlsOf<T> = {
 
 export abstract class FormGroupTypeSafe<T> extends FormGroup {
   // give the value a custom type
-  public value: T | undefined;
+  public readonly value: T | undefined;
+  public readonly abstract valueChanges: Observable<T>;
   // create helper methods to achieve this syntax 
   //  eg: this.form.getSafe(x => x.heroName).patchValue('He-Man')
   public abstract getSafe(propertyFunction: (typeVal: T) => any): AbstractControl;
