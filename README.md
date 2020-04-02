@@ -109,7 +109,7 @@ This package has been tested with Angular 6, 7, 8, 9.
 (Should work with Angular 4 & 5 too)
 
 ## Release notes
-### FormGroupTypeSafe\<T> extends Angular's FormGroup class and support these extra functions
+### FormGroupTypeSafe\<T> extends Angular's FormGroup class 
 
 #### V1.2.0
 - valueChanges, function returns Observable\<T>;
@@ -143,6 +143,7 @@ setValue(value: T, options?: { onlySelf?: boolean; emitEvent?: boolean }): void;
 ```
 
 #### V1.0.0
+angular-typesafe-reactive-forms-helper has these extra functions:
 - getSafe
 - setControlSafe
 
