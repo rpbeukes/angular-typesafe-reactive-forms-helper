@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, AbstractControlOptions } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { getPropertyName } from './getPropertyName';
 
