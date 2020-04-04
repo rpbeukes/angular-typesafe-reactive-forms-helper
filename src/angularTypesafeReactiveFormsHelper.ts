@@ -44,14 +44,13 @@ export class FormBuilderTypeSafe extends FormBuilder {
   // override group to be type safe
   public group<T>(
     controlsConfig: FormGroupControlsOf<T>,
-    extra?: {
+    options?: AbstractControlOptions | {
       [key: string]: any;
-    } | null,
-  ): FormGroupTypeSafe<T> {
+  } | null): FormGroupTypeSafe<T> {
     /* NOTE the return FormGroupTypeSafe<T> */
 
     // instantiate group from angular type
-    const gr = super.group(controlsConfig, extra) as FormGroupTypeSafe<T>;
+    const gr = super.group(controlsConfig, options) as FormGroupTypeSafe<T>;
 
     if (gr) {
       // implement getSafe method
