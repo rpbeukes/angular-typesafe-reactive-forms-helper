@@ -36,7 +36,13 @@ describe('TestFormComponent', () => {
   }));
 
   it(`should use setValue with typesafty`, () => {
-    component.testForm.setValue({ heroName : 'Hulk'}, { onlySelf: true, emitEvent: true });
+    component.testForm.setValue({ heroName : 'Hulk', weapons: [
+      {name: 'Fist', damagePoints: 80 }, /* strict so one has to add exactly 2 elements into the array  */
+      {name: 'Head', damagePoints: 50 }
+    ]}, { onlySelf: true, emitEvent: true });
+
     expect(component.testForm.value.heroName).toEqual('Hulk');
+    expect(component.testForm.value.weapons[0].name).toEqual('Fist');
+    expect(component.testForm.value.weapons[0].damagePoints).toEqual(80);
   });
 });
