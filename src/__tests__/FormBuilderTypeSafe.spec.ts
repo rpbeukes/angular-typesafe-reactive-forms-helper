@@ -38,7 +38,19 @@ describe(`When the FormBuilderTypeSafe initialises a group with FormBuilderTypeS
     // the test is basically...meh
     // if you want to test the typesafty, 
     // change the 'a new value' to 1, and the typescript compiler should shout at you.
+    
+    // sut.setValue({name: 1, age: 2, lastName : 'Grayskull'}); // ERROR - Type 'number' is not assignable to type 'string'.
     sut.setValue({name: 'a new value', age: 2, lastName : 'Grayskull'});
     expect(sut?.value?.name).toBe('a new value');
+  });
+
+  test('the sut.patchValue should be typesafe and set partial value', () => {
+    // sut.patchValue({ name: 'BabyHulk', age: '2' }); // ERROR - Type 'string' is not assignable to type 'number | undefined'.
+    // sut.patchValue({ name: 'BabyHulk', age: 2, other: "bogus"  }); // ERROR - Argument of type '{ name: string; age: number; other: string; }' is not assignable to parameter of type 'Partial<TestContract>'
+                                                                      //         Object literal may only specify known properties, and 'other' does not exist in type 'Partial<TestContract>'. 
+    sut.patchValue({ name: 'BabyHulk', age: 2 });
+    expect(sut?.value?.name).toBe('BabyHulk');
+    expect(sut?.value?.age).toBe(2);
+    expect(sut?.value?.lastName).toBe('Grayskull'); // un-changed
   });
 });
