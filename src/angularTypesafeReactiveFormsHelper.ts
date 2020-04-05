@@ -7,20 +7,22 @@ export type FormGroupControlsOf<T> = {
   [P in keyof T]: FormControl | FormGroup;
 };
 
-export abstract class FormGroupTypeSafe<T> extends FormGroup {
-  // give the value a custom type
-  public readonly value: T | undefined;
-  public readonly abstract valueChanges: Observable<T>;
+// the idea is to use Angular's FormGroup exactly as is but just sprinkle a bit of type-safety in-between
+export interface FormGroupTypeSafe<T> extends FormGroup {
+  readonly value: T | undefined;
+  readonly valueChanges: Observable<T>;
+  /* ----- new functions added not part of FormGroup  ----- */
   // create helper methods to achieve this syntax 
   //  eg: this.form.getSafe(x => x.heroName).patchValue('He-Man')
-  public abstract getSafe(propertyFunction: (typeVal: T) => any): AbstractControl;
-  public abstract setControlSafe(propertyFunction: (typeVal: T) => any, control: AbstractControl): void;
-  public abstract setValue(value: T, options?: { onlySelf?: boolean; emitEvent?: boolean }): void;
+  getSafe(propertyFunction: (typeVal: T) => any): AbstractControl | null; // any function returning AbstractControl should return IAbstractControlTypeSafe<T> 
+  setControlSafe(propertyFunction: (typeVal: T) => any, control: AbstractControl): void;
+  /* -------------------------------- */
+  setValue(value: T, options?: { onlySelf?: boolean; emitEvent?: boolean }): void;
 }
 
 // tslint:disable-next-line:max-classes-per-file
-export class FormControlTypeSafe<T> extends FormControl {
-  public value: T | undefined;
+export interface FormControlTypeSafe<T> extends FormControl {
+  value: T | undefined;
 }
 
 export const generateGetSafeFunction = <T extends unknown>(gr: FormGroupTypeSafe<T>) => {
