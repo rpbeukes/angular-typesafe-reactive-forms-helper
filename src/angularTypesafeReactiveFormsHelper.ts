@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, AbstractControlOptions } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, AbstractControlOptions, FormArray } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { getPropertyName } from './getPropertyName';
 
 export type FormGroupControlsOf<T> = {
-  [P in keyof T]: FormControl | FormGroup;
+  [P in keyof T]: FormControl | FormGroup | FormArray;
 };
 
 // the idea is to use Angular's FormGroup exactly as is but just sprinkle a bit of type-safety in-between
