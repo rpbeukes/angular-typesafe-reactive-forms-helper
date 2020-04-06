@@ -111,6 +111,35 @@ This package has been tested with Angular 6, 7, 8, 9.
 ## Release notes
 ### FormGroupTypeSafe\<T> extends Angular's FormGroup class 
 
+#### V1.3.0
+- patchValue
+
+Angular's `forms.d.ts`:
+```javascript
+patchValue(value: any, options?: Object): void;
+```
+angular-typesafe-reactive-forms-helper:
+```javascript
+patchValue(value: Partial<T>, options?: Object): void;
+```
+
+- formBuilderTypeSafe.group\<T> supports `FormArray`
+
+```javascript
+ sut = formBuilderTypeSafe.group<HeroFormModel>({
+      heroName: new FormControl('He-Man', Validators.required),
+      weapons: new FormArray([formBuilderTypeSafe.group<WeaponModel>({
+            name: new FormControl('Sword', Validators.required),
+            damagePoints: new FormControl(50, Validators.required)
+        }),
+        formBuilderTypeSafe.group<WeaponModel>({
+            name: new FormControl('Shield', Validators.required),
+            damagePoints: new FormControl(0, Validators.required)
+        }),
+      ])
+    });
+```
+
 #### V1.2.0
 - valueChanges, function returns Observable\<T>
 
@@ -118,7 +147,7 @@ Angular's `forms.d.ts`:
 ```javascript
 valueChanges: Observable<any>;
 ```
-angular-typesafe-reactive-forms-helper signature:
+angular-typesafe-reactive-forms-helper:
 ```javascript
 valueChanges: Observable<T>;
 ```
@@ -128,7 +157,7 @@ valueChanges: Observable<T>;
 
 Angular's `forms.d.ts` function signature:
 ```javascript
-    public setValue(value: {
+    setValue(value: {
         [key: string]: any;
     }, options?: {
         onlySelf?: boolean;
@@ -139,7 +168,11 @@ Angular's `forms.d.ts` function signature:
 angular-typesafe-reactive-forms-helper signature:
 
 ```javascript
-setValue(value: T, options?: { onlySelf?: boolean; emitEvent?: boolean }): void;
+    setValue(value: T, 
+            options?: { 
+              onlySelf?: boolean; 
+              emitEvent?: boolean 
+    }): void;
 ```
 
 #### V1.0.0

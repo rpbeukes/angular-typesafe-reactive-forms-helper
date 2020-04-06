@@ -12,6 +12,7 @@
         "node"
     ],
     "testPathIgnorePatterns" : [
-        "integrationTests/" 
+        "integrationTests/",
+        "lib"
     ]
 }

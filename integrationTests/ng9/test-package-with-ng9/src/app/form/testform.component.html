@@ -531,7 +531,6 @@
 
 
 
-
 <h2>Test Reactive form</h2>
 <form [formGroup]="testForm">
   <label>Hero Name: </label> 
@@ -543,5 +542,13 @@
   <div>
       <label>this.testForm.getSafe(x => x.heroName).value:</label>
       <div id="getHeroNameByGetSafe">{{getHeroNameByGetSafe()}}</div>
+  </div>
+
+  <div formArrayName="weapons">
+    <label>Weapons:</label>
+    <div *ngFor="let weapon of weaponControls; let weaponIndex=index" [formGroupName]="weaponIndex">
+        <input formControlName="name" placeholder="Weapon Name">
+        <input formControlName="damagePoints" placeholder="Damage Points">
+    </div>
   </div>
 </form>
