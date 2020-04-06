@@ -36,7 +36,23 @@ describe('TestFormComponent', () => {
   }));
 
   it(`should use setValue with typesafty`, () => {
-    component.testForm.setValue({ heroName : 'Hulk'}, { onlySelf: true, emitEvent: true });
+    component.testForm.setValue({ heroName : 'Hulk', weapons: [
+      {name: 'Fist', damagePoints: 80 }, /* strict so one has to add exactly 2 elements into the array  */
+      {name: 'Head', damagePoints: 50 }
+    ]}, { onlySelf: true, emitEvent: true });
+
     expect(component.testForm.value.heroName).toEqual('Hulk');
+    expect(component.testForm.value.weapons[0].name).toEqual('Fist');
+    expect(component.testForm.value.weapons[0].damagePoints).toEqual(80);
+  });
+
+  it('should use patchValue with typesafe and set partial value', () => {
+    // sut.patchValue({ heroName: 1 }); //ERROR - Type 'number' is not assignable to type 'string | undefined'.
+    // sut.patchValue({ name: 'BabyHulk', age: 2, other: "bogus"  }); // ERROR - Argument of type '{ name: string; other: string; }' is not assignable to parameter of type 'Partial<TestContract>'
+                                                                      //         Object literal may only specify known properties, and 'other' does not exist in type 'Partial<TestContract>'. 
+    component.testForm.patchValue({ heroName: 'BabyHulk' });
+    expect(component.testForm.value.heroName).toBe('BabyHulk');
+    expect(component.testForm.value.weapons[0].name).toBe('Sword');
+    expect(component.testForm.value.weapons[1].name).toBe('Shield');
   });
 });
