@@ -45,4 +45,14 @@ describe('TestFormComponent', () => {
     expect(component.testForm.value.weapons[0].name).toEqual('Fist');
     expect(component.testForm.value.weapons[0].damagePoints).toEqual(80);
   });
+
+  it('should use patchValue with typesafe and set partial value', () => {
+    // sut.patchValue({ heroName: 1 }); //ERROR - Type 'number' is not assignable to type 'string | undefined'.
+    // sut.patchValue({ name: 'BabyHulk', age: 2, other: "bogus"  }); // ERROR - Argument of type '{ name: string; other: string; }' is not assignable to parameter of type 'Partial<TestContract>'
+                                                                      //         Object literal may only specify known properties, and 'other' does not exist in type 'Partial<TestContract>'. 
+    component.testForm.patchValue({ heroName: 'BabyHulk' });
+    expect(component.testForm.value?.heroName).toBe('BabyHulk');
+    expect(component.testForm.value?.weapons[0].name).toBe('Sword');
+    expect(component.testForm.value?.weapons[1].name).toBe('Shield');
+  });
 });
