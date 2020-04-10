@@ -4,6 +4,7 @@ import { FormBuilderTypeSafe, FormGroupTypeSafe } from '../angularTypesafeReacti
 interface HeroFormModel {
   heroName: string;
   weapons: WeaponModel[];
+  favoriteWeapon: WeaponModel;
 }
 
 interface WeaponModel {
@@ -27,9 +28,12 @@ describe(`When the FormBuilderTypeSafe initialises a group with FormBuilderTypeS
             name: new FormControl('Shield', Validators.required),
             damagePoints: new FormControl(0, Validators.required)
         }),
-      ])
+      ]),
+      favoriteWeapon: formBuilderTypeSafe.group<WeaponModel>({
+        name: new FormControl('Axe', Validators.required),
+        damagePoints: new FormControl(65, Validators.required)
+      })
     });
-
   });
 
   test('the sut.getSafe(x => x.name) should return the correct value', () => {
@@ -49,13 +53,21 @@ describe(`When the FormBuilderTypeSafe initialises a group with FormBuilderTypeS
 
   test('the sut.setValue should be typesafe and set the value', () => {
     sut.setValue({ heroName : 'Hulk', weapons: [
-      {name: 'Fist', damagePoints: 80 }, /* strict so one has to add exactly 2 elements into the array  */
-      {name: 'Head', damagePoints: 50 }
-    ]}, { onlySelf: true, emitEvent: true });
+        {name: 'Fist', damagePoints: 80 }, /* strict so one has to add exactly 2 elements into the array  */
+        {name: 'Head', damagePoints: 50 },
+      ],
+      favoriteWeapon: {
+        name: 'Dagger', 
+        damagePoints: 42 
+      }
+    }, 
+    { onlySelf: true, emitEvent: true });
 
     expect(sut.value.heroName).toEqual('Hulk');
     expect(sut.value.weapons[0].name).toEqual('Fist');
     expect(sut.value.weapons[0].damagePoints).toEqual(80);
+    expect(sut.value.favoriteWeapon.name).toEqual('Dagger');
+    expect(sut.value.favoriteWeapon.damagePoints).toEqual(42);
   });
 
   test('the sut.patchValue should be typesafe and set partial value', () => {
