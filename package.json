@@ -24,7 +24,7 @@
     "update-latest-integration-tests:ng8": "cp -R ./integrationTests/ng9/test-package-with-ng9/src/app/form/testform.component.spec.ts ./integrationTests/ng8/test-package-with-ng8/src/app/form/",
     "update-latest-integration-tests:ng7": "cp -R ./integrationTests/ng9/test-package-with-ng9/src/app/form/testform.component.spec.ts ./integrationTests/ng7/test-package-with-ng7/src/app/form/",
     "update-latest-integration-tests:ng6": "cp -R ./integrationTests/ng9/test-package-with-ng9/src/app/form/testform.component.spec.ts ./integrationTests/ng6/test-package-with-ng6/src/app/form/",
-    "integration-tests:install-all": "npm run integration-tests:clean && npm run integration-tests:pack && npm run integration-tests:copy-to-tests && npm-run-all --sequential integration-tests:install:**",
+    "integration-tests-install-all": "npm run integration-tests:clean && npm run integration-tests:pack && npm run integration-tests:copy-to-tests && npm-run-all --sequential integration-tests:install:**",
     "integration-tests": "npm-run-all --sequential integration-tests:**",
     "integration-tests:clean": "rm -rf angular-typesafe-reactive-forms-helper-*.tgz",
     "integration-tests:pack": "npm pack",
