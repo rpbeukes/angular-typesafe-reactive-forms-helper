@@ -8,7 +8,7 @@
     "build": "npm-run-all --sequential build:**",
     "build:remove-lib": "rimraf ./lib",
     "build:tsc": "tsc",
-    "build:remove-test-from-lib": "rimraf ./lib/__tests__ ./lib/__typeTests__",
+    "build:remove-test-from-lib": "rimraf ./lib/tests",
     "test": "npm-run-all --sequential test:**",
     "test:dtslint": "dtslint --expectOnly ./tests/__typeTests__",
     "test:jest": "jest --config jestconfig.json",
