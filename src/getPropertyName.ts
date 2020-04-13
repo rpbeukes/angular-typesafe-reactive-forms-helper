@@ -19,11 +19,9 @@ export const getPropertyName = (propertyFunction: string) => {
       // we need the 'hero.address.postcode'
       // for gr.get('hero.address.postcode') function
 
-      // @ts-ignore (ignore the null complaint by typescript
-      properties = propertyFunction
-        .match(/(return [;.a-zA-Z0-9 ]+)/gi)[0]
-        .match(/(?![. ])([a-z0-9_]+)(?=[};.])/gi)
-        .splice(1);
+      const step1 = propertyFunction && propertyFunction.match(/(return [;.a-zA-Z0-9 ]+)/gi);
+      const step2 = step1 && step1[0].match(/(?![. ])([a-z0-9_]+)(?=[};.])/gi);
+      properties = step2 && step2.splice(1) || [];
     }
   }
 
