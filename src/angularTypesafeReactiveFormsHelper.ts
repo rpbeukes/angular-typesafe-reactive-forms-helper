@@ -3,8 +3,6 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, AbstractControlOp
 import { Observable } from 'rxjs';
 import { getPropertyName } from './getPropertyName';
 
-export type OmitRu<T extends object, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
-
 export type FormGroupControlsOf<T> = {
   [P in keyof T]: FormControl| FormGroup | FormArray;
 };
