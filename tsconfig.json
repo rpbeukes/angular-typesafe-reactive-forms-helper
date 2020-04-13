@@ -7,6 +7,6 @@
       "strict": true,
       "experimentalDecorators": true
     },
-    "include": ["src", "tests"],, "tests/__typeTests__"
+    "include": ["src", "tests"],
     "exclude": ["node_modules"]
   }
