@@ -9,6 +9,13 @@ export type FormGroupControlsOf<T> = {
   [P in keyof T]: FormControl| FormGroup | FormArray;
 };
 
+export interface AbstractControlTypeSafe<T> extends AbstractControl {
+  // common properties to FormGroup, FormControl and FormArray
+  readonly value: T;
+  valueChanges: Observable<T>;
+  patchValue(value: T extends (infer R)[] ? [Partial<R>] : Partial<T>, options?: Object): void;
+}
+
 // the idea is to use Angular's FormGroup exactly as is but just sprinkle a bit of type-safety in-between
 export interface FormGroupTypeSafe<T> extends FormGroup {
   readonly value: T;
@@ -17,7 +24,7 @@ export interface FormGroupTypeSafe<T> extends FormGroup {
   /* ----- new functions added not part of FormGroup  ----- */
   // create helper methods to achieve this syntax 
   //  eg: this.form.getSafe(x => x.heroName).patchValue('He-Man')
-  getSafe(propertyFunction: (typeVal: T) => any): AbstractControl | null; 
+  getSafe<P>(propertyFunction: (typeVal: T) => P): AbstractControlTypeSafe<P> | null; 
   // eg: this.form.setControlSafe(x => x.name, new FormControl('Hulk'));
   setControlSafe(propertyFunction: (typeVal: T) => any, control: AbstractControl): void;
   /* -------------------------------- */
