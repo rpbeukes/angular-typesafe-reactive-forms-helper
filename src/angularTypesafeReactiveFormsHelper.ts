@@ -4,22 +4,27 @@ import { Observable } from 'rxjs';
 import { getPropertyName } from './getPropertyName';
 
 export type FormGroupControlsOf<T> = {
-  [P in keyof T]: FormControl| FormGroup | FormArray;
+  [P in keyof T]: FormControl | FormGroup | FormArray;
 };
+
+export interface AbstractControlTypeSafe<T> extends AbstractControl {
+  // common properties to FormGroup, FormControl and FormArray
+  readonly value: T;
+}
 
 // the idea is to use Angular's FormGroup exactly as is but just sprinkle a bit of type-safety in-between
 export interface FormGroupTypeSafe<T> extends FormGroup {
   readonly value: T;
   readonly valueChanges: Observable<T>;
-  
+
   /* ----- new functions added not part of FormGroup  ----- */
-  // create helper methods to achieve this syntax 
+  // create helper methods to achieve this syntax
   //  eg: this.form.getSafe(x => x.heroName).patchValue('He-Man')
-  getSafe(propertyFunction: (typeVal: T) => any): AbstractControl | null; 
+  getSafe<P>(propertyFunction: (typeVal: T) => P): AbstractControlTypeSafe<P> | null;
   // eg: this.form.setControlSafe(x => x.name, new FormControl('Hulk'));
   setControlSafe(propertyFunction: (typeVal: T) => any, control: AbstractControl): void;
   /* -------------------------------- */
-  
+
   setValue(value: T, options?: { onlySelf?: boolean; emitEvent?: boolean }): void;
   // tslint:disable-next-line:ban-types
   patchValue(value: Partial<T>, options?: Object): void;

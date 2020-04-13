@@ -1,4 +1,4 @@
-import { getPropertyName } from '../getPropertyName';
+import { getPropertyName } from '../../src/getPropertyName';
 
 const expectedProperty = 'hero.address.postcode';
 

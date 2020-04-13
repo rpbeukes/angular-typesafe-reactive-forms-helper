@@ -1,15 +1,6 @@
 import { FormControl, Validators, FormArray } from '@angular/forms';
-import { FormBuilderTypeSafe, FormGroupTypeSafe } from '../angularTypesafeReactiveFormsHelper';
-
-interface HeroFormModel {
-  heroName: string;
-  weapons: WeaponModel[];
-}
-
-interface WeaponModel {
-  name: string;
-  damagePoints: number;
-}
+import { FormBuilderTypeSafe, FormGroupTypeSafe } from '../../src/angularTypesafeReactiveFormsHelper';
+import { HeroFormModel, WeaponModel } from '../models';
 
 describe(`When the FormBuilderTypeSafe initialises a group with FormBuilderTypeSafe.group<T>`, () => {
   let sut: FormGroupTypeSafe<HeroFormModel>; // system under test

@@ -1,0 +1,20 @@
+// this additional tsconfig is required by dtslint
+// see: https://github.com/Microsoft/dtslint#typestsconfigjson
+{
+    "compilerOptions": {
+      "module": "commonjs",
+      "lib": ["es6", "dom" ],
+      "noImplicitAny": true,
+      "noImplicitThis": true,
+      "strictNullChecks": true,
+      "strictFunctionTypes": true,
+      "noEmit": true,
+      // ../angularTypesafeReactiveFormsHelper.ts error TS1219: Experimental support for decorators is a feature that is subject to change in a future release. 
+      // Set the 'experimentalDecorators' option in your 'tsconfig' or 'jsconfig' to remove this warning.
+      "experimentalDecorators": true,
+  
+      // If the library is an external module (uses `export`), this allows your test file to import "mylib" instead of "./index".
+      // If the library is global (cannot be imported via `import` or `require`), leave this out.
+      "baseUrl": "."
+    }
+  }
