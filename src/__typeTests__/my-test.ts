@@ -1,6 +1,7 @@
 // tslint:disable-next-line:strict-export-declare-modifiers
-import { OmitRu } from "../types";
-import { AssertTrue, AssertFalse, IsExact, Has } from 'conditional-type-checks';
+
+// import { AssertTrue, AssertFalse, IsExact, Has } from 'conditional-type-checks';
+import { OmitRu } from '../angularTypesafeReactiveFormsHelper';
 
 // $ExpectType Pick<{ a: "1"; b: "2"; c: "3"; }, "a">
 type Test_01_Omit = OmitRu<{ a: '1'; b: '2'; c: '3' }, 'a' | 'b'>;
