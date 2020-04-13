@@ -1,5 +1,5 @@
-import { FormBuilderTypeSafe } from '../angularTypesafeReactiveFormsHelper';
-import { HeroFormModel, WeaponModel } from '../__tests__/models';
+import { FormBuilderTypeSafe } from '../../src/angularTypesafeReactiveFormsHelper';
+import { HeroFormModel, WeaponModel } from '../models';
 import { Validators, FormControl, FormArray } from '@angular/forms';
 
 const formBuilderTypeSafe = new FormBuilderTypeSafe();
