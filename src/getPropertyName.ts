@@ -21,7 +21,7 @@ export const getPropertyName = (propertyFunction: string) => {
 
       const step1 = propertyFunction && propertyFunction.match(/(return [;.a-zA-Z0-9 ]+)/gi);
       const step2 = step1 && step1[0].match(/(?![. ])([a-z0-9_]+)(?=[};.])/gi);
-      properties = step2 && step2.splice(1) || [];
+      properties = (step2 && step2.splice(1)) || [];
     }
   }
 
