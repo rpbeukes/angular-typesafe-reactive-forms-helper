@@ -13,6 +13,7 @@
     ],
     "testPathIgnorePatterns" : [
         "integrationTests/",
-        "lib"
+        "lib",
+        "src/__typeTests__"
     ]
 }
