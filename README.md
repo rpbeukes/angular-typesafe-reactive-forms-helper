@@ -113,7 +113,7 @@ This package has been tested with Angular 6, 7, 8, 9.
 
 #### V1.4.0
 - new interface `AbstractControlTypeSafe<P>` which extends from Angular's `AbstractControl` and will, over time, contain the common properties to Angular's `FormGroup`, `FormControl` and `FormArray`.
-Currently it only returns `readonly value: T;`.
+Currently it only returns `readonly value: T`.
 
 - enhanced `getSafe` to return `AbstractControlTypeSafe<P>`
 ```javascript
