@@ -14,8 +14,7 @@
     "lib": [
       "es2018",
       "dom"
-    ],
-    "strict": true
+    ]
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
