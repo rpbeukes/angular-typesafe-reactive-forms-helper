@@ -111,6 +111,44 @@ This package has been tested with Angular 6, 7, 8, 9.
 ## Release notes
 ### FormGroupTypeSafe\<T> extends Angular's FormGroup class 
 
+#### V1.4.0
+- new interface `AbstractControlTypeSafe<P>` which extends from Angular's `AbstractControl` and will, over time, contain the common properties to Angular's `FormGroup`, `FormControl` and `FormArray`.
+Currently it only returns `readonly value: T;`.
+
+- enhanced `getSafe` to return `AbstractControlTypeSafe<P>`
+```javascript
+  getSafe<P>(propertyFunction: (typeVal: T) => P): AbstractControlTypeSafe<P> | null;
+```
+Code example:
+```javascript
+ // heroName: string
+ sut.getSafe(x => x.heroName)?.value; // value's ExpectType => string | undefined
+```
+
+- add new type `RecursivePartial<T>`
+- enhanced `patchValue` to use `RecursivePartial<T>` so one is not forced by the compiler to complete mandatory properties on a nested types.
+```javascript
+patchValue(value: RecursivePartial<T>, options?: Object): void;
+```
+Code Example:
+```javascript
+interface HeroFormModel {
+    heroName: string;
+    weapons: WeaponModel[];
+}
+  
+interface WeaponModel {
+    name: string;
+    damagePoints: number;
+}
+
+let sut: FormGroupTypeSafe<HeroFormModel> = formBuilderTypeSafe.group<HeroFormModel>({...}) // let's pretend a valid FormGroupTypeSafe object was created here  
+// Looking at the line below... 
+// Before V1.4.0, Typescript would have complained about missing property damagePoints.
+// This is not the case anymore as now all nested types will be Partial properties. 
+sut.patchValue({ weapons: [{ name: "Head" }]});
+```
+
 #### V1.3.0
 - patchValue
 
