@@ -57,3 +57,11 @@ Fixed it by updating the ng6 project's `tsconfig.json` to skip the typescript li
 ? Would you like to add Angular routing? Yes
 ? Which stylesheet format would you like to use? Sass   [ https://sass-lang.com/documentation/syntax#the-indented-syntax ]
 ```
+
+## Changes to tsconfig.json
+For all the versions of Angular, I added `strict`
+```javascript
+"compilerOptions": {
+    "strict": true
+ }
+``` 
