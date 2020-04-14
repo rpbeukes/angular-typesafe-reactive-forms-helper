@@ -3,6 +3,10 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, AbstractControlOp
 import { Observable } from 'rxjs';
 import { getPropertyName } from './getPropertyName';
 
+export type RecursivePartial<T> = {
+  [P in keyof T]?: RecursivePartial<T[P]>;
+};
+
 export type FormGroupControlsOf<T> = {
   [P in keyof T]: FormControl | FormGroup | FormArray;
 };
@@ -26,8 +30,9 @@ export interface FormGroupTypeSafe<T> extends FormGroup {
   /* -------------------------------- */
 
   setValue(value: T, options?: { onlySelf?: boolean; emitEvent?: boolean }): void;
+
   // tslint:disable-next-line:ban-types
-  patchValue(value: Partial<T>, options?: Object): void;
+  patchValue(value: RecursivePartial<T>, options?: Object): void;
 }
 
 // tslint:disable-next-line:max-classes-per-file
