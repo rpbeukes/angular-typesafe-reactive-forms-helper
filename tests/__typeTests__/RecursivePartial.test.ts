@@ -35,6 +35,6 @@ const RecursivePartialTests = () => {
 
     // $ExpectType { anotherModel: { prop2: { name: string; }[]; }; }
     a = {
-        anotherModel: { prop2: [{ name: 'yeti' } ]}
+        anotherModel: { prop2: [ { name: 'yeti' } ]}
     };
 };
