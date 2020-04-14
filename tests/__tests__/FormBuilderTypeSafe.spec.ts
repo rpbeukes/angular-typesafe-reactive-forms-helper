@@ -1,26 +1,13 @@
 import { FormControl, Validators, FormArray } from '@angular/forms';
 import { FormBuilderTypeSafe, FormGroupTypeSafe } from '../../src/angularTypesafeReactiveFormsHelper';
 import { HeroFormModel, WeaponModel } from '../models';
+import { createGroup } from '../createGroup';
 
 describe(`When the FormBuilderTypeSafe initialises a group with FormBuilderTypeSafe.group<T>`, () => {
   let sut: FormGroupTypeSafe<HeroFormModel>; // system under test
 
   beforeEach(() => {
-    const formBuilderTypeSafe = new FormBuilderTypeSafe();
-   
-    sut = formBuilderTypeSafe.group<HeroFormModel>({
-      heroName: new FormControl('He-Man', Validators.required),
-      weapons: new FormArray([formBuilderTypeSafe.group<WeaponModel>({
-            name: new FormControl('Sword', Validators.required),
-            damagePoints: new FormControl(50, Validators.required)
-        }),
-        formBuilderTypeSafe.group<WeaponModel>({
-            name: new FormControl('Shield', Validators.required),
-            damagePoints: new FormControl(0, Validators.required)
-        }),
-      ])
-    });
-
+    sut = createGroup();
   });
 
   test('the sut.getSafe(x => x.name) should return the correct value', () => {
@@ -50,12 +37,21 @@ describe(`When the FormBuilderTypeSafe initialises a group with FormBuilderTypeS
   });
 
   test('the sut.patchValue should be typesafe and set partial value', () => {
-    // sut.patchValue({ heroName: 1 }); //ERROR - Type 'number' is not assignable to type 'string | undefined'.
-    // sut.patchValue({ name: 'BabyHulk', age: 2, other: "bogus"  }); // ERROR - Argument of type '{ name: string; other: string; }' is not assignable to parameter of type 'Partial<TestContract>'
-                                                                      //         Object literal may only specify known properties, and 'other' does not exist in type 'Partial<TestContract>'. 
     sut.patchValue({ heroName: 'BabyHulk' });
     expect(sut?.value?.heroName).toBe('BabyHulk');
     expect(sut?.value?.weapons[0].name).toBe('Sword');
+    expect(sut?.value?.weapons[0].damagePoints).toBe(50);
     expect(sut?.value?.weapons[1].name).toBe('Shield');
+    expect(sut?.value?.weapons[1].damagePoints).toBe(0);
+
+    sut.patchValue({ weapons: [{ name: "Head" }]});
+    expect(sut?.value?.weapons[0].name).toBe('Head');
+    expect(sut?.value?.weapons[0].damagePoints).toBe(50);
+    
+    sut.patchValue({ weapons: [{}, { damagePoints: 1 }]});
+    expect(sut?.value?.weapons[1].damagePoints).toBe(1);
+
+    sut.patchValue({ weapons: []}); 
+    expect(sut?.value?.weapons.length).toBe(2); // no change expected on the array 
   });
 });
