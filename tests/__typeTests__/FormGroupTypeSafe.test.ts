@@ -19,3 +19,39 @@ const getSafeTests_AbstractControlTypeSafe_value = () => {
     // $ExpectType WeaponModel[] | undefined
     sut.getSafe(x => x.weapons)?.value;
 };
+
+const getSafeTests_AbstractControlTypeSafe_valueChange = () => {
+    // ----- form.value changes --------
+    sut?.valueChanges.subscribe(val => {
+        // $ExpectType HeroFormModel
+        val;
+    });
+
+    // ----- specific property changes ------
+    sut.getSafe(x => x.heroName)?.valueChanges.subscribe(val => {
+        // $ExpectType string
+        val;
+    });
+
+    sut.getSafe(x => x.weapons)?.valueChanges.subscribe(val => {
+        // $ExpectType WeaponModel[]
+        val;
+    });
+
+    sut.getSafe(x => x.weapons)?.get([0])?.valueChanges.subscribe(val => {
+        // $ExpectType WeaponModel
+        val;
+    });
+
+    // the angular way - .get('person.name')
+    sut.getSafe(x => x.weapons)?.get('person.name')?.valueChanges.subscribe(val => {
+        // $ExpectType any
+        val;
+    });
+
+    // the angular way - .get(['person', 'name'])
+    sut.getSafe(x => x.weapons)?.get(['person', 'name'])?.valueChanges.subscribe(val => {
+        // $ExpectType any
+        val;
+    });
+};

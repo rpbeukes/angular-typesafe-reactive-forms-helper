@@ -1,7 +1,7 @@
 
 import { FormControl, Validators, FormArray } from '@angular/forms';
 import { HeroFormModel, WeaponModel } from './models';
-import { FormBuilderTypeSafe, FormGroupTypeSafe } from '../src/angularTypesafeReactiveFormsHelper';
+import { FormBuilderTypeSafe } from '../src/angularTypesafeReactiveFormsHelper';
 
 export const createGroup = () => {
     const formBuilderTypeSafe = new FormBuilderTypeSafe();
@@ -15,7 +15,7 @@ export const createGroup = () => {
         formBuilderTypeSafe.group<WeaponModel>({
             name: new FormControl('Shield', Validators.required),
             damagePoints: new FormControl(0, Validators.required)
-        }),
+        })
       ])
     });
 }

@@ -36,8 +36,14 @@
     <div formArrayName="weapons">
       <label>Weapons:</label>
       <div *ngFor="let weapon of weaponControls; let weaponIndex=index" [formGroupName]="weaponIndex">
-          <input formControlName="name" placeholder="Weapon Name">
-          <input formControlName="damagePoints" placeholder="Damage Points">
+          <input id="{{ 'weapon-name-' + weaponIndex }}" formControlName="name" placeholder="Weapon Name">
+          <input id="{{ 'weapon-damagePoints-' + weaponIndex }}" formControlName="damagePoints" placeholder="Damage Points">
       </div>
+    </div>
+  
+    <div>
+      <p>testForm.value | json =></p>
+      <textarea #testFormTextArea id="testForm-value" rows="20" cols="120">
+      </textarea>
     </div>
   </form>

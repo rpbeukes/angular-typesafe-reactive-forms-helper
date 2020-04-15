@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { /*FormGroup, FormBuilder,*/ Validators, FormControl, FormArray } from '@angular/forms';
 import {FormBuilderTypeSafe, FormGroupTypeSafe} from 'angular-typesafe-reactive-forms-helper';
 
@@ -10,6 +10,7 @@ interface HeroFormModel {
   heroName: string;
   weapons: WeaponModel[];
 }
+
 @Component({
   selector: 'app-test-form',
   templateUrl: './testform.component.html',
@@ -18,7 +19,9 @@ interface HeroFormModel {
 export class TestFormComponent implements OnInit {
   title = 'test-package-with-ng8';
 
+  @ViewChild('testFormTextArea', null) testFormTextArea: ElementRef;
   testForm: FormGroupTypeSafe<HeroFormModel>;
+  dataChangeRecorded: any[] = [];
 
   constructor(private fb: FormBuilderTypeSafe) { }
 
@@ -34,6 +37,27 @@ export class TestFormComponent implements OnInit {
             damagePoints: new FormControl(0, Validators.required)
         }),
       ])
+    });
+
+    // valueChanges - testForm value => HeroFormModel change
+    this.testForm.valueChanges.subscribe(value => {
+      this.testFormTextArea.nativeElement.value = JSON.stringify(value, null, 2);
+      this.dataChangeRecorded.push({ value, scenario: 1, message: 'valueChanges - testForm value => HeroFormModel change' });
+    });
+
+    // valueChanges - heroName => string change
+    this.testForm.getSafe(x => x.heroName).valueChanges.subscribe(value => {
+      this.dataChangeRecorded.push({ value, scenario: 2, message: 'valueChanges - heroName => string change' });
+    });
+
+    // valueChanges - weapons => array change
+    this.testForm.getSafe(x => x.weapons).valueChanges.subscribe(value => {
+      this.dataChangeRecorded.push({ value, scenario: 3, message: 'valueChanges - weapons => array change' });
+    });
+
+    // valueChanges - weapons[0] => specific index in a array change
+    this.testForm.getSafe(x => x.weapons).get([0]).valueChanges.subscribe(value => {
+      this.dataChangeRecorded.push({ value, scenario: 4, message: 'valueChanges - weapons[0] => specific index in a array change' });
     });
   }
 

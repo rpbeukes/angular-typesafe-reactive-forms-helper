@@ -64,4 +64,64 @@ describe('TestFormComponent', () => {
     component.testForm.patchValue({ weapons: []});
     expect(component.testForm.value.weapons.length).toBe(2); // no change expected on the array
   });
+
+  describe('valueChange', () => {
+    beforeEach(() => {
+      component.dataChangeRecorded = [];
+    });
+
+    it('should display changed heroName', async () => {
+      fixture.detectChanges();
+      const el = fixture.nativeElement.querySelector('#hero-name-input');
+      el.value = 'Spiderman';
+      el.dispatchEvent(new Event('input'));
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        // console.log('component.dataChangeRecorded', component.dataChangeRecorded.find(x => x.value === 'Spiderman'));
+        const recordedValue = component.dataChangeRecorded.find(x => x.scenario === 2);
+        expect(recordedValue).toBeTruthy();
+        expect(recordedValue.value).toBe('Spiderman');
+        expect(component.dataChangeRecorded.find(x => x.scenario === 1)).toBeTruthy();
+      });
+    });
+
+    it('should display changed in weapons array but not specific array index change', async () => {
+      fixture.detectChanges();
+      expect(component.testForm.value.weapons[1].name).toBe('Shield');
+
+      const el = fixture.nativeElement.querySelector('#weapon-name-1');
+      el.value = 'Leg';
+      el.dispatchEvent(new Event('input'));
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        // console.log('component.dataChangeRecorded', JSON.stringify(component.dataChangeRecorded, null, 2));
+        const recordedValue = component.dataChangeRecorded.find(x => x.scenario === 3);
+        expect(recordedValue).toBeTruthy();
+        expect(component.testForm.value.weapons[1].name).toBe('Leg');
+        // don't expect this to be recorded: 'valueChanges - weapons[0] => specific index in a array change'
+        expect(component.dataChangeRecorded.find(x => x.scenario === 4)).toBeFalsy();
+        expect(component.dataChangeRecorded.find(x => x.scenario === 1)).toBeTruthy();
+      });
+    });
+
+    it('should display changed in weapons array and specific array index change', async () => {
+      fixture.detectChanges();
+      expect(component.testForm.value.weapons[0].name).toBe('Sword');
+
+      const el = fixture.nativeElement.querySelector('#weapon-name-0');
+      el.value = 'Leg';
+      el.dispatchEvent(new Event('input'));
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        // console.log('component.dataChangeRecorded', JSON.stringify(component.dataChangeRecorded, null, 2));
+        const recordedValue = component.dataChangeRecorded.find(x => x.scenario === 3);
+        expect(recordedValue).toBeTruthy();
+        expect(component.testForm.value.weapons[0].name).toBe('Leg');
+        // 'valueChanges - weapons[0] => specific index in a array change'
+        expect(component.dataChangeRecorded.find(x => x.scenario === 4)).toBeTruthy();
+        expect(component.dataChangeRecorded.find(x => x.scenario === 1)).toBeTruthy();
+      });
+    });
+
+  });
 });

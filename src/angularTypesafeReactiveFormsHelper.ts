@@ -14,6 +14,17 @@ export type FormGroupControlsOf<T> = {
 export interface AbstractControlTypeSafe<T> extends AbstractControl {
   // common properties to FormGroup, FormControl and FormArray
   readonly value: T;
+  readonly valueChanges: Observable<T>;
+
+  /*
+    Angular `get` signature:
+      get(path: Array<string | number> | string): AbstractControl | null;
+    
+      split into two get methods
+  */
+  // tslint:disable-next-line: array-type
+  get(path: Array<string> | string): AbstractControl | null; 
+  get(path: number[]): AbstractControlTypeSafe<T extends (infer R)[] ? R : T> | null;
 }
 
 // the idea is to use Angular's FormGroup exactly as is but just sprinkle a bit of type-safety in-between
