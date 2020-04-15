@@ -1,6 +1,7 @@
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { /*FormGroup, FormBuilder,*/ Validators, FormControl, FormArray } from '@angular/forms';
 import {FormBuilderTypeSafe, FormGroupTypeSafe} from 'angular-typesafe-reactive-forms-helper';
+import { AppComponent } from '../app.component';
 
 interface WeaponModel {
   name: string;
@@ -17,10 +18,10 @@ interface HeroFormModel {
   styleUrls: ['./testform.component.css']
 })
 export class TestFormComponent implements OnInit {
-  title = 'test-package-with-ng8';
+  title = new AppComponent().title;
 
-  @ViewChild('testFormTextArea', null) testFormTextArea: ElementRef;
   testForm: FormGroupTypeSafe<HeroFormModel>;
+  @ViewChild('testFormTextArea', null) testFormTextArea: ElementRef;
   dataChangeRecorded: any[] = [];
 
   constructor(private fb: FormBuilderTypeSafe) { }
