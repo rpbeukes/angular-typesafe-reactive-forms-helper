@@ -108,6 +108,24 @@ This package has been tested with Angular 6, 7, 8, 9.
 
 (Should work with Angular 4 & 5 too)
 
+## Blog
+
+For a more in detail description of the benefits of this package, read my blog - [Angular typesafe reactive forms](https://ruanbeukes.net/angular-typesafe-reactive-forms/).
+
+When reading the blog, be mindful that it was written Oct-2017, before the `angular-typesafe-reactive-forms-helper` package existed. Back then, the idea was to copy the code and adjust as needed. Since then, there were a few requests, thus `angular-typesafe-reactive-forms-helper` was born.
+
+## Contributions
+
+I only added features required by my projects, but I know more could be added with your help.
+
+Create a PR to get the conversation started :)
+
+## Lastly
+
+Use it…don’t use it :)
+
+---
+
 ## Release notes
 ### FormGroupTypeSafe\<T> extends Angular's FormGroup class 
 
@@ -277,18 +295,4 @@ angular-typesafe-reactive-forms-helper has these extra functions:
 - getSafe
 - setControlSafe
 
-## Blog
 
-For a more in detail description of the benefits of this package, read my blog - [Angular typesafe reactive forms](https://ruanbeukes.net/angular-typesafe-reactive-forms/).
-
-When reading the blog, be mindful that it was written Oct-2017, before the `angular-typesafe-reactive-forms-helper` package existed. Back then, the idea was to copy the code and adjust as needed. Since then, there were a few requests, thus `angular-typesafe-reactive-forms-helper` was born.
-
-## Contributions
-
-I only added features required by my projects, but I know more could be added with your help.
-
-Create a PR to get the conversation started :)
-
-## Lastly
-
-Use it…don’t use it :)
