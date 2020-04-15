@@ -127,8 +127,6 @@ Use it…don’t use it :)
 ---
 
 ## Release notes
-### FormGroupTypeSafe\<T> extends Angular's FormGroup class 
-
 The model used for all code samples:
 ```typescript
 interface HeroFormModel {
@@ -141,6 +139,8 @@ interface WeaponModel {
     damagePoints: number;
 }
 ```
+### FormGroupTypeSafe\<T> extends Angular's FormGroup class 
+
 #### V1.5.0
 
 Extend `AbstractControlTypeSafe<P>` with:
@@ -197,7 +197,7 @@ sut.getSafe(x => x.weapons).get(['person', 'name']).valueChanges.subscribe(val =
     val;
 });
 ```
-
+---
 #### V1.4.0
 - new interface `AbstractControlTypeSafe<P>` which extends from Angular's `AbstractControl` and will, over time, contain the common properties to Angular's `FormGroup`, `FormControl` and `FormArray`.
 Currently it only returns `readonly value: T`.
@@ -225,7 +225,7 @@ let sut: FormGroupTypeSafe<HeroFormModel> = formBuilderTypeSafe.group<HeroFormMo
 // This is not the case anymore as now all nested types will be Partial properties. 
 sut.patchValue({ weapons: [{ name: "Head" }]});
 ```
-
+---
 #### V1.3.0
 - patchValue
 
@@ -254,7 +254,7 @@ patchValue(value: Partial<T>, options?: Object): void;
       ])
     });
 ```
-
+---
 #### V1.2.0
 - valueChanges, function returns Observable\<T>
 
@@ -266,7 +266,7 @@ angular-typesafe-reactive-forms-helper:
 ```typescript
 valueChanges: Observable<T>;
 ```
-
+---
 #### V1.1.0
 - setValue, just a function signature update. 
 
@@ -289,7 +289,7 @@ angular-typesafe-reactive-forms-helper signature:
               emitEvent?: boolean 
     }): void;
 ```
-
+---
 #### V1.0.0
 angular-typesafe-reactive-forms-helper has these extra functions:
 - getSafe
