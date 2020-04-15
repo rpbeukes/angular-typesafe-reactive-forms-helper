@@ -77,7 +77,7 @@ describe('TestFormComponent', () => {
       el.dispatchEvent(new Event('input'));
       fixture.detectChanges();
       fixture.whenStable().then(() => {
-        console.log('component.dataChangeRecorded', component.dataChangeRecorded.find(x => x.value === 'Spiderman'));
+        // console.log('component.dataChangeRecorded', component.dataChangeRecorded.find(x => x.value === 'Spiderman'));
         const recordedValue = component.dataChangeRecorded.find(x => x.scenario === 2);
         expect(recordedValue).toBeTruthy();
         expect(recordedValue.value).toBe('Spiderman');
@@ -94,7 +94,7 @@ describe('TestFormComponent', () => {
       el.dispatchEvent(new Event('input'));
       fixture.detectChanges();
       fixture.whenStable().then(() => {
-        console.log('component.dataChangeRecorded', JSON.stringify(component.dataChangeRecorded, null, 2));
+        // console.log('component.dataChangeRecorded', JSON.stringify(component.dataChangeRecorded, null, 2));
         const recordedValue = component.dataChangeRecorded.find(x => x.scenario === 3);
         expect(recordedValue).toBeTruthy();
         expect(component.testForm.value.weapons[1].name).toBe('Leg');
@@ -113,7 +113,7 @@ describe('TestFormComponent', () => {
       el.dispatchEvent(new Event('input'));
       fixture.detectChanges();
       fixture.whenStable().then(() => {
-        console.log('component.dataChangeRecorded', JSON.stringify(component.dataChangeRecorded, null, 2));
+        // console.log('component.dataChangeRecorded', JSON.stringify(component.dataChangeRecorded, null, 2));
         const recordedValue = component.dataChangeRecorded.find(x => x.scenario === 3);
         expect(recordedValue).toBeTruthy();
         expect(component.testForm.value.weapons[0].name).toBe('Leg');
