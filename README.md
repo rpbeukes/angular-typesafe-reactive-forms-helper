@@ -3,12 +3,12 @@
 ## Quick Syntax
 
 Instead of:
-```javascript
+```typescript
 this.form.get('heroName').patchValue('He-Man');
 ```
 
 angular-typesafe-reactive-forms-helper allows:
-```javascript
+```typescript
 this.form.getSafe(x => x.heroName).patchValue('He-Man');
 ```
 
@@ -33,7 +33,7 @@ Intellisense on FormGroupTypeSafe<T>.getSafe and then patching the value:
 ## How to use:
 
 ###  1. Define an interface of your form model.
-```javascript
+```typescript
 //interface used with FormGroupTypeSafe<T>
 interface IHeroFormModel {
   name: string,
@@ -44,7 +44,7 @@ interface IHeroFormModel {
 ```
 
 ### 2. Declare your new FormGroupTypeSafe form with the help of TypeScript’s generics.
-```javascript
+```typescript
 /* TypeSafe Reactive Forms Changes */
 //old code
 //heroForm: FormGroup;
@@ -52,7 +52,7 @@ heroForm: FormGroupTypeSafe<IHeroFormModel>;
 
 ```
 ### 3. Inject FormBuilderTypeSafe
-```javascript
+```typescript
 constructor(
    /* TypeSafe Reactive Forms Changes */
    //old code - private fb: FormBuilder,
@@ -64,7 +64,7 @@ constructor(
  }
 ```
 ### 4. Create your form group with Interfaces (contracts).
-```javascript
+```typescript
 // old code
 //    this.heroForm = this.fb.group({
 //      name: '',
@@ -111,27 +111,8 @@ This package has been tested with Angular 6, 7, 8, 9.
 ## Release notes
 ### FormGroupTypeSafe\<T> extends Angular's FormGroup class 
 
-#### V1.4.0
-- new interface `AbstractControlTypeSafe<P>` which extends from Angular's `AbstractControl` and will, over time, contain the common properties to Angular's `FormGroup`, `FormControl` and `FormArray`.
-Currently it only returns `readonly value: T`.
-
-- enhanced `getSafe` to return `AbstractControlTypeSafe<P>`
-```javascript
-  getSafe<P>(propertyFunction: (typeVal: T) => P): AbstractControlTypeSafe<P> | null;
-```
-Code example:
-```javascript
- // heroName: string
- sut.getSafe(x => x.heroName)?.value; // value's ExpectType => string | undefined
-```
-
-- add new type `RecursivePartial<T>`
-- enhanced `patchValue` to use `RecursivePartial<T>` so one is not forced by the compiler to complete mandatory properties on a nested types.
-```javascript
-patchValue(value: RecursivePartial<T>, options?: Object): void;
-```
-Code Example:
-```javascript
+The model used for all code samples:
+```typescript
 interface HeroFormModel {
     heroName: string;
     weapons: WeaponModel[];
@@ -141,7 +122,85 @@ interface WeaponModel {
     name: string;
     damagePoints: number;
 }
+```
+#### V1.5.0
 
+Extend `AbstractControlTypeSafe<P>` with:
+```typescript
+  readonly valueChanges: Observable<T>;
+  get(path: Array<string> | string): AbstractControl | null; 
+  get(path: number[]): AbstractControlTypeSafe<T extends (infer R)[] ? R : T> | null;
+```
+
+- Samples `readonly valueChanges: Observable<T>;`:
+```typescript
+let sut: FormGroupTypeSafe<HeroFormModel> = createGroup();
+sut.valueChanges.subscribe(val => {
+    // $ExpectType HeroFormModel
+    val;
+});
+
+sut.getSafe(x => x.heroName).valueChanges.subscribe(val => {
+    // $ExpectType string
+    val;
+});
+```  
+
+- Split Angular's `get` into two functions based on the `path: Array<string | number> | string` parameter.
+
+Angular's `forms.d.ts`:
+```typescript
+      get(path: Array<string | number> | string): AbstractControl | null;
+```
+
+angular-typesafe-reactive-forms-helper:
+```typescript 
+ get(path: Array<string> | string): AbstractControl | null;
+ get(path: number[]): AbstractControlTypeSafe<T extends (infer R)[] ? R : T> | null;
+ ```
+
+This allows type safety when working with arrays.
+
+```typescript
+sut.getSafe(x => x.weapons).get([0]).valueChanges.subscribe(val => {
+    // $ExpectType WeaponModel
+    val;
+});
+
+// the angular way - .get('person.name')
+sut.getSafe(x => x.weapons).get('person.name').valueChanges.subscribe(val => {
+    // $ExpectType any
+    val;
+});
+
+// the angular way - .get(['person', 'name'])
+sut.getSafe(x => x.weapons).get(['person', 'name']).valueChanges.subscribe(val => {
+    // $ExpectType any
+    val;
+});
+```
+
+#### V1.4.0
+- new interface `AbstractControlTypeSafe<P>` which extends from Angular's `AbstractControl` and will, over time, contain the common properties to Angular's `FormGroup`, `FormControl` and `FormArray`.
+Currently it only returns `readonly value: T`.
+
+- enhanced `getSafe` to return `AbstractControlTypeSafe<P>`
+```typescript
+  getSafe<P>(propertyFunction: (typeVal: T) => P): AbstractControlTypeSafe<P> | null;
+```
+Code example:
+```typescript
+ // heroName: string
+ sut.getSafe(x => x.heroName)?.value; // value's ExpectType => string | undefined
+```
+
+- add new type `RecursivePartial<T>`
+- enhanced `patchValue` to use `RecursivePartial<T>` so one is not forced by the compiler to complete mandatory properties on a nested types.
+```typescript
+patchValue(value: RecursivePartial<T>, options?: Object): void;
+```
+Code Example:
+```typescript
 let sut: FormGroupTypeSafe<HeroFormModel> = formBuilderTypeSafe.group<HeroFormModel>({...}) // let's pretend a valid FormGroupTypeSafe object was created here  
 // Looking at the line below... 
 // Before V1.4.0, Typescript would have complained about missing property damagePoints.
@@ -153,17 +212,17 @@ sut.patchValue({ weapons: [{ name: "Head" }]});
 - patchValue
 
 Angular's `forms.d.ts`:
-```javascript
+```typescript
 patchValue(value: any, options?: Object): void;
 ```
 angular-typesafe-reactive-forms-helper:
-```javascript
+```typescript
 patchValue(value: Partial<T>, options?: Object): void;
 ```
 
 - formBuilderTypeSafe.group\<T> supports `FormArray`
 
-```javascript
+```typescript
  sut = formBuilderTypeSafe.group<HeroFormModel>({
       heroName: new FormControl('He-Man', Validators.required),
       weapons: new FormArray([formBuilderTypeSafe.group<WeaponModel>({
@@ -182,11 +241,11 @@ patchValue(value: Partial<T>, options?: Object): void;
 - valueChanges, function returns Observable\<T>
 
 Angular's `forms.d.ts`:
-```javascript
+```typescript
 valueChanges: Observable<any>;
 ```
 angular-typesafe-reactive-forms-helper:
-```javascript
+```typescript
 valueChanges: Observable<T>;
 ```
 
@@ -194,7 +253,7 @@ valueChanges: Observable<T>;
 - setValue, just a function signature update. 
 
 Angular's `forms.d.ts` function signature:
-```javascript
+```typescript
     setValue(value: {
         [key: string]: any;
     }, options?: {
@@ -205,7 +264,7 @@ Angular's `forms.d.ts` function signature:
 
 angular-typesafe-reactive-forms-helper signature:
 
-```javascript
+```typescript
     setValue(value: T, 
             options?: { 
               onlySelf?: boolean; 
