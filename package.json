@@ -57,7 +57,6 @@
     "version:ng7": "cd ./integrationTests/ng7/test-package-with-ng7 && npm run ng -- --version",
     "version:ng8": "cd ./integrationTests/ng8/test-package-with-ng8 && npm run ng -- --version",
     "version:ng9": "cd ./integrationTests/ng9/test-package-with-ng9 && npm run ng -- --version"
-    
   },
   "repository": {
     "type": "git",
