@@ -44,7 +44,11 @@
     "upgrade:ng6": "cd ./integrationTests/ng6/test-package-with-ng6 && npm run ng -- update @angular/cli@^6 @angular/core@^6",
     "upgrade:ng7": "cd ./integrationTests/ng7/test-package-with-ng7 && npm run ng -- update @angular/cli@^7 @angular/core@^7",
     "upgrade:ng8": "cd ./integrationTests/ng8/test-package-with-ng8 && npm run ng -- update @angular/cli@^8 @angular/core@^8",
-    "upgrade:ng9": "cd ./integrationTests/ng9/test-package-with-ng9 && npm run ng -- update @angular/cli@^9 @angular/core@^9"
+    "upgrade:ng9": "cd ./integrationTests/ng9/test-package-with-ng9 && npm run ng -- update @angular/cli@^9 @angular/core@^9",
+    "version:ng6": "cd ./integrationTests/ng6/test-package-with-ng6 && npm run ng -- --version",
+    "version:ng7": "cd ./integrationTests/ng7/test-package-with-ng7 && npm run ng -- --version",
+    "version:ng8": "cd ./integrationTests/ng8/test-package-with-ng8 && npm run ng -- --version",
+    "version:ng9": "cd ./integrationTests/ng9/test-package-with-ng9 && npm run ng -- --version"
     
   },
   "repository": {
