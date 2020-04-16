@@ -20,7 +20,7 @@ export class TestFormComponent implements OnInit {
   title = 'test-package-with-ng9';
 
   testForm: FormGroupTypeSafe<HeroFormModel>;
-  @ViewChild('testFormTextArea', null) testFormTextArea: ElementRef;
+  @ViewChild('testFormTextArea') testFormTextArea: ElementRef;
   dataChangeRecorded: any[] = [];
 
   constructor(private fb: FormBuilderTypeSafe) { }
