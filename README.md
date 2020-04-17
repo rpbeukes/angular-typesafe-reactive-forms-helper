@@ -140,6 +140,30 @@ interface WeaponModel {
 }
 ```
 ### FormGroupTypeSafe\<T> extends Angular's FormGroup class 
+#### V1.5.1
+
+Had this error in `Angular 9.1.2` when executing `ng serve`.
+The app would show a blank page with an error in browser's `devtools` console:
+```
+main.ts:15 Error: Angular JIT compilation failed: '@angular/compiler' not loaded!
+  - JIT compilation is discouraged for production use-cases! Consider AOT mode instead.
+  - Did you bootstrap using '@angular/platform-browser-dynamic' or '@angular/platform-server'?
+  - Alternatively provide the compiler with 'import "@angular/compiler";' before bootstrapping.
+    at getCompilerFacade (core.js:643)
+    at Function.get (core.js:16349)
+    at getFactoryDef (core.js:2200)
+    at providerToFactory (core.js:17183)
+    at providerToRecord (core.js:17165)
+    at R3Injector.processProvider (core.js:16981)
+    at core.js:16960
+    at core.js:1400
+    at Array.forEach (<anonymous>)
+    at deepForEach (core.js:1400)
+```
+
+This is fixed.
+
+More info on the error from [StackOverflow](https://stackoverflow.com/questions/60183056/ionic-5-with-angular-9-angular-jit-compilation-failed-angular-compiler-not#answer-60183174):
 
 #### V1.5.0
 
