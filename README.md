@@ -163,7 +163,7 @@ main.ts:15 Error: Angular JIT compilation failed: '@angular/compiler' not loaded
 
 This is fixed.
 
-More info on the error from [StackOverflow](https://stackoverflow.com/questions/60183056/ionic-5-with-angular-9-angular-jit-compilation-failed-angular-compiler-not#answer-60183174):
+More info on the error from [StackOverflow](https://stackoverflow.com/questions/60183056/ionic-5-with-angular-9-angular-jit-compilation-failed-angular-compiler-not#answer-60183174).
 
 #### V1.5.0
 
