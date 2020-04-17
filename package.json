@@ -39,6 +39,7 @@
     "integration-tests:build:ng8": "cd ./integrationTests/ng8/test-package-with-ng8 && npm run build",
     "integration-tests:test-ci:ng8": "cd ./integrationTests/ng8/test-package-with-ng8 && cross-env CI=true ng test --watch=false",
     "integration-tests:install:ng9": "cd ./integrationTests/ng9/test-package-with-ng9 && npm i && npm i ../../angular-typesafe-reactive-forms-helper.tgz",
+    "integration-tests:build:ng9": "cd ./integrationTests/ng9/test-package-with-ng9 && npm run build",
     "integration-tests:test-ci:ng9": "cd ./integrationTests/ng9/test-package-with-ng9 && cross-env CI=true ng test --watch=false",
     "start:ng6": "cd ./integrationTests/ng6/test-package-with-ng6 && npm run build && npm run start -- --port 4206",
     "start:ng7": "cd ./integrationTests/ng7/test-package-with-ng7 && npm run build && npm run start -- --port 4207",
@@ -56,7 +57,6 @@
     "version:ng7": "cd ./integrationTests/ng7/test-package-with-ng7 && npm run ng -- --version",
     "version:ng8": "cd ./integrationTests/ng8/test-package-with-ng8 && npm run ng -- --version",
     "version:ng9": "cd ./integrationTests/ng9/test-package-with-ng9 && npm run ng -- --version"
-    
   },
   "repository": {
     "type": "git",
@@ -76,10 +76,11 @@
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
-    "@angular/common": "^9.0.6",
-    "@angular/core": "^9.0.6",
-    "@angular/forms": "^9.0.6",
-    "@angular/platform-browser": "^9.0.6",
+    "@angular/common": "~9.1.2",
+    "@angular/compiler": "^9.1.2",
+    "@angular/core": "~9.1.2",
+    "@angular/forms": "~9.1.2",
+    "@angular/platform-browser": "~9.1.2",
     "@types/jest": "^25.2.1",
     "@types/shelljs": "^0.8.7",
     "conditional-type-checks": "^1.0.5",
