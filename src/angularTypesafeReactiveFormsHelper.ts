@@ -2,9 +2,12 @@ import { Injectable } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, AbstractControlOptions, FormArray } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { getPropertyName } from './getPropertyName';
-
+import '@angular/compiler';
 /* 
-Had this Error...
+Why `import '@angular/compiler'`?
+
+Had this Error when `ng serve` specifically Angular 9.1.2.
+The app would show blank page with the below error in dev tools console:
 ```
 main.ts:15 Error: Angular JIT compilation failed: '@angular/compiler' not loaded!
   - JIT compilation is discouraged for production use-cases! Consider AOT mode instead.
@@ -26,8 +29,6 @@ StackOverflow solution - import '@angular/compiler';
 
 [solution](https://stackoverflow.com/questions/60183056/ionic-5-with-angular-9-angular-jit-compilation-failed-angular-compiler-not#answer-60183174)
 */
-
-import '@angular/compiler';
 
 export type RecursivePartial<T> = {
   [P in keyof T]?: RecursivePartial<T[P]>;
