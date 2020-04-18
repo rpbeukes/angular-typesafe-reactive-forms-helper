@@ -5,8 +5,6 @@ const main = () => {
     search = "ViewChild('testFormTextArea')";
     replace = "ViewChild('testFormTextArea', null)";
     
-    console.log(filePath);
-    
     fs.readFile(filePath, { encoding: 'utf8' }, (err, data) => {
         if (err) throw err;
         
