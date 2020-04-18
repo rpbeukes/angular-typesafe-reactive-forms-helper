@@ -21,7 +21,7 @@ export class TestFormComponent implements OnInit {
   title = new AppComponent().title;
 
   testForm: FormGroupTypeSafe<HeroFormModel>;
-  @ViewChild('testFormTextArea', null) testFormTextArea: ElementRef;
+  @ViewChild('testFormTextArea') testFormTextArea: ElementRef;
   dataChangeRecorded: any[] = [];
 
   constructor(private fb: FormBuilderTypeSafe) { }
