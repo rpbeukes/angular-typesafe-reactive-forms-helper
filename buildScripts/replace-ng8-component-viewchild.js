@@ -11,13 +11,13 @@ const main = () => {
         if (err) throw err;
         
         content = data.replace(search, replace);
-        if (content.indexOf(replace) > 0) {
+        if (content.indexOf(replace) !== -1) {
             fs.writeFile (filePath, content, (err) => {
                 if (err) throw err;
-                console.log(`Success - ${search} replace with ${replace}`);
+                console.log(`Success - '${search}' replaced with '${replace}' (${filePath})`);
             });
         } else {
-            console.log(`Failed - ${search} replace with ${replace}`);
+            console.log(`Failed - '${search}' replaced with '${replace}' (${filePath})`);
         }
     });
 };
