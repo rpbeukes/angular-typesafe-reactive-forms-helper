@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { /*FormGroup, FormBuilder,*/ Validators, FormControl, FormArray } from '@angular/forms';
 import {FormBuilderTypeSafe, FormGroupTypeSafe} from 'angular-typesafe-reactive-forms-helper';
+import { AppComponent } from '../app.component';
 
 interface WeaponModel {
   name: string;
@@ -17,7 +18,7 @@ interface HeroFormModel {
   styleUrls: ['./testform.component.css']
 })
 export class TestFormComponent implements OnInit {
-  title = 'test-package-with-ng9';
+  title = new AppComponent().title;
 
   testForm: FormGroupTypeSafe<HeroFormModel>;
   @ViewChild('testFormTextArea') testFormTextArea: ElementRef;
