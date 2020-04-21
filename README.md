@@ -140,7 +140,7 @@ interface WeaponModel {
 }
 ```
 ### FormGroupTypeSafe\<T> extends Angular's FormGroup class 
-#### V1.5.1
+#### [V1.5.1](https://github.com/rpbeukes/angular-typesafe-reactive-forms-helper/compare/V1.5.0...V1.5.1) (2020-04-17)
 
 Had this error in `Angular 9.1.2` when executing `ng serve`.
 The app would show a blank page with an error in browser's `devtools` console:
@@ -165,7 +165,7 @@ This is fixed.
 
 More info on the error from [StackOverflow](https://stackoverflow.com/questions/60183056/ionic-5-with-angular-9-angular-jit-compilation-failed-angular-compiler-not#answer-60183174).
 
-#### V1.5.0
+#### [V1.5.0](https://github.com/rpbeukes/angular-typesafe-reactive-forms-helper/compare/V1.4.0...V1.5.0)  (2020-04-15)
 
 Extend `AbstractControlTypeSafe<P>` with:
 ```typescript
@@ -222,7 +222,7 @@ sut.getSafe(x => x.weapons).get(['person', 'name']).valueChanges.subscribe(val =
 });
 ```
 ---
-#### V1.4.0
+#### [V1.4.0](https://github.com/rpbeukes/angular-typesafe-reactive-forms-helper/compare/V1.3.0...V1.4.0) (2020-04-14)
 - new interface `AbstractControlTypeSafe<P>` which extends from Angular's `AbstractControl` and will, over time, contain the common properties to Angular's `FormGroup`, `FormControl` and `FormArray`.
 Currently it only returns `readonly value: T`.
 
@@ -250,7 +250,7 @@ let sut: FormGroupTypeSafe<HeroFormModel> = formBuilderTypeSafe.group<HeroFormMo
 sut.patchValue({ weapons: [{ name: "Head" }]});
 ```
 ---
-#### V1.3.0
+#### [V1.3.0](https://github.com/rpbeukes/angular-typesafe-reactive-forms-helper/compare/V1.2.0...V1.3.0) (2020-04-06)
 - patchValue
 
 Angular's `forms.d.ts`:
@@ -279,7 +279,7 @@ patchValue(value: Partial<T>, options?: Object): void;
     });
 ```
 ---
-#### V1.2.0
+#### [V1.2.0](https://github.com/rpbeukes/angular-typesafe-reactive-forms-helper/releases/tag/V1.2.0)  (2020-04-02)
 - valueChanges, function returns Observable\<T>
 
 Angular's `forms.d.ts`:
@@ -291,7 +291,7 @@ angular-typesafe-reactive-forms-helper:
 valueChanges: Observable<T>;
 ```
 ---
-#### V1.1.0
+#### V1.1.0 (2020-03-31)
 - setValue, just a function signature update. 
 
 Angular's `forms.d.ts` function signature:
@@ -314,7 +314,7 @@ angular-typesafe-reactive-forms-helper signature:
     }): void;
 ```
 ---
-#### V1.0.0
+#### V1.0.0 (2020-03-29)
 angular-typesafe-reactive-forms-helper has these extra functions:
 - getSafe
 - setControlSafe
