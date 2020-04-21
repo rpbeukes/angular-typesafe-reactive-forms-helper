@@ -55,3 +55,23 @@ const getSafeTests_AbstractControlTypeSafe_valueChange = () => {
         val;
     });
 };
+
+const statusChangesTests_FormGroupTypeSafe = () => {
+    // $ExpectType StatusValues
+    sut.status;
+
+    sut.statusChanges.subscribe(val => {
+        // $ExpectType StatusValues
+        val;
+    });
+};
+
+const statusChangesTests_AbstractControlTypeSafe = () => {
+    // $ExpectType "VALID" | "INVALID" | "PENDING" | "DISABLED" | undefined
+    sut.getSafe(x => x.heroName)?.status;
+
+    sut.getSafe(x => x.heroName)?.statusChanges.subscribe(val => {
+        // $ExpectType StatusValues
+        val;
+    });
+};
