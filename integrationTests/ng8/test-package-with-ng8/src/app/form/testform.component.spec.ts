@@ -68,6 +68,7 @@ describe('TestFormComponent', () => {
   describe('valueChange', () => {
     beforeEach(() => {
       component.dataChangeRecorded = [];
+      component.statusChangeRecorded = [];
     });
 
     it('should display changed heroName', async () => {
@@ -122,6 +123,27 @@ describe('TestFormComponent', () => {
         expect(component.dataChangeRecorded.find(x => x.scenario === 1)).toBeTruthy();
       });
     });
-
   });
+
+  describe('statusChange', () => {
+    beforeEach(() => {
+      component.statusChangeRecorded = [];
+    });
+
+    it('should record status changed when heroName empty', async () => {
+      fixture.detectChanges();
+      const el = fixture.nativeElement.querySelector('#hero-name-input');
+      el.value = '';
+      el.dispatchEvent(new Event('input'));
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        expect(component.statusChangeRecorded).toBeTruthy();
+        expect(component.statusChangeRecorded.length > 0).toBe(true);
+        expect(component.statusChangeRecorded).toEqual([ 'ControlChange - INVALID', 'FormChange - INVALID' ] );
+        expect(component.testForm.status).toBe('INVALID');
+        expect(component.testForm.getSafe(x => x.heroName).status).toBe('INVALID');
+      });
+    });
+  });
+
 });

@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { /*FormGroup, FormBuilder,*/ Validators, FormControl, FormArray } from '@angular/forms';
-import {FormBuilderTypeSafe, FormGroupTypeSafe} from 'angular-typesafe-reactive-forms-helper';
+import { FormBuilderTypeSafe, FormGroupTypeSafe } from 'angular-typesafe-reactive-forms-helper';
 import { AppComponent } from '../app.component';
 
 interface WeaponModel {
@@ -23,6 +23,7 @@ export class TestFormComponent implements OnInit {
   testForm: FormGroupTypeSafe<HeroFormModel>;
   @ViewChild('testFormTextArea') testFormTextArea: ElementRef;
   dataChangeRecorded: any[] = [];
+  statusChangeRecorded: any[] = [];
 
   constructor(private fb: FormBuilderTypeSafe) { }
 
@@ -40,26 +41,8 @@ export class TestFormComponent implements OnInit {
       ])
     });
 
-    // valueChanges - testForm value => HeroFormModel change
-    this.testForm.valueChanges.subscribe(value => {
-      this.testFormTextArea.nativeElement.value = JSON.stringify(value, null, 2);
-      this.dataChangeRecorded.push({ value, scenario: 1, message: 'valueChanges - testForm value => HeroFormModel change' });
-    });
-
-    // valueChanges - heroName => string change
-    this.testForm.getSafe(x => x.heroName).valueChanges.subscribe(value => {
-      this.dataChangeRecorded.push({ value, scenario: 2, message: 'valueChanges - heroName => string change' });
-    });
-
-    // valueChanges - weapons => array change
-    this.testForm.getSafe(x => x.weapons).valueChanges.subscribe(value => {
-      this.dataChangeRecorded.push({ value, scenario: 3, message: 'valueChanges - weapons => array change' });
-    });
-
-    // valueChanges - weapons[0] => specific index in a array change
-    this.testForm.getSafe(x => x.weapons).get([0]).valueChanges.subscribe(value => {
-      this.dataChangeRecorded.push({ value, scenario: 4, message: 'valueChanges - weapons[0] => specific index in a array change' });
-    });
+    this.onValueChanges();
+    this.onStatusChanges();
   }
 
   getHeroNameByValue = () => this.testForm.value.heroName;
@@ -71,5 +54,37 @@ export class TestFormComponent implements OnInit {
 
   get weaponControls() {
     return (this.testForm.getSafe(x => x.weapons) as FormArray).controls;
+  }
+
+  private onValueChanges() {
+    // valueChanges - testForm value => HeroFormModel change
+    this.testForm.valueChanges.subscribe(value => {
+      this.testFormTextArea.nativeElement.value = JSON.stringify(value, null, 2);
+      this.dataChangeRecorded.push({ value, scenario: 1, message: 'valueChanges - testForm value => HeroFormModel change' });
+    });
+    // valueChanges - heroName => string change
+    this.testForm.getSafe(x => x.heroName).valueChanges.subscribe(value => {
+      this.dataChangeRecorded.push({ value, scenario: 2, message: 'valueChanges - heroName => string change' });
+    });
+    // valueChanges - weapons => array change
+    this.testForm.getSafe(x => x.weapons).valueChanges.subscribe(value => {
+      this.dataChangeRecorded.push({ value, scenario: 3, message: 'valueChanges - weapons => array change' });
+    });
+    // valueChanges - weapons[0] => specific index in a array change
+    this.testForm.getSafe(x => x.weapons).get([0]).valueChanges.subscribe(value => {
+      this.dataChangeRecorded.push({ value, scenario: 4, message: 'valueChanges - weapons[0] => specific index in a array change' });
+    });
+  }
+
+  private onStatusChanges() {
+    // control status change (monitor specific control change)
+    this.testForm.getSafe(x => x.heroName).statusChanges.subscribe(value => {
+      this.statusChangeRecorded.push(`ControlChange - ${value}`);
+    });
+
+    // form status change (monitor global change)
+    this.testForm.statusChanges.subscribe(value => {
+      this.statusChangeRecorded.push(`FormChange - ${value}`);
+    });
   }
 }
