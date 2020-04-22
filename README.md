@@ -140,6 +140,59 @@ interface WeaponModel {
 }
 ```
 ### FormGroupTypeSafe\<T> extends Angular's FormGroup class 
+
+#### [V1.6.0](https://github.com/rpbeukes/angular-typesafe-reactive-forms-helper/compare/V1.5.1...V1.6.0) (2020-04-22)
+- added `statusChanges` and `status`
+  
+Angular's `forms.d.ts`:
+```typescript
+      /**
+     * The validation status of the control. There are four possible
+     * validation status values:
+     *
+     * * **VALID**: This control has passed all validation checks.
+     * * **INVALID**: This control has failed at least one validation check.
+     * * **PENDING**: This control is in the midst of conducting a validation check.
+     * * **DISABLED**: This control is exempt from validation checks.
+     *
+     * These status values are mutually exclusive, so a control cannot be
+     * both valid AND invalid or invalid AND disabled.
+     */
+    readonly status: string;
+```
+
+angular-typesafe-reactive-forms-helper:
+```typescript 
+ export type ControlStatus = 'VALID' | 'INVALID' | 'PENDING' | 'DISABLED';
+
+ export interface FormGroupTypeSafe<T> extends FormGroup {
+  readonly status: ControlStatus;
+  readonly statusChanges: Observable<ControlStatus>;
+}
+ ```
+
+ Code samples:
+ ```typescript
+  let sut: FormGroupTypeSafe<HeroFormModel> = createGroup();
+
+  // $ExpectType ControlStatus
+  sut.status;
+
+  sut.statusChanges.subscribe(val => {
+      // $ExpectType ControlStatus
+      val;
+  });
+
+  // $ExpectType string | undefined
+  sut.getSafe(x => x.heroName)?.status; // unfortunately this is still string ¯\_(ツ)_/¯
+
+  sut.getSafe(x => x.heroName)?.statusChanges.subscribe(val => {
+      // $ExpectType ControlStatus
+      val;
+  });
+  
+ ```
+
 #### [V1.5.1](https://github.com/rpbeukes/angular-typesafe-reactive-forms-helper/compare/V1.5.0...V1.5.1) (2020-04-17)
 
 Had this error in `Angular 9.1.2` when executing `ng serve`.

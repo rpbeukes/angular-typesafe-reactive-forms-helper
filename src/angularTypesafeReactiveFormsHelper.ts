@@ -38,6 +38,8 @@ export type FormGroupControlsOf<T> = {
   [P in keyof T]: FormControl | FormGroup | FormArray;
 };
 
+export type ControlStatus = 'VALID' | 'INVALID' | 'PENDING' | 'DISABLED';
+
 export interface AbstractControlTypeSafe<T> extends AbstractControl {
   // common properties to FormGroup, FormControl and FormArray
   readonly value: T;
@@ -52,6 +54,7 @@ export interface AbstractControlTypeSafe<T> extends AbstractControl {
   // tslint:disable-next-line: array-type
   get(path: Array<string> | string): AbstractControl | null; 
   get(path: number[]): AbstractControlTypeSafe<T extends (infer R)[] ? R : T> | null;
+  readonly statusChanges: Observable<ControlStatus>;
 }
 
 // the idea is to use Angular's FormGroup exactly as is but just sprinkle a bit of type-safety in-between
@@ -71,6 +74,8 @@ export interface FormGroupTypeSafe<T> extends FormGroup {
 
   // tslint:disable-next-line:ban-types
   patchValue(value: RecursivePartial<T>, options?: Object): void;
+  readonly status: ControlStatus;
+  readonly statusChanges: Observable<ControlStatus>;
 }
 
 // tslint:disable-next-line:max-classes-per-file
