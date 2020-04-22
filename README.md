@@ -193,6 +193,7 @@ angular-typesafe-reactive-forms-helper:
   
  ```
 
+---
 #### [V1.5.1](https://github.com/rpbeukes/angular-typesafe-reactive-forms-helper/compare/V1.5.0...V1.5.1) (2020-04-17)
 
 Had this error in `Angular 9.1.2` when executing `ng serve`.
@@ -218,6 +219,7 @@ This is fixed.
 
 More info on the error from [StackOverflow](https://stackoverflow.com/questions/60183056/ionic-5-with-angular-9-angular-jit-compilation-failed-angular-compiler-not#answer-60183174).
 
+---
 #### [V1.5.0](https://github.com/rpbeukes/angular-typesafe-reactive-forms-helper/compare/V1.4.0...V1.5.0)  (2020-04-15)
 
 Extend `AbstractControlTypeSafe<P>` with:

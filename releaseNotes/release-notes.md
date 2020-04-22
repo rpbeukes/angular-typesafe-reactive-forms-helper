@@ -67,6 +67,7 @@ angular-typesafe-reactive-forms-helper:
   
  ```
 
+---
 ### [V1.5.1](https://github.com/rpbeukes/angular-typesafe-reactive-forms-helper/compare/V1.5.0...V1.5.1) (2020-04-17)
 
 Had this error in `Angular 9.1.2` when executing `ng serve`.
