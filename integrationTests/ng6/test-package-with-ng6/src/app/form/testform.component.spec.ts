@@ -65,6 +65,10 @@ describe('TestFormComponent', () => {
     expect(component.testForm.value.weapons.length).toBe(2); // no change expected on the array
   });
 
+  it(`should use typesafe controls`, () => {
+    expect(component.testForm.controls.heroName.value).toBe('He-Man');
+  });
+
   describe('valueChange', () => {
     beforeEach(() => {
       component.dataChangeRecorded = [];
@@ -79,10 +83,10 @@ describe('TestFormComponent', () => {
       fixture.detectChanges();
       fixture.whenStable().then(() => {
         // console.log('component.dataChangeRecorded', component.dataChangeRecorded.find(x => x.value === 'Spiderman'));
-        const recordedValue = component.dataChangeRecorded.find(x => x.scenario === 2);
+        const recordedValue = component.dataChangeRecorded.find((x) => x.scenario === 2);
         expect(recordedValue).toBeTruthy();
         expect(recordedValue.value).toBe('Spiderman');
-        expect(component.dataChangeRecorded.find(x => x.scenario === 1)).toBeTruthy();
+        expect(component.dataChangeRecorded.find((x) => x.scenario === 1)).toBeTruthy();
       });
     });
 
@@ -96,12 +100,12 @@ describe('TestFormComponent', () => {
       fixture.detectChanges();
       fixture.whenStable().then(() => {
         // console.log('component.dataChangeRecorded', JSON.stringify(component.dataChangeRecorded, null, 2));
-        const recordedValue = component.dataChangeRecorded.find(x => x.scenario === 3);
+        const recordedValue = component.dataChangeRecorded.find((x) => x.scenario === 3);
         expect(recordedValue).toBeTruthy();
         expect(component.testForm.value.weapons[1].name).toBe('Leg');
         // don't expect this to be recorded: 'valueChanges - weapons[0] => specific index in a array change'
-        expect(component.dataChangeRecorded.find(x => x.scenario === 4)).toBeFalsy();
-        expect(component.dataChangeRecorded.find(x => x.scenario === 1)).toBeTruthy();
+        expect(component.dataChangeRecorded.find((x) => x.scenario === 4)).toBeFalsy();
+        expect(component.dataChangeRecorded.find((x) => x.scenario === 1)).toBeTruthy();
       });
     });
 
@@ -115,12 +119,12 @@ describe('TestFormComponent', () => {
       fixture.detectChanges();
       fixture.whenStable().then(() => {
         // console.log('component.dataChangeRecorded', JSON.stringify(component.dataChangeRecorded, null, 2));
-        const recordedValue = component.dataChangeRecorded.find(x => x.scenario === 3);
+        const recordedValue = component.dataChangeRecorded.find((x) => x.scenario === 3);
         expect(recordedValue).toBeTruthy();
         expect(component.testForm.value.weapons[0].name).toBe('Leg');
         // 'valueChanges - weapons[0] => specific index in a array change'
-        expect(component.dataChangeRecorded.find(x => x.scenario === 4)).toBeTruthy();
-        expect(component.dataChangeRecorded.find(x => x.scenario === 1)).toBeTruthy();
+        expect(component.dataChangeRecorded.find((x) => x.scenario === 4)).toBeTruthy();
+        expect(component.dataChangeRecorded.find((x) => x.scenario === 1)).toBeTruthy();
       });
     });
   });
@@ -139,11 +143,10 @@ describe('TestFormComponent', () => {
       fixture.whenStable().then(() => {
         expect(component.statusChangeRecorded).toBeTruthy();
         expect(component.statusChangeRecorded.length > 0).toBe(true);
-        expect(component.statusChangeRecorded).toEqual([ 'ControlChange - INVALID', 'FormChange - INVALID' ] );
+        expect(component.statusChangeRecorded).toEqual(['ControlChange - INVALID', 'FormChange - INVALID']);
         expect(component.testForm.status).toBe('INVALID');
-        expect(component.testForm.getSafe(x => x.heroName).status).toBe('INVALID');
+        expect(component.testForm.getSafe((x) => x.heroName).status).toBe('INVALID');
       });
     });
   });
-
 });
