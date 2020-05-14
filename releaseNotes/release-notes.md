@@ -15,6 +15,37 @@ interface WeaponModel {
 
 ## FormGroupTypeSafe\<T> extends Angular's FormGroup class 
 
+### [V1.7.0](https://github.com/rpbeukes/angular-typesafe-reactive-forms-helper/compare/V1.6.0...V1.7.0) (2020-05-14)
+- added `controls`
+
+Angular's `forms.d.ts`:
+```typescript
+controls: { [key: string]: AbstractControl; };
+```
+
+angular-typesafe-reactive-forms-helper:
+```typescript 
+controls: { [P in keyof T]: AbstractControlTypeSafe<T[P]> };
+```
+
+ Code samples:
+ ```typescript
+ let sut: FormGroupTypeSafe<HeroFormModel> = createGroup();
+ // $ExpectType { heroName: AbstractControlTypeSafe<string>; weapons: AbstractControlTypeSafe<WeaponModel[]>; }
+  sut.controls;
+
+  // $ExpectType AbstractControlTypeSafe<string>
+  sut.controls.heroName;
+  // $ExpectType AbstractControlTypeSafe<WeaponModel[]>
+  sut.controls.weapons;
+
+  // $ExpectType string
+  sut.controls.heroName.value;
+  // $ExpectType WeaponModel[]
+  sut.controls.weapons.value;
+ ```
+
+---
 ### [V1.6.0](https://github.com/rpbeukes/angular-typesafe-reactive-forms-helper/compare/V1.5.1...V1.6.0) (2020-04-22)
 - added `statusChanges` and `status`
   
