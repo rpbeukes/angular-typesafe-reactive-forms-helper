@@ -2,19 +2,17 @@ import { createGroup } from '../createGroup';
 
 const sut = createGroup();
 
-const controlsTests_FormGroupTypeSafe = () => {
-  // $ExpectType string | undefined
-  sut.getSafe((x) => x.heroName)?.status;
+const statusChangesTests_FormGroupTypeSafe = () => {
+  // $ExpectType ControlStatus
+  sut.status;
 
-  sut
-    .getSafe((x) => x.heroName)
-    ?.statusChanges.subscribe((val) => {
-      // $ExpectType ControlStatus
-      val;
-    });
+  sut.statusChanges.subscribe((val) => {
+    // $ExpectType ControlStatus
+    val;
+  });
 };
 
-const statusChangesTests_FormGroupTypeSafe = () => {
+const controls_FormGroupTypeSafe = () => {
   // $ExpectType { heroName: AbstractControlTypeSafe<string>; weapons: AbstractControlTypeSafe<WeaponModel[]>; }
   sut.controls;
 
@@ -22,4 +20,9 @@ const statusChangesTests_FormGroupTypeSafe = () => {
   sut.controls.heroName;
   // $ExpectType AbstractControlTypeSafe<WeaponModel[]>
   sut.controls.weapons;
+
+  // $ExpectType string
+  sut.controls.heroName.value;
+  // $ExpectType WeaponModel[]
+  sut.controls.weapons.value;
 };
