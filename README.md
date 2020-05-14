@@ -118,11 +118,11 @@ When reading the blog, be mindful that it was written Oct-2017, before the `angu
 
 I only added features required by my projects, but I know more could be added with your help.
 
-Create a PR to get the conversation started :)
+Create a PR to get the conversation started :smile:
 
 ## Lastly
 
-Use it…don’t use it :)
+Use it…don’t use it :smile:
 
 ---
 
@@ -141,24 +141,55 @@ interface WeaponModel {
 ```
 ### FormGroupTypeSafe\<T> extends Angular's FormGroup class 
 
+#### [V1.7.0](https://github.com/rpbeukes/angular-typesafe-reactive-forms-helper/compare/V1.6.0...V1.7.0) (2020-05-14)
+- added `controls`
+
+Angular's `forms.d.ts`:
+```typescript
+controls: { [key: string]: AbstractControl; };
+```
+
+angular-typesafe-reactive-forms-helper:
+```typescript 
+controls: { [P in keyof T]: AbstractControlTypeSafe<T[P]> };
+```
+
+ Code samples:
+ ```typescript
+ let sut: FormGroupTypeSafe<HeroFormModel> = createGroup();
+ // $ExpectType { heroName: AbstractControlTypeSafe<string>; weapons: AbstractControlTypeSafe<WeaponModel[]>; }
+  sut.controls;
+
+  // $ExpectType AbstractControlTypeSafe<string>
+  sut.controls.heroName;
+  // $ExpectType AbstractControlTypeSafe<WeaponModel[]>
+  sut.controls.weapons;
+
+  // $ExpectType string
+  sut.controls.heroName.value;
+  // $ExpectType WeaponModel[]
+  sut.controls.weapons.value;
+ ```
+
+---
 #### [V1.6.0](https://github.com/rpbeukes/angular-typesafe-reactive-forms-helper/compare/V1.5.1...V1.6.0) (2020-04-22)
 - added `statusChanges` and `status`
   
 Angular's `forms.d.ts`:
 ```typescript
-      /**
-     * The validation status of the control. There are four possible
-     * validation status values:
-     *
-     * * **VALID**: This control has passed all validation checks.
-     * * **INVALID**: This control has failed at least one validation check.
-     * * **PENDING**: This control is in the midst of conducting a validation check.
-     * * **DISABLED**: This control is exempt from validation checks.
-     *
-     * These status values are mutually exclusive, so a control cannot be
-     * both valid AND invalid or invalid AND disabled.
-     */
-    readonly status: string;
+/**
+ * The validation status of the control. There are four possible
+ * validation status values:
+ *
+ * * **VALID**: This control has passed all validation checks.
+ * * **INVALID**: This control has failed at least one validation check.
+ * * **PENDING**: This control is in the midst of conducting a validation check.
+ * * **DISABLED**: This control is exempt from validation checks.
+ *
+ * These status values are mutually exclusive, so a control cannot be
+ * both valid AND invalid or invalid AND disabled.
+ */
+readonly status: string;
 ```
 
 angular-typesafe-reactive-forms-helper:
