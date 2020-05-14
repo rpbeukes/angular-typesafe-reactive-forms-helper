@@ -76,6 +76,8 @@ export interface FormGroupTypeSafe<T> extends FormGroup {
   patchValue(value: RecursivePartial<T>, options?: Object): void;
   readonly status: ControlStatus;
   readonly statusChanges: Observable<ControlStatus>;
+  controls: { [P in keyof T]: AbstractControlTypeSafe<T[P]> };
+  
 }
 
 // tslint:disable-next-line:max-classes-per-file
