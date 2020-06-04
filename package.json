@@ -84,7 +84,6 @@
     "@angular/platform-browser": "~9.1.9",
     "@types/jest": "^25.2.1",
     "@types/shelljs": "^0.8.7",
-    "conditional-type-checks": "^1.0.5",
     "cross-env": "^7.0.2",
     "dtslint": "^3.4.1",
     "jest": "^26.0.1",
