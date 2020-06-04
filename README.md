@@ -36,9 +36,9 @@ Intellisense on FormGroupTypeSafe<T>.getSafe and then patching the value:
 ```typescript
 //interface used with FormGroupTypeSafe<T>
 interface IHeroFormModel {
-  name: string,
-  secretLairs: Array<Address>,
-  power: string,
+  name: string;
+  secretLairs: Array<Address>;
+  power: string;
   sidekick: string
 }
 ```
@@ -89,7 +89,7 @@ interface IAddressModel {
 
 interface ICustomerModel {
   name: string;
-  address: IAddressModel
+  address: IAddressModel;
 }
 
  this.form = this.fb.group<ICustomerModel>({
@@ -107,6 +107,8 @@ interface ICustomerModel {
 This package has been tested with Angular 6, 7, 8, 9.
 
 (Should work with Angular 4 & 5 too)
+
+I would encourage you to use versions Angular still support, see [Angular's Support policy and schedule](https://angular.io/guide/releases#support-policy-and-schedule).
 
 ## Blog
 
