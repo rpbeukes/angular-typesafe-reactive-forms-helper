@@ -24,10 +24,10 @@ jobs:
     - name: Intergation Tests
       run:  npm run integration-tests
     
-    - name: Create package
+    - name: Create package to ./dist
       run:  npm run pack-to-dist-directory
 
-    - name: Create artifacts
+    - name: Create artifact from ./dist
       uses: actions/upload-artifact@v1
       with:
         name: angular-typesafe-reactive-forms-helper
