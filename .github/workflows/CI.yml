@@ -31,4 +31,4 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: angular-typesafe-reactive-forms-helper
-        path: ./angular-typesafe-reactive-forms-helper-*.tgz
+        path: ./**/angular-typesafe-reactive-forms-helper-*.tgz
