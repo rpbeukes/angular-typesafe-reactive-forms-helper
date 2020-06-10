@@ -33,7 +33,7 @@
     "integration-tests:install:ng6": "cd ./integrationTests/ng6/test-package-with-ng6 && npm i && npm i ../../angular-typesafe-reactive-forms-helper.tgz",
     "integration-tests:build:ng6": "cd ./integrationTests/ng6/test-package-with-ng6 && npm run build",
     "integration-tests:version:ng6": "cd ./integrationTests/ng6/test-package-with-ng6 && npm run ng -- --version",
-    "integration-tests:test-ci:ng6": "cd ./integrationTests/ng6/test-package-with-ng6 && cross-env CI=true ng test --watch=false",
+    "integration-tests:test-ci:ng6": "cd ./integrationTests/ng6/test-package-with-ng6 && export CI=true && ng test --watch=false",
     "integration-tests:install:ng7": "cd ./integrationTests/ng7/test-package-with-ng7 && npm i && npm i ../../angular-typesafe-reactive-forms-helper.tgz",
     "integration-tests:build:ng7": "cd ./integrationTests/ng7/test-package-with-ng7 && npm run build",
     "integration-tests:version:ng7": "cd ./integrationTests/ng7/test-package-with-ng7 && npm run ng -- --version",
