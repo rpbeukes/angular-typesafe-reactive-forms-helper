@@ -25,6 +25,7 @@
     "update-latest-integration-tests:ng8": "cp -R ./integrationTests/ng9/test-package-with-ng9/src/app/form/testform.component.spec.ts ./integrationTests/ng9/test-package-with-ng9/src/app/form/testform.component.ts ./integrationTests/ng9/test-package-with-ng9/src/app/form/testform.component.html ./integrationTests/ng8/test-package-with-ng8/src/app/form/",
     "update-latest-integration-tests:ng8:replace-ViewChild": "node ./buildScripts/replace-ng8-component-viewchild.js ./integrationTests/ng8/test-package-with-ng8/src/app/form/testform.component.ts",
     "pack-tgz": "npm pack",
+    "pack-to-dist":"rimraf ./dist && mkdir ./dist && cp -R angular-typesafe-reactive-forms-helper*.tgz ./dist",
     "unpack-tgz": "rimraf ./package && tar -xzvf *.tgz",
     "remove-all-tgz": "rm -rf angular-typesafe-reactive-forms-helper-*.tgz",
     "install-tgz-to-all-integration-tests": "npm run remove-all-tgz && npm run pack-tgz && npm run integration-tests:copy-to-tests && npm-run-all --sequential integration-tests:install:**",

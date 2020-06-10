@@ -25,10 +25,10 @@ jobs:
     #   run:  npm run integration-tests
     
     - name: Create package
-      run:  npm run pack-tgz
+      run:  npm run pack-tgz && npm run pack-to-dist
 
     - name: Create artifacts
       uses: actions/upload-artifact@v1
       with:
         name: angular-typesafe-reactive-forms-helper
-        path: angular-typesafe-reactive-forms-helper-*.tgz
+        path: ./dist
