@@ -1,0 +1,34 @@
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+
+  build:
+    name: build
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install Dependencies
+      run: npm install
+    
+    - name: Tests
+      run:  npm run test
+    
+    - name: Intergation Tests
+      run:  npm run integration-tests
+    
+    - name: Create package to ./dist
+      run:  npm run pack-to-dist-directory
+
+    - name: Create artifact from ./dist
+      uses: actions/upload-artifact@v1
+      with:
+        name: angular-typesafe-reactive-forms-helper
+        path: ./dist
