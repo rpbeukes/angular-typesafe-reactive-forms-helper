@@ -18,11 +18,11 @@ jobs:
     - name: Install Dependencies
       run: npm install
     
-    - name: Tests
-      run:  npm run test
+    # - name: Tests
+    #   run:  npm run test
     
-    - name: Intergation Tests
-      run:  npm run integration-tests
+    # - name: Intergation Tests
+    #   run:  npm run integration-tests
     
     - name: Create package
       run:  npm run pack-tgz
