@@ -1,4 +1,6 @@
 # angular-typesafe-reactive-forms-helper
+![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/rpbeukes/angular-typesafe-reactive-forms-helper/CI/github-actions)
+
 ![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/rpbeukes/angular-typesafe-reactive-forms-helper/CI/master)
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/rpbeukes/angular-typesafe-reactive-forms-helper) ![GitHub](https://img.shields.io/github/license/rpbeukes/angular-typesafe-reactive-forms-helper) ![npm](https://img.shields.io/npm/dt/angular-typesafe-reactive-forms-helper) ![GitHub forks](https://img.shields.io/github/forks/rpbeukes/angular-typesafe-reactive-forms-helper?style=social)
 ## Quick Syntax
