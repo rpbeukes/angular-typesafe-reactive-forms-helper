@@ -24,11 +24,11 @@ jobs:
     - name: Intergation Tests
       run:  npm run integration-tests
     
-    - name: Build
-      run:  npm run build
+    - name: Create package
+      run:  npm run pack-tgz
 
     - name: Create artifacts
       uses: actions/upload-artifact@v1
       with:
-        name: package
-        path: ./package
+        name: angular-typesafe-reactive-forms-helper
+        path: ./angular-typesafe-reactive-forms-helper-*.tgz
