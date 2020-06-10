@@ -25,7 +25,7 @@ jobs:
     #   run:  npm run integration-tests
     
     - name: Create package
-      run:  npm run pack-tgz && npm run pack-to-dist
+      run:  npm run pack-to-dist-directory
 
     - name: Create artifacts
       uses: actions/upload-artifact@v1
