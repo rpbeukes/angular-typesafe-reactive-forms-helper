@@ -83,7 +83,7 @@
     "@angular/core": "~9.1.9",
     "@angular/forms": "~9.1.9",
     "@angular/platform-browser": "~9.1.9",
-    "@types/jest": "^25.2.1",
+    "@types/jest": "^26.0.0",
     "@types/shelljs": "^0.8.7",
     "dtslint": "^3.4.1",
     "jest": "^26.0.1",
