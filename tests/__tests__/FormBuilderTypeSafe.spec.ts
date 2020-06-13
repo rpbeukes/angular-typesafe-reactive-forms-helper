@@ -54,4 +54,15 @@ describe(`When the FormBuilderTypeSafe initialises a group with FormBuilderTypeS
     sut.patchValue({ weapons: []}); 
     expect(sut?.value?.weapons.length).toBe(2); // no change expected on the array 
   });
+
+  
+  describe(`after FormBuilderTypeSafe<T> initialisation`, () => {
+    test('sut.removeControl should remove control via string parameter', () => {
+      expect(sut.getSafe(x => x.heroName)).toBeDefined();
+      // TODO: this works but what if there is a rename of heroName, will IDE pick up the string changes?
+      sut.removeControl('heroName');
+      expect(sut.getSafe(x => x.heroName)).toBe(null);
+    });
+  });
+
 });

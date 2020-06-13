@@ -77,7 +77,10 @@ export interface FormGroupTypeSafe<T> extends FormGroup {
   readonly status: ControlStatus;
   readonly statusChanges: Observable<ControlStatus>;
   controls: { [P in keyof T]: AbstractControlTypeSafe<T[P]> };
-  
+ 
+  // still support the angular implementation
+  removeControl(name: string): void;
+  removeControl(name: keyof T): void;
 }
 
 // tslint:disable-next-line:max-classes-per-file
