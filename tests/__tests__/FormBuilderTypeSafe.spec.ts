@@ -57,10 +57,9 @@ describe(`When the FormBuilderTypeSafe initialises a group with FormBuilderTypeS
 
   
   describe(`after FormBuilderTypeSafe<T> initialisation`, () => {
-    test('sut.removeControl should remove control via string parameter', () => {
+    test('sut.removeControlSafe should remove control', () => {
       expect(sut.getSafe(x => x.heroName)).toBeDefined();
-      // TODO: this works but what if there is a rename of heroName, will IDE pick up the string changes?
-      sut.removeControl('heroName');
+      sut.removeControlSafe(x => x.heroName);  
       expect(sut.getSafe(x => x.heroName)).toBe(null);
     });
   });
