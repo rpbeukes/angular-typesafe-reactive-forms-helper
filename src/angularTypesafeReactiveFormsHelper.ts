@@ -127,7 +127,7 @@ export class FormBuilderTypeSafe extends FormBuilder {
       gr.getSafe = generateGetSafeFunction(gr);
       // implement setControlSafe
       gr.setControlSafe = generateSetControlSafeFunction(gr);
-      // implement setControlSafe
+      // implement removeControlSafe
       gr.removeControlSafe = generateRemoveControlSafeFunction(gr);
     }
 
