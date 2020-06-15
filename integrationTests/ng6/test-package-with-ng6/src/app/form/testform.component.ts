@@ -56,6 +56,14 @@ export class TestFormComponent implements OnInit {
     return (this.testForm.getSafe(x => x.weapons) as FormArray).controls;
   }
 
+  public removeTestCode(controlName: keyof HeroFormModel) {
+    if (controlName === 'heroName') {
+      this.testForm.removeControlSafe(x => x.heroName);
+    } else {
+      this.testForm.removeControlSafe(x => x.weapons);
+    }
+  }
+
   private onValueChanges() {
     // valueChanges - testForm value => HeroFormModel change
     this.testForm.valueChanges.subscribe(value => {

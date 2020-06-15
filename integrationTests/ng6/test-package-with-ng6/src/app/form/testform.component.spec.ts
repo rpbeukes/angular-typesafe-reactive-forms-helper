@@ -149,4 +149,14 @@ describe('TestFormComponent', () => {
       });
     });
   });
+
+  it('should remove control', async(() => {
+    expect(component.testForm.controls.heroName).toBeDefined();
+    component.removeTestCode('heroName');
+    expect(component.testForm.get('heroName')).toBe(null);
+
+    expect(component.testForm.controls.weapons).toBeDefined();
+    component.removeTestCode('weapons');
+    expect(component.testForm.get('weapons')).toBe(null);
+  }));
 });
