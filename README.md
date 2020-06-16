@@ -152,7 +152,7 @@ Sample:
  sut.removeControlSafe(x => x.heroName);
 ```
 
-I avoided the solution below simply because in a variable rename scenario, I want the IDE to rename all the references instead of just informing one where the errors are.
+The bottom code was avoided simply because in a variable rename scenario, the IDE should rename all the references instead of just informing one where the errors are.
 
 ```typescript 
 removeControl(name: keyof T): void;
