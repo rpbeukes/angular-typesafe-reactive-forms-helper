@@ -143,7 +143,7 @@ interface WeaponModel {
 ```
 ### FormGroupTypeSafe\<T> extends Angular's FormGroup class 
 
-#### [V1.8.0](https://github.com/rpbeukes/angular-typesafe-reactive-forms-helper/compare/V1.7.0...V1.8.0) (2020-06-15)
+#### [V1.8.0](https://github.com/rpbeukes/angular-typesafe-reactive-forms-helper/compare/V1.7.0...V1.8.0) (2020-06-16)
 - added `removeControlSafe`
 
 Sample:
@@ -152,7 +152,7 @@ Sample:
  sut.removeControlSafe(x => x.heroName);
 ```
 
-I avoided the solution below simply because in a variable rename scenario, I want the IDE to rename all the references instead of just informing me where the errors are.
+I avoided the solution below simply because in a variable rename scenario, I want the IDE to rename all the references instead of just informing one where the errors are.
 
 ```typescript 
 removeControl(name: keyof T): void;

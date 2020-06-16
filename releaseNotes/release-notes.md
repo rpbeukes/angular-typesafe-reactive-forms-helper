@@ -15,6 +15,22 @@ interface WeaponModel {
 
 ## FormGroupTypeSafe\<T> extends Angular's FormGroup class 
 
+### [V1.8.0](https://github.com/rpbeukes/angular-typesafe-reactive-forms-helper/compare/V1.7.0...V1.8.0) (2020-06-16)
+- added `removeControlSafe`
+
+Sample:
+```typescript
+ let sut: FormGroupTypeSafe<HeroFormModel> = createGroup();
+ sut.removeControlSafe(x => x.heroName);
+```
+
+I avoided the solution below simply because in a variable rename scenario, I want the IDE to rename all the references instead of just informing one where the errors are.
+
+```typescript 
+removeControl(name: keyof T): void;
+removeControl(name: string): void;
+```
+
 ### [V1.7.0](https://github.com/rpbeukes/angular-typesafe-reactive-forms-helper/compare/V1.6.0...V1.7.0) (2020-05-14)
 - added `controls`
 
@@ -51,19 +67,19 @@ controls: { [P in keyof T]: AbstractControlTypeSafe<T[P]> };
   
 Angular's `forms.d.ts`:
 ```typescript
-      /**
-     * The validation status of the control. There are four possible
-     * validation status values:
-     *
-     * * **VALID**: This control has passed all validation checks.
-     * * **INVALID**: This control has failed at least one validation check.
-     * * **PENDING**: This control is in the midst of conducting a validation check.
-     * * **DISABLED**: This control is exempt from validation checks.
-     *
-     * These status values are mutually exclusive, so a control cannot be
-     * both valid AND invalid or invalid AND disabled.
-     */
-    readonly status: string;
+/**
+ * The validation status of the control. There are four possible
+ * validation status values:
+ *
+ * * **VALID**: This control has passed all validation checks.
+ * * **INVALID**: This control has failed at least one validation check.
+ * * **PENDING**: This control is in the midst of conducting a validation check.
+ * * **DISABLED**: This control is exempt from validation checks.
+ *
+ * These status values are mutually exclusive, so a control cannot be
+ * both valid AND invalid or invalid AND disabled.
+ */
+readonly status: string;
 ```
 
 angular-typesafe-reactive-forms-helper:
@@ -182,7 +198,7 @@ sut.getSafe(x => x.weapons).get(['person', 'name']).valueChanges.subscribe(val =
 });
 ```
 ---
-#### [V1.4.0](https://github.com/rpbeukes/angular-typesafe-reactive-forms-helper/compare/V1.3.0...V1.4.0) (2020-04-14)
+### [V1.4.0](https://github.com/rpbeukes/angular-typesafe-reactive-forms-helper/compare/V1.3.0...V1.4.0) (2020-04-14)
 - new interface `AbstractControlTypeSafe<P>` which extends from Angular's `AbstractControl` and will, over time, contain the common properties to Angular's `FormGroup`, `FormControl` and `FormArray`.
 Currently it only returns `readonly value: T`.
 
