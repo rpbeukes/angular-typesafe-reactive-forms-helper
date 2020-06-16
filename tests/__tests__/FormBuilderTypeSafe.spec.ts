@@ -54,4 +54,18 @@ describe(`When the FormBuilderTypeSafe initialises a group with FormBuilderTypeS
     sut.patchValue({ weapons: []}); 
     expect(sut?.value?.weapons.length).toBe(2); // no change expected on the array 
   });
+
+  
+  describe(`after FormBuilderTypeSafe<T> initialisation`, () => {
+    test('sut.removeControlSafe should remove control', () => {
+      expect(sut.getSafe(x => x.heroName)).toBeDefined();
+      sut.removeControlSafe(x => x.heroName);  
+      expect(sut.getSafe(x => x.heroName)).toBe(null);
+
+      expect(sut.getSafe(x => x.weapons)).toBeDefined();
+      sut.removeControlSafe(x => x.weapons);  
+      expect(sut.getSafe(x => x.weapons)).toBe(null);
+    });
+  });
+
 });

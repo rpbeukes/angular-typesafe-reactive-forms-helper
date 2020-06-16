@@ -1,3 +1,21 @@
+
+### npm
+Create an access token after successful login:
+```text
+npm login
+```
+
+Publish to npm registry:
+```text
+npm publish
+```
+
+Remove published package from npm registry:
+```text
+npm unpublish angular-typesafe-reactive-forms-helpe-test@1.8.0
+- angular-typesafe-reactive-forms-helpe-test@1.8.0
+```
+
 ## Testing TypeScript types
 
 [testing-typescript-types](https://www.simonholywell.com/post/testing-typescript-types.html) - Thanx Simon Holywell.

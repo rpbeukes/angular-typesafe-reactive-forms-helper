@@ -1,0 +1,27 @@
+name: CD
+
+on:
+  push:
+    tags:
+    - 'V[0-9]+.[0-9]+.[0-9]+' # Push events matching all semantic versioning tags, i.e. 1.16.11, 1.0, V20.15.10
+
+env:
+  NODE_VERSION: '12.x'
+
+jobs:
+  publish-to-npm:
+    name: release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Node ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          registry-url: https://registry.npmjs.org/
+      - name: Install Dependencies
+        run: npm i
+      - name: Publish
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}

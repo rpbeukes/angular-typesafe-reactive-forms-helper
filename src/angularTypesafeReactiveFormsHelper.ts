@@ -68,6 +68,7 @@ export interface FormGroupTypeSafe<T> extends FormGroup {
   getSafe<P>(propertyFunction: (typeVal: T) => P): AbstractControlTypeSafe<P> | null;
   // eg: this.form.setControlSafe(x => x.name, new FormControl('Hulk'));
   setControlSafe(propertyFunction: (typeVal: T) => any, control: AbstractControl): void;
+  removeControlSafe(propertyFunction: (typeVal: T) => any): void;
   /* -------------------------------- */
 
   setValue(value: T, options?: { onlySelf?: boolean; emitEvent?: boolean }): void;
@@ -77,7 +78,6 @@ export interface FormGroupTypeSafe<T> extends FormGroup {
   readonly status: ControlStatus;
   readonly statusChanges: Observable<ControlStatus>;
   controls: { [P in keyof T]: AbstractControlTypeSafe<T[P]> };
-  
 }
 
 // tslint:disable-next-line:max-classes-per-file
@@ -100,6 +100,14 @@ export const generateSetControlSafeFunction = <T extends unknown>(gr: FormGroupT
   };
 };
 
+
+export const generateRemoveControlSafeFunction = <T extends unknown>(gr: FormGroupTypeSafe<T>) => {
+  return (propertyFunction: (typeVal: T) => any): void => {
+    const getStr = getPropertyName(propertyFunction.toString());
+    gr.removeControl(getStr);
+  };
+};
+
 // tslint:disable-next-line: max-classes-per-file
 @Injectable()
 export class FormBuilderTypeSafe extends FormBuilder {
@@ -119,6 +127,8 @@ export class FormBuilderTypeSafe extends FormBuilder {
       gr.getSafe = generateGetSafeFunction(gr);
       // implement setControlSafe
       gr.setControlSafe = generateSetControlSafeFunction(gr);
+      // implement removeControlSafe
+      gr.removeControlSafe = generateRemoveControlSafeFunction(gr);
     }
 
     return gr;
