@@ -57,3 +57,12 @@ Fixed it by updating the ng6 project's `tsconfig.json` to skip the typescript li
 ? Would you like to add Angular routing? Yes
 ? Which stylesheet format would you like to use? Sass   [ https://sass-lang.com/documentation/syntax#the-indented-syntax ]
 ```
+
+## Install a new Angular 10 app
+
+`npx @angular/cli@10.0.0 new test-package-with-ng10`
+
+```javascript
+? Would you like to add Angular routing? Yes
+? Which stylesheet format would you like to use? Sass   [ https://sass-lang.com/documentation/syntax#the-indented-syntax ]
+```
