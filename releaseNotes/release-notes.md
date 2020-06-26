@@ -15,6 +15,11 @@ interface WeaponModel {
 
 ## FormGroupTypeSafe\<T> extends Angular's FormGroup class 
 
+### [V1.8.1](https://github.com/rpbeukes/angular-typesafe-reactive-forms-helper/compare/V1.8.0...V1.8.1) (2020-06-26)
+- Bump to [Angular 10](https://blog.angular.io/version-10-of-angular-now-available-78960babd41).
+- Stop integration tests for Angular 6.
+
+---
 ### [V1.8.0](https://github.com/rpbeukes/angular-typesafe-reactive-forms-helper/compare/V1.7.0...V1.8.0) (2020-06-16)
 - added `removeControlSafe`
 
@@ -31,6 +36,7 @@ removeControl(name: keyof T): void;
 removeControl(name: string): void;
 ```
 
+---
 ### [V1.7.0](https://github.com/rpbeukes/angular-typesafe-reactive-forms-helper/compare/V1.6.0...V1.7.0) (2020-05-14)
 - added `controls`
 
