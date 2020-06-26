@@ -1,0 +1,28 @@
+<h1>{{ title }}</h1>
+<h2>Test Reactive form</h2>
+<form [formGroup]="testForm">
+  <label>Hero Name: </label> 
+  <input formControlName="heroName" type="input" id="hero-name-input">
+  <div>
+      <label>this.testForm.value.heroName:</label>
+      <div id="getHeroNameByValue">{{getHeroNameByValue()}}</div>
+  </div>
+  <div>
+      <label>this.testForm.getSafe(x => x.heroName).value:</label>
+      <div id="getHeroNameByGetSafe">{{getHeroNameByGetSafe()}}</div>
+  </div>
+
+  <div formArrayName="weapons">
+    <label>Weapons:</label>
+    <div *ngFor="let weapon of weaponControls; let weaponIndex=index" [formGroupName]="weaponIndex">
+        <input id="{{ 'weapon-name-' + weaponIndex }}" formControlName="name" placeholder="Weapon Name">
+        <input id="{{ 'weapon-damagePoints-' + weaponIndex }}" formControlName="damagePoints" placeholder="Damage Points">
+    </div>
+  </div>
+
+  <div>
+    <p>testForm.value | json =></p>
+    <textarea #testFormTextArea id="testForm-value" rows="20" cols="120">
+    </textarea>
+  </div>
+</form>
