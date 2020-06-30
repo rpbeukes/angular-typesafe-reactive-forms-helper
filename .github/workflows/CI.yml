@@ -33,7 +33,10 @@ jobs:
 
     - name: create package
       run:  npm run remove-all-tgz && npm run pack-tgz
-    
+
+    - name: copy package to integration directory
+      run:  npm run integration-tests:copy-to-tests   
+         
     - name: install package to angular and list installed packages
       run:  npm run integration-tests:install:ng10 && npm run integration-tests:list-installs:ng10
 
