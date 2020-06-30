@@ -134,8 +134,8 @@ jobs:
       run:  npm run integration-tests:test-ci:ng7  
 
   create-artifact:
+    needs: [integration-test-ng7, integration-test-ng8, integration-test-ng9, integration-test-ng10]
     name: create-artifact
-    needs: [integration-test-ng7, integration-test-ng8, integration-test-ng9, integration-test-ng10] 
     runs-on: ubuntu-latest
 
     steps:
