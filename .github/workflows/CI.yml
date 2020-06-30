@@ -75,7 +75,7 @@ jobs:
       run:  npm run integration-tests:build:ng9
   
     - name: run angular test
-        run:  npm run integration-tests:test-ci:ng9      
+      run:  npm run integration-tests:test-ci:ng9      
 
   integration-test-ng8:
     name: integration-test-ng8
