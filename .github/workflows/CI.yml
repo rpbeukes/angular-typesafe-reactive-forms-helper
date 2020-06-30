@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: install Dependencies
+    - name: install dependencies
       run: npm install
       
     - name: tests
@@ -28,7 +28,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
-    - name: install Dependencies
+    - name: install dependencies
       run: npm install
 
     - name: create package
@@ -56,7 +56,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
-    - name: install Dependencies
+    - name: install dependencies
       run: npm install
 
     - name: create package
@@ -84,7 +84,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
-    - name: install Dependencies
+    - name: install dependencies
       run: npm install
 
     - name: create package
@@ -112,7 +112,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: install Dependencies
+    - name: install dependencies
       run: npm install
 
     - name: create package
@@ -141,7 +141,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: install Dependencies
+    - name: install dependencies
       run: npm install
            
     - name: Create package to ./dist
