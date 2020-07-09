@@ -22,6 +22,7 @@ jobs:
       run:  npm run test
 
   integration-test:
+    needs: [build]
     strategy:
       matrix:
         ng-version: [ng10, ng9, ng8, ng7]
