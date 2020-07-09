@@ -16,6 +16,5 @@ describe(`getPropertyName should return '${expectedProperty}' when`, () => {
   test('function(x){cov_2imlqdpfhj.f[46]++;cov_2imlqdpfhj.s[149]++;return x.hero.address.postcode;}', () => {
     const testScenario = 'function(x){cov_2imlqdpfhj.f[46]++;cov_2imlqdpfhj.s[149]++;return x.hero.address.postcode;}';
     expect(getPropertyName(testScenario)).toBe(expectedProperty);
-    expect(1).toBe(0);
   });
 });
