@@ -109,32 +109,32 @@ jobs:
   #     run:  npm run integration-tests:test-ci:ng8      
       
   # integration-test-ng7:
-    name: integration-test-ng7
-    runs-on: ubuntu-latest
+    # name: integration-test-ng7
+    # runs-on: ubuntu-latest
 
-    steps:
-    - uses: actions/checkout@v2
+    # steps:
+    # - uses: actions/checkout@v2
 
-    - name: install dependencies
-      run: npm install
+    # - name: install dependencies
+    #   run: npm install
 
-    - name: create package
-      run:  npm run remove-all-tgz && npm run pack-tgz
+    # - name: create package
+    #   run:  npm run remove-all-tgz && npm run pack-tgz
 
-    - name: copy package to integration directory
-      run:  npm run integration-tests:copy-to-tests   
+    # - name: copy package to integration directory
+    #   run:  npm run integration-tests:copy-to-tests   
 
-    - name: install package to angular and list installed packages
-      run:  npm run integration-tests:install:ng7 && npm run integration-tests:list-installs:ng7
+    # - name: install package to angular and list installed packages
+    #   run:  npm run integration-tests:install:ng7 && npm run integration-tests:list-installs:ng7
 
-    - name: print angular version
-      run:  npm run integration-tests:version:ng7
+    # - name: print angular version
+    #   run:  npm run integration-tests:version:ng7
 
-    - name: angular build
-      run:  npm run integration-tests:build:ng7
+    # - name: angular build
+    #   run:  npm run integration-tests:build:ng7
 
-    - name: run angular test
-      run:  npm run integration-tests:test-ci:ng7  
+    # - name: run angular test
+    #   run:  npm run integration-tests:test-ci:ng7  
 
   create-artifact:
     needs: [build, integration-test-ng7, integration-test-ng8, integration-test-ng9, integration-test-ng10]
