@@ -136,22 +136,22 @@ jobs:
     # - name: run angular test
     #   run:  npm run integration-tests:test-ci:ng7  
 
-  create-artifact:
-    needs: [build, integration-test-${{ matrix.ng-version }}]
-    name: create-artifact
-    runs-on: ubuntu-latest
+  # create-artifact:
+  #   needs: [build, integration-test-${{ matrix.ng-version }}]
+  #   name: create-artifact
+  #   runs-on: ubuntu-latest
 
-    steps:
-    - uses: actions/checkout@v2
+  #   steps:
+  #   - uses: actions/checkout@v2
 
-    - name: install dependencies
-      run: npm install
+  #   - name: install dependencies
+  #     run: npm install
            
-    - name: Create package to ./dist
-      run:  npm run pack-to-dist-directory
+  #   - name: Create package to ./dist
+  #     run:  npm run pack-to-dist-directory
 
-    - name: Create artifact from ./dist
-      uses: actions/upload-artifact@v1
-      with:
-        name: angular-typesafe-reactive-forms-helper
-        path: ./dist
+  #   - name: Create artifact from ./dist
+  #     uses: actions/upload-artifact@v1
+  #     with:
+  #       name: angular-typesafe-reactive-forms-helper
+  #       path: ./dist
