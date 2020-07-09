@@ -21,8 +21,11 @@ jobs:
     - name: tests
       run:  npm run test
 
-  integration-test-ng10:
-    name: integration-test-ng10
+  integration-test:
+    strategy:
+      matrix:
+        ng-version: [ng10, ng9, ng8, ng7]
+    name: integration-test-${{ matrix.ng-version }}
     runs-on: ubuntu-latest
 
     steps:
@@ -38,74 +41,74 @@ jobs:
       run:  npm run integration-tests:copy-to-tests   
          
     - name: install package to angular and list installed packages
-      run:  npm run integration-tests:install:ng10 && npm run integration-tests:list-installs:ng10
+      run:  npm run integration-tests:install:${{ matrix.ng-version }} && npm run integration-tests:list-installs:${{ matrix.ng-version }}
 
     - name: print angular version
-      run:  npm run integration-tests:version:ng10
+      run:  npm run integration-tests:version:${{ matrix.ng-version }}
 
     - name: angular build
-      run:  npm run integration-tests:build:ng10
+      run:  npm run integration-tests:build:${{ matrix.ng-version }}
 
     - name: run angular test
-      run:  npm run integration-tests:test-ci:ng10
+      run:  npm run integration-tests:test-ci:${{ matrix.ng-version }}
 
-  integration-test-ng9:
-    name: integration-test-ng9
-    runs-on: ubuntu-latest
+  # integration-test-ng9:
+  #   name: integration-test-ng9
+  #   runs-on: ubuntu-latest
 
-    steps:
-    - uses: actions/checkout@v2
+  #   steps:
+  #   - uses: actions/checkout@v2
     
-    - name: install dependencies
-      run: npm install
+  #   - name: install dependencies
+  #     run: npm install
 
-    - name: create package
-      run:  npm run remove-all-tgz && npm run pack-tgz
+  #   - name: create package
+  #     run:  npm run remove-all-tgz && npm run pack-tgz
 
-    - name: copy package to integration directory
-      run:  npm run integration-tests:copy-to-tests   
+  #   - name: copy package to integration directory
+  #     run:  npm run integration-tests:copy-to-tests   
           
-    - name: install package to angular and list installed packages
-      run:  npm run integration-tests:install:ng9 && npm run integration-tests:list-installs:ng9
+  #   - name: install package to angular and list installed packages
+  #     run:  npm run integration-tests:install:ng9 && npm run integration-tests:list-installs:ng9
 
-    - name: print angular version
-      run:  npm run integration-tests:version:ng9
+  #   - name: print angular version
+  #     run:  npm run integration-tests:version:ng9
 
-    - name: angular build
-      run:  npm run integration-tests:build:ng9
+  #   - name: angular build
+  #     run:  npm run integration-tests:build:ng9
   
-    - name: run angular test
-      run:  npm run integration-tests:test-ci:ng9      
+  #   - name: run angular test
+  #     run:  npm run integration-tests:test-ci:ng9      
 
-  integration-test-ng8:
-    name: integration-test-ng8
-    runs-on: ubuntu-latest
+  # integration-test-ng8:
+  #   name: integration-test-ng8
+  #   runs-on: ubuntu-latest
 
-    steps:
-    - uses: actions/checkout@v2
+  #   steps:
+  #   - uses: actions/checkout@v2
     
-    - name: install dependencies
-      run: npm install
+  #   - name: install dependencies
+  #     run: npm install
 
-    - name: create package
-      run:  npm run remove-all-tgz && npm run pack-tgz
+  #   - name: create package
+  #     run:  npm run remove-all-tgz && npm run pack-tgz
 
-    - name: copy package to integration directory
-      run:  npm run integration-tests:copy-to-tests   
+  #   - name: copy package to integration directory
+  #     run:  npm run integration-tests:copy-to-tests   
           
-    - name: install package to angular and list installed packages
-      run:  npm run integration-tests:install:ng8 && npm run integration-tests:list-installs:ng8
+  #   - name: install package to angular and list installed packages
+  #     run:  npm run integration-tests:install:ng8 && npm run integration-tests:list-installs:ng8
 
-    - name: print angular version
-      run:  npm run integration-tests:version:ng8
+  #   - name: print angular version
+  #     run:  npm run integration-tests:version:ng8
 
-    - name: angular build
-      run:  npm run integration-tests:build:ng8
+  #   - name: angular build
+  #     run:  npm run integration-tests:build:ng8
   
-    - name: run angular test
-      run:  npm run integration-tests:test-ci:ng8      
+  #   - name: run angular test
+  #     run:  npm run integration-tests:test-ci:ng8      
       
-  integration-test-ng7:
+  # integration-test-ng7:
     name: integration-test-ng7
     runs-on: ubuntu-latest
 
