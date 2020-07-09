@@ -137,7 +137,7 @@ jobs:
     #   run:  npm run integration-tests:test-ci:ng7  
 
   create-artifact:
-    needs: [build, integration-test-ng7, integration-test-ng8, integration-test-ng9, integration-test-ng10]
+    needs: [build, integration-test-${{ matrix.ng-version }}]
     name: create-artifact
     runs-on: ubuntu-latest
 
