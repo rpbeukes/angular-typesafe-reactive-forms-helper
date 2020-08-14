@@ -1,5 +1,6 @@
 const fs = require('fs');
 let packageJson = require('../package.json');
+const shelljs = require('shelljs');
 
 const main = () => {
     const ngCurrentVersion = packageJson.devDependencies["@angular/common"];
@@ -17,6 +18,9 @@ const main = () => {
         fs.writeFile('package.json', JSON.stringify(packageJson, null, 2), (err) => {
             if (err) throw err;
             console.log(`Success - check package.json`);
+
+            console.log(`> npm install`);
+            shelljs.exec(`npm install`).stdout;
         });
     } else {
         console.log(`missing newVersion argument... 
