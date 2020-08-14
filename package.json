@@ -70,7 +70,8 @@
     "upgrade:ng7": "cd ./integrationTests/ng7/test-package-with-ng7 && npm run ng -- update @angular/cli@^7 @angular/core@^7",
     "upgrade:ng8": "cd ./integrationTests/ng8/test-package-with-ng8 && npm run ng -- update @angular/cli@^8 @angular/core@^8",
     "upgrade:ng9": "cd ./integrationTests/ng9/test-package-with-ng9 && npm run ng -- update @angular/cli@^9 @angular/core@^9",
-    "upgrade:ng10": "cd ./integrationTests/ng10/test-package-with-ng10 && npm run ng -- update @angular/cli@^10 @angular/core@^10"
+    "upgrade:ng10": "cd ./integrationTests/ng10/test-package-with-ng10 && npm run ng -- update @angular/cli@^10 @angular/core@^10",
+    "bump-ng-libraries-package-json": "node ./scriptUtilities/bump-ng-libraries-package-json.js"
   },
   "repository": {
     "type": "git",
@@ -90,11 +91,11 @@
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
-    "@angular/common": "~10.0.8",
-    "@angular/compiler": "~10.0.8",
-    "@angular/core": "~10.0.8",
-    "@angular/forms": "~10.0.8",
-    "@angular/platform-browser": "~10.0.8",
+    "@angular/common": "~10.0.9",
+    "@angular/compiler": "~10.0.9",
+    "@angular/core": "~10.0.9",
+    "@angular/forms": "~10.0.9",
+    "@angular/platform-browser": "~10.0.9",
     "@types/jest": "^26.0.0",
     "@types/shelljs": "^0.8.7",
     "dtslint": "^3.6.12",
