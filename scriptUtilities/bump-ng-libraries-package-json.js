@@ -33,6 +33,9 @@ const main = () => {
             shellCommand('git add package.json package-lock.json');
             shellCommand(`git commit -m "bump ng version ${newVersion}"`);
             shellCommand(`git push --set-upstream origin ${branchName}`);
+            // https://github.com/github/hub
+            // auto create the new PR
+            shellCommand(`hub pull-request -m "bump ng v${newVersion}"`);
         });
     } else {
         console.log(`missing newVersion argument... 
