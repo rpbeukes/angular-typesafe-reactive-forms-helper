@@ -9,6 +9,14 @@ const main = () => {
         console.log(`current version: ${ngCurrentVersion}`);
         console.log(`new version: ${newVersion}`);
         
+        const branchName = 'bump-ng';
+        
+        shellCommand('git checkout master');
+        shellCommand('git pull');
+        shellCommand(`git branch -d ${branchName}`);
+        shellCommand(`git branch ${branchName}`);
+        shellCommand(`git checkout ${branchName}`);
+
         packageJson.devDependencies["@angular/common"] = newVersion;
         packageJson.devDependencies["@angular/compiler"] = newVersion;
         packageJson.devDependencies["@angular/core"] = newVersion;
@@ -19,13 +27,25 @@ const main = () => {
             if (err) throw err;
             console.log(`Success - check package.json`);
 
-            console.log(`> npm install`);
-            shelljs.exec(`npm install`).stdout;
+            shellCommand('npm install');
+            
+            shellCommand('git status');
+            shellCommand('git add package.json package-lock.json');
+            shellCommand(`git commit -m "bump ng version ${newVersion}"`);
+            shellCommand(`git push --set-upstream origin ${branchName}`);
+            // https://github.com/github/hub
+            // auto create the new PR
+            shellCommand(`hub pull-request -m "bump ng v${newVersion}"`);
         });
     } else {
         console.log(`missing newVersion argument... 
         eg: node ./scriptUtilities/bump-ng-libraries-package-json.js ~10.0.8`);
     }
 };
+
+const shellCommand = (command) => {
+    console.log(`> ${command}`);
+    shelljs.exec(command).stdout;
+}
 
 main();
