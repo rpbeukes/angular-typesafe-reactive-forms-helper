@@ -9,6 +9,8 @@ const main = () => {
         console.log(`current version: ${ngCurrentVersion}`);
         console.log(`new version: ${newVersion}`);
         
+        return;
+
         const branchName = 'bump-ng';
         
         shellCommand('git checkout master');
