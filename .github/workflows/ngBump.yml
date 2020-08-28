@@ -1,8 +1,6 @@
 name: ngBump-when-detected
 
 on:
-  push:
-    branches: [ auto-pr-on-ng-bump ]
   pull_request:
     branches: [ master ]
 
