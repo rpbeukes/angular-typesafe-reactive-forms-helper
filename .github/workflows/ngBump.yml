@@ -1,6 +1,8 @@
 name: ngBump-when-detected
 
 on:
+  push:
+    branches: [ auto-pr-on-ng-bump ]
   pull_request:
     branches: [ master ]
 
@@ -24,5 +26,5 @@ jobs:
       run: npm install    
     
     - name: create new PR when existing dependabot PR detected
-      run: npm run bump-ng-libraries-package-json ${{ github.event.pull_request.title}}
+      run: npm run bump-ng-libraries-package-json '${{ github.event.pull_request.title}}'
 
