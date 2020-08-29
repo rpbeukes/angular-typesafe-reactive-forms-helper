@@ -35,6 +35,9 @@ const main = () => {
 
     const branchName = 'bump-ng';
     
+    shellCommand('git --version');
+    shellCommand('git branch');
+    return;
     shellCommand('git checkout master');
     shellCommand('git pull');
     shellCommand(`git branch -d ${branchName}`);
