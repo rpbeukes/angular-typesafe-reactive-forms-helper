@@ -26,7 +26,6 @@ jobs:
       run: npm install    
     
     - name: create new PR when existing dependabot PR detected
-      run: npm run bump-ng-libraries-package-json '${{ github.event.pull_request.title}}'
+      run: npm run bump-ng-libraries-package-json
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-

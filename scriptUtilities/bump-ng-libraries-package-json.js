@@ -37,12 +37,13 @@ const main = () => {
     
     shellCommand('git --version');
     shellCommand('git branch');
+    
     return;
-    shellCommand('git checkout master');
-    shellCommand('git pull');
-    shellCommand(`git branch -d ${branchName}`);
-    shellCommand(`git branch ${branchName}`);
-    shellCommand(`git checkout ${branchName}`);
+    //shellCommand('git checkout master');
+    //shellCommand('git pull');
+    //shellCommand(`git branch -d ${branchName}`);
+    //shellCommand(`git branch ${branchName}`);
+    //shellCommand(`git checkout ${branchName}`);
 
     packageJson.devDependencies["@angular/common"] = newVersion;
     packageJson.devDependencies["@angular/compiler"] = newVersion;
