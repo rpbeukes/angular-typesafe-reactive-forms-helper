@@ -19,6 +19,8 @@ jobs:
         echo ${{ github.event.pull_request.title }}
 
     - uses: actions/checkout@v2
+      with:
+        ref: master
 
     - name: install dependencies
       run: npm install    
