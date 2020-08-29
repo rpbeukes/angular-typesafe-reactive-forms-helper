@@ -6,26 +6,32 @@ on:
 
 jobs:
   
-  github-context:
-    name: bump angular version if detected
+  check-if-update-required:
+    name: is an update required
     runs-on: ubuntu-latest
 
     steps:
-    - name: print GitHub context
-      env:
-        GITHUB_CONTEXT: ${{ toJson(github) }}
-      run: |
-        echo "$GITHUB_CONTEXT"
-        echo ${{ github.event.pull_request.title }}
+    # - name: print GitHub context
+    #   env:
+    #     GITHUB_CONTEXT: ${{ toJson(github) }}
+    #   run: |
+    #     echo "$GITHUB_CONTEXT"
+    #     echo ${{ github.event.pull_request.title }}
 
     - uses: actions/checkout@v2
-      with:
-        ref: master
 
     - name: install dependencies
-      run: npm install    
+      run: npm install
+      env:
+        BUMP_NG: 'false'
     
     - name: create new PR when existing dependabot PR detected
       run: npm run bump-ng-libraries-package-json
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+
+    # - uses: actions/checkout@v2
+    #   with:
+    #     ref: master
+

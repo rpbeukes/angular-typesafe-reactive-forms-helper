@@ -6,6 +6,8 @@ const main = () => {
     let ngCurrentVersion;
     let newVersion;
 
+    console.log('process.env.BUMP_NG', process.env.BUMP_NG);
+    return;
     const prTitles = shellCommand('hub pr list --format="%t,%au,%l%n"').split('\n');
 
     let createPR = false;
