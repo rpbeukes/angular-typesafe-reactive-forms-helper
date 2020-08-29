@@ -17,7 +17,7 @@ jobs:
       run: |
         echo "$GITHUB_CONTEXT"
         echo ${{ github.event.pull_request.title }}
-    
+
     - uses: actions/checkout@v2
 
     - name: install dependencies
@@ -25,4 +25,6 @@ jobs:
     
     - name: create new PR when existing dependabot PR detected
       run: npm run bump-ng-libraries-package-json '${{ github.event.pull_request.title}}'
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

@@ -8,6 +8,8 @@ const main = () => {
     if (newVersion) {
         console.log(`current version: ${ngCurrentVersion}`);
         console.log(`new version: ${newVersion}`);
+
+        shellCommand('hub pr list --format="%t,%au,%l%n"');
         
         return;
 
