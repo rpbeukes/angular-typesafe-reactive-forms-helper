@@ -4,17 +4,16 @@ on:
   pull_request:
     branches: [ master ]
 
-env:
-  BUMP_NG: false
-  EXISTING_PR_FOR_BUMP_NG: false
-  CURRENT_NG_VER: '-'
-  NEW_NG_VER: '-'
-
 jobs:
      
   create-new-BUMP_NG-if-update-required:
     name: create-new-BUMP_NG-if-update-required
     runs-on: ubuntu-latest
+    env:
+      BUMP_NG: false
+      EXISTING_PR_FOR_BUMP_NG: false
+      CURRENT_NG_VER: '-'
+      NEW_NG_VER: '-'
 
     steps:
     # - name: print GitHub context
