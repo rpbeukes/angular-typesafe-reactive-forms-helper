@@ -23,6 +23,7 @@ jobs:
     #     echo "$GITHUB_CONTEXT"
     #     echo ${{ github.event.pull_request.title }}
 
+    # share the variables with steps below
     - name: Set vars
       run: |
         export BUMP_NG=false
@@ -47,26 +48,23 @@ jobs:
     - name: print EXISTING_PR_FOR_BUMP_NG    
       run: echo $EXISTING_PR_FOR_BUMP_NG
     
-    - name: print when EXISTING_PR_FOR_BUMP_NG=TRUE
-      if: ${{env.EXISTING_PR_FOR_BUMP_NG == 'true'}}
-      run: echo 'print EXISTING_PR_FOR_BUMP_NG true!'
+    # - name: print when EXISTING_PR_FOR_BUMP_NG=TRUE
+    #   if: ${{env.EXISTING_PR_FOR_BUMP_NG == 'true'}}
+    #   run: echo 'print EXISTING_PR_FOR_BUMP_NG true!'
 
-    - name: print when EXISTING_PR_FOR_BUMP_NG=false
-      if: ${{env.EXISTING_PR_FOR_BUMP_NG == 'false'}}
-      run: echo 'print EXISTING_PR_FOR_BUMP_NG false!'
-
-    - name: list 
-      run: ls && cat state.json
+    # - name: print when EXISTING_PR_FOR_BUMP_NG=false
+    #   if: ${{env.EXISTING_PR_FOR_BUMP_NG == 'false'}}
+    #   run: echo 'print EXISTING_PR_FOR_BUMP_NG false!'
 
     #- name: create new PR when existing dependabot PR detected        
     #  if: env.EXISTING_PR_FOR_BUMP_NG && env.BUMP_NG 
     #  run: echo This works!
 
-    # - uses: actions/checkout@v2
-    #   if: ${{ !env.EXISTING_PR_FOR_BUMP_NG && env.BUMP_NG }}
-    #   with:
-    #     ref: master
-    #     path: master-src
+    - uses: actions/checkout@v2
+      if: ${{env.EXISTING_PR_FOR_BUMP_NG == 'false' && env.BUMP_NG == 'true' }}
+      with:
+        ref: master
+        path: master-src
    
     # - run: ls && cat package.json && cat master-src\package.json
         
