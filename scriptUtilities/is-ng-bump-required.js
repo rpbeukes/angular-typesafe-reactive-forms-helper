@@ -6,6 +6,7 @@ const main = () => {
     let newVersion;
 
     console.log('process.env.BUMP_NG', process.env.BUMP_NG);
+    console.log('process.env.EXISTING_PR_FOR_BUMP_NG', process.env.EXISTING_PR_FOR_BUMP_NG);
 
     const existingPRDetected = shellCommand(`hub pr list --format="%t,%au,%l%n" | grep "${uniqueStr}"`);
     if (existingPRDetected) {
@@ -36,6 +37,7 @@ const main = () => {
     }
 
     console.log('process.env.BUMP_NG', process.env.BUMP_NG);
+    console.log('process.env.EXISTING_PR_FOR_BUMP_NG', process.env.EXISTING_PR_FOR_BUMP_NG);
     console.log('process.env.CURRENT_NG_VER', process.env.CURRENT_NG_VER);
     console.log('process.env.NEW_NG_VER', process.env.NEW_NG_VER);
 };
