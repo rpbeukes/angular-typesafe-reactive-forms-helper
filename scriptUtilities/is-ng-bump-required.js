@@ -9,6 +9,8 @@ const main = () => {
     console.log('process.env.EXISTING_PR_FOR_BUMP_NG', process.env.EXISTING_PR_FOR_BUMP_NG);
 
     process.env.EXISTING_PR_FOR_BUMP_NG = true;
+    shellCommand('echo "::set-env name=EXISTING_PR_FOR_BUMP_NG::true"')
+    console.log('process.env.EXISTING_PR_FOR_BUMP_NG', process.env.EXISTING_PR_FOR_BUMP_NG);
 
     const existingPRDetected = shellCommand(`hub pr list --format="%t,%au,%l%n" | grep "${uniqueStr}"`);
     if (existingPRDetected) {

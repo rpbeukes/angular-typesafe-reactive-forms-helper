@@ -23,7 +23,8 @@ jobs:
     #     echo "$GITHUB_CONTEXT"
     #     echo ${{ github.event.pull_request.title }}
 
-    - run: |
+    - name: Set vars
+      run: |
         export BUMP_NG=false
         echo "::set-env name=BUMP_NG::$BUMP_NG"
         export EXISTING_PR_FOR_BUMP_NG=false
