@@ -5,9 +5,11 @@ on:
     branches: [ master ]
 
 jobs:
+  env:
+    BUMP_NG: false
   
-  check-if-update-required:
-    name: is an update required
+  set-BUMP_NG-if-update-required:
+    name: set env.BUMP_NG if update required
     runs-on: ubuntu-latest
 
     steps:
@@ -22,8 +24,6 @@ jobs:
 
     - name: install dependencies
       run: npm install
-      env:
-        BUMP_NG: 'false'
     
     - name: create new PR when existing dependabot PR detected
       run: npm run bump-ng-libraries-package-json
