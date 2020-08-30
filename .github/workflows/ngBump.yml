@@ -29,16 +29,15 @@ jobs:
       run: npm install
 
     - name: get list of pending PRs and search for a dependabot PR which will bump angular version
-      run: npm run is-ng-bump-required && echo $EXISTING_PR_FOR_BUMP_NG
+      run: npm run is-ng-bump-required && echo "::set-env name=EXISTING_PR_FOR_BUMP_NG::$EXISTING_PR_FOR_BUMP_NG"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        EXISTING_PR_FOR_BUMP_NG: ${{ env.EXISTING_PR_FOR_BUMP_NG }}
+    
+    - name: print EXISTING_PR_FOR_BUMP_NG    
+      run: echo $EXISTING_PR_FOR_BUMP_NG
     
     - name: list 
       run: ls && ls scriptUtilities && cat state.json
-
-    - name: print EXISTING_PR_FOR_BUMP_NG    
-      run: echo $EXISTING_PR_FOR_BUMP_NG
 
     - name: create new PR when existing dependabot PR detected        
       if: env.EXISTING_PR_FOR_BUMP_NG && env.BUMP_NG 

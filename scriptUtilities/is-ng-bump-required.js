@@ -43,7 +43,7 @@ const main = () => {
 
     const state = {
         BUMP_NG: process.env.BUMP_NG,
-        EXISTING_PR_FOR_BUMP_NG: true, /*process.env.EXISTING_PR_FOR_BUMP_NG,*/
+        EXISTING_PR_FOR_BUMP_NG: "true", /*process.env.EXISTING_PR_FOR_BUMP_NG,*/
         CURRENT_NG_VER: process.env.CURRENT_NG_VER,
         NEW_NG_VER: process.env.NEW_NG_VER,
     };
