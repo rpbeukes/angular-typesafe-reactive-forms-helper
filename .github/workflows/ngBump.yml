@@ -5,11 +5,13 @@ on:
     branches: [ master ]
 
 jobs:
-  set-BUMP_NG-if-update-required:
-    name: set env.BUMP_NG if update required
+  create-new-BUMP_NG-if-update-required:
+    name: create-new-BUMP_NG-if-update-required
     runs-on: ubuntu-latest
     env:
       BUMP_NG: false
+      CURRENT_NG_VER: '-'
+      NEW_NG_VER: '-'
 
     steps:
     # - name: print GitHub context
@@ -23,14 +25,21 @@ jobs:
 
     - name: install dependencies
       run: npm install
-    
-    - name: create new PR when existing dependabot PR detected
-      run: npm run bump-ng-libraries-package-json
+
+    - name: get list of pending PRs and search for a dependabot PR which will bump angular version
+      run: npm run is-ng-bump-required && echo $BUMP_NG $CURRENT_NG_VER $NEW_NG_VER 
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-
-    # - uses: actions/checkout@v2
-    #   with:
-    #     ref: master
+    - uses: actions/checkout@v2
+      if: BUMP_NG
+      with:
+        ref: master
+        
+    - name: create new PR when existing dependabot PR detected
+      if: BUMP_NG
+      run: npm run bump-ng-and-create-PR
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+   
 
