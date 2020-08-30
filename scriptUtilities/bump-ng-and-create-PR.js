@@ -26,7 +26,6 @@ const main = () => {
     const branchName = 'bump-ng';
 
     shellCommand(`git branch`);
-    shellCommand(`git branch -d ${branchName}`);
     shellCommand(`git branch ${branchName}`);
     shellCommand(`git checkout ${branchName}`);
 
