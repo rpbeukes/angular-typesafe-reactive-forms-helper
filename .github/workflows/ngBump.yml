@@ -33,14 +33,14 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - uses: actions/checkout@v2
-      if: ${{ env.EXISTING_PR_FOR_BUMP_NG == 'false' && env.BUMP_NG == 'true' }}
+      if: ${{ env.EXISTING_PR_FOR_BUMP_NG == false && env.BUMP_NG }}
       with:
         ref: master
         path: master-src
     - run: ls && cat package.json && cat master-src\package.json
         
     - name: create new PR when existing dependabot PR detected
-      if: ${{ env.EXISTING_PR_FOR_BUMP_NG == 'false'  && env.BUMP_NG == 'true' }}
+      if: ${{ env.EXISTING_PR_FOR_BUMP_NG == false  && env.BUMP_NG }}
       run: cd master-src && node bump-ng-and-create-PR.js
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
