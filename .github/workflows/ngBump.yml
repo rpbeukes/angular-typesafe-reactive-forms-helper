@@ -51,11 +51,11 @@ jobs:
       run: ls && cat state.json
 
     - name: print when EXISTING_PR_FOR_BUMP_NG=TRUE
-      if: $EXISTING_PR_FOR_BUMP_NG == true
+      if: env.EXISTING_PR_FOR_BUMP_NG == true
       run: echo 'print EXISTING_PR_FOR_BUMP_NG!'
 
     - name: print when EXISTING_PR_FOR_BUMP_NG=false
-      if: $EXISTING_PR_FOR_BUMP_NG == false
+      if: env.EXISTING_PR_FOR_BUMP_NG == false
       run: echo 'print EXISTING_PR_FOR_BUMP_NG false!'
 
     #- name: create new PR when existing dependabot PR detected        
