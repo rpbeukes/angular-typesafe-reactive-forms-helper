@@ -4,23 +4,24 @@ const shelljs = require('shelljs');
 
 const main = () => {
     if (!process.env.BUMP_NG) {
-        console.log('No need to bump angular version');  
+        console.log('No need to bump angular version.');  
         return;
     }
 
     if (!process.env.CURRENT_NG_VER){
-        console.log('No CURRENT_NG_VER, please set env variable');  
+        console.log('No CURRENT_NG_VER, please set env variable.');  
+        return;
     }
 
     if (!process.env.NEW_NG_VER){
-        console.log('No NEW_NG_VER, please set env variable');  
+        console.log('No NEW_NG_VER, please set env variable.');  
+        return;
     }
 
     console.log('process.env.CURRENT_NG_VER:', process.env.CURRENT_NG_VER);
     console.log('process.env.NEW_NG_VER:', process.env.NEW_NG_VER);
 
     const newVersion = process.env.NEW_NG_VER;
-
     const branchName = 'bump-ng';
 
     shellCommand(`git branch`);

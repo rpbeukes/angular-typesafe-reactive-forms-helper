@@ -35,10 +35,12 @@ jobs:
       if: ${{ env.BUMP_NG }}
       with:
         ref: master
+        path: master-src
+    - run: ls  
         
     - name: create new PR when existing dependabot PR detected
       if: ${{ env.BUMP_NG }}
-      run: npm run bump-ng-and-create-PR
+      run: cd master-src && npm run bump-ng-and-create-PR
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
    
