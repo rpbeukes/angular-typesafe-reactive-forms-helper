@@ -32,12 +32,12 @@ jobs:
       run: npm run is-ng-bump-required 
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        EXISTING_PR_FOR_BUMP_NG: ${{ env.EXISTING_PR_FOR_BUMP_NG }}
 
     - name: print     
-      run: echo $EXISTING_PR_FOR_BUMP_NG
-
-    - name: print     
-      run: echo ${EXISTING_PR_FOR_BUMP_NG}
+      run: echo EXISTING_PR_FOR_BUMP_NG
+      env:
+        EXISTING_PR_FOR_BUMP_NG: ${{ env.EXISTING_PR_FOR_BUMP_NG }}
 
     - name: create new PR when existing dependabot PR detected        
       if: env.EXISTING_PR_FOR_BUMP_NG && env.BUMP_NG 
