@@ -35,7 +35,7 @@ jobs:
         EXISTING_PR_FOR_BUMP_NG: ${{ env.EXISTING_PR_FOR_BUMP_NG }}
     
     - name: list scriptUtilities/
-      run: ls scriptUtilities/
+      run: ls && cat state.json
 
     - name: print EXISTING_PR_FOR_BUMP_NG    
       run: echo $EXISTING_PR_FOR_BUMP_NG

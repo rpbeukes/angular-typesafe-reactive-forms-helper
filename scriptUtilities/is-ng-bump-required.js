@@ -48,7 +48,7 @@ const main = () => {
         NEW_NG_VER: process.env.NEW_NG_VER,
     };
 
-    shellCommand(`echo ${state} > state.json`);
+    shellCommand(`echo ${JSON.stringify(state, null, 2)} > state.json`);
 
 };
 
