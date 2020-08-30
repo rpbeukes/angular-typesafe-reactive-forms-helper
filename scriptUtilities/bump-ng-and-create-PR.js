@@ -4,6 +4,9 @@ const shelljs = require('shelljs');
 const { uniqueStr } = require('./uniqueStr')
 
 const main = () => {
+    shellCommand(`ls`);
+    shellCommand(`git ruan`);
+    return;
     if (!process.env.BUMP_NG) {
         console.log('No need to bump angular version.');  
         return;
@@ -58,7 +61,10 @@ const main = () => {
 
 const shellCommand = (command) => {
     console.log(`> ${command}`);
-    return shelljs.exec(command).stdout;
+    const r = shelljs.exec(command);
+    
+    if (r.code) throw Error(r.stderr);
+    return r.stdout;
 }
 
 main();

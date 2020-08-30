@@ -60,7 +60,10 @@ const main = () => {
 
 const shellCommand = (command) => {
     console.log(`> ${command}`);
-    return shelljs.exec(command).stdout;
+    const r = shelljs.exec(command);
+    
+    if (r.code) throw Error(r.stderr);
+    return r.stdout;
 }
 
 const isDependabotPRWhichBumpsAngular = (prTitleWithCommas) => {
