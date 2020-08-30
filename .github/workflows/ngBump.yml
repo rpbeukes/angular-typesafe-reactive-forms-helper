@@ -48,8 +48,8 @@ jobs:
       run: echo $EXISTING_PR_FOR_BUMP_NG
     
     - name: print when EXISTING_PR_FOR_BUMP_NG=TRUE
-      if: ${{env.EXISTING_PR_FOR_BUMP_NG == true}}
-      run: echo 'print EXISTING_PR_FOR_BUMP_NG!'
+      if: ${{env.EXISTING_PR_FOR_BUMP_NG == 'true'}}
+      run: echo 'print EXISTING_PR_FOR_BUMP_NG true!'
 
     - name: print when EXISTING_PR_FOR_BUMP_NG=false
       if: ${{env.EXISTING_PR_FOR_BUMP_NG == 'false'}}
