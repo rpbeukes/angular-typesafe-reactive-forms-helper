@@ -33,6 +33,9 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         EXISTING_PR_FOR_BUMP_NG: ${{ env.EXISTING_PR_FOR_BUMP_NG }}
+    
+    - name: list scriptUtilities/
+      run: ls scriptUtilities/
 
     - name: print EXISTING_PR_FOR_BUMP_NG    
       run: echo $EXISTING_PR_FOR_BUMP_NG
