@@ -48,11 +48,19 @@ jobs:
       run: echo $EXISTING_PR_FOR_BUMP_NG
     
     - name: list 
-      run: ls && ls scriptUtilities && cat state.json
+      run: ls && cat state.json
 
-    - name: create new PR when existing dependabot PR detected        
-      if: env.EXISTING_PR_FOR_BUMP_NG && env.BUMP_NG 
-      run: echo This works!
+    - name: print when EXISTING_PR_FOR_BUMP_NG=TRUE
+      if: $EXISTING_PR_FOR_BUMP_NG == true
+      run: echo 'print EXISTING_PR_FOR_BUMP_NG!'
+
+    - name: print when EXISTING_PR_FOR_BUMP_NG=false
+      if: $EXISTING_PR_FOR_BUMP_NG == false
+      run: echo 'print EXISTING_PR_FOR_BUMP_NG false!'
+
+    #- name: create new PR when existing dependabot PR detected        
+    #  if: env.EXISTING_PR_FOR_BUMP_NG && env.BUMP_NG 
+    #  run: echo This works!
 
     # - uses: actions/checkout@v2
     #   if: ${{ !env.EXISTING_PR_FOR_BUMP_NG && env.BUMP_NG }}
