@@ -44,6 +44,9 @@ const main = () => {
         
         shellCommand('git status');
         shellCommand('git add package.json package-lock.json');
+        shellCommand('git config --local user.email "ruan.coder@gmail.com"');
+        shellCommand('git config --local user.name "GitHub Action"');
+          
         shellCommand(`git commit -m "bump ng version ${newVersion}"`);
         shellCommand(`git push --set-upstream origin ${branchName}`);
         // https://github.com/github/hub
