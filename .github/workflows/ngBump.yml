@@ -32,12 +32,12 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - uses: actions/checkout@v2
-      if: jobs.create-new-BUMP_NG-if-update-required.env.BUMP_NG
+      if: ${{ BUMP_NG }}
       with:
         ref: master
         
     - name: create new PR when existing dependabot PR detected
-      if: jobs.create-new-BUMP_NG-if-update-required.env.BUMP_NG
+      if: ${{ BUMP_NG }}
       run: npm run bump-ng-and-create-PR
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
