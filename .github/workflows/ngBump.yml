@@ -52,7 +52,7 @@ jobs:
       run: echo 'print EXISTING_PR_FOR_BUMP_NG!'
 
     - name: print when EXISTING_PR_FOR_BUMP_NG=false
-      if: ${{env.EXISTING_PR_FOR_BUMP_NG == false}}
+      if: ${{env.EXISTING_PR_FOR_BUMP_NG == 'false'}}
       run: echo 'print EXISTING_PR_FOR_BUMP_NG false!'
 
     - name: list 
