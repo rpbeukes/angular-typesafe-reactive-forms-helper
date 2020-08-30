@@ -24,14 +24,14 @@ jobs:
     #     echo ${{ github.event.pull_request.title }}
 
     - run: |
-      export BUMP_NG=false
-      echo "::set-env name=BUMP_NG::$BUMP_NG"
-      export EXISTING_PR_FOR_BUMP_NG=false
-      echo "::set-env name=EXISTING_PR_FOR_BUMP_NG::$EXISTING_PR_FOR_BUMP_NG"
-      export CURRENT_NG_VER='-'
-      echo "::set-env name=CURRENT_NG_VER::$CURRENT_NG_VER"
-      export NEW_NG_VER='-'
-      echo "::set-env name=NEW_NG_VER::$NEW_NG_VER"
+        export BUMP_NG=false
+        echo "::set-env name=BUMP_NG::$BUMP_NG"
+        export EXISTING_PR_FOR_BUMP_NG=false
+        echo "::set-env name=EXISTING_PR_FOR_BUMP_NG::$EXISTING_PR_FOR_BUMP_NG"
+        export CURRENT_NG_VER='-'
+        echo "::set-env name=CURRENT_NG_VER::$CURRENT_NG_VER"
+        export NEW_NG_VER='-'
+        echo "::set-env name=NEW_NG_VER::$NEW_NG_VER"
 
     - uses: actions/checkout@v2
 
