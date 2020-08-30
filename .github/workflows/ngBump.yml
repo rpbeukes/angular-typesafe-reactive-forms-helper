@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       BUMP_NG: false
+      EXISTING_PR_FOR_BUMP_NG: false
       CURRENT_NG_VER: '-'
       NEW_NG_VER: '-'
 
@@ -32,15 +33,15 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - uses: actions/checkout@v2
-      if: ${{ env.BUMP_NG }}
+      if: ${{ !env.EXISTING_PR_FOR_BUMP_NG && env.BUMP_NG }}
       with:
         ref: master
         path: master-src
-    - run: ls  
+    - run: ls && cat package.json 
         
     - name: create new PR when existing dependabot PR detected
-      if: ${{ env.BUMP_NG }}
-      run: cd master-src && npm run bump-ng-and-create-PR
+      if: ${{ !env.EXISTING_PR_FOR_BUMP_NG && env.BUMP_NG }}
+      run: cd master-src && node bump-ng-and-create-PR.js
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
    

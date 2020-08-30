@@ -1,10 +1,19 @@
 const shelljs = require('shelljs');
+const { uniqueStr } = require('./uniqueStr')
 
 const main = () => {
     let ngCurrentVersion;
     let newVersion;
 
     console.log('process.env.BUMP_NG', process.env.BUMP_NG);
+
+    const existingPRDetected = shellCommand(`hub pr list --format="%t,%au,%l%n" | grep "${uniqueStr}"`);
+    if (existingPRDetected) {
+        console.log(`Bump already detected: \n${existingPRDetected}\nNo action required.`);
+        process.env.BUMP_NG = false;
+        process.env.EXISTING_PR_FOR_BUMP_NG = true;
+        return;
+    }
 
     const prTitles = shellCommand('hub pr list --format="%t,%au,%l%n"').split('\n');
 
