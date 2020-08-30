@@ -45,9 +45,6 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     
-    - name: print EXISTING_PR_FOR_BUMP_NG    
-      run: echo $EXISTING_PR_FOR_BUMP_NG
-    
     # - name: print when EXISTING_PR_FOR_BUMP_NG=TRUE
     #   if: ${{env.EXISTING_PR_FOR_BUMP_NG == 'true'}}
     #   run: echo 'print EXISTING_PR_FOR_BUMP_NG true!'
@@ -66,9 +63,6 @@ jobs:
         ref: master
         path: master-src
     
-    - name: list master
-      run: ls master-src
-   
     - name: create new PR when existing dependabot PR detected
       if: ${{env.EXISTING_PR_FOR_BUMP_NG == 'false' && env.BUMP_NG == 'true' }}
       run: |
