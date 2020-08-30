@@ -39,6 +39,7 @@ const main = () => {
     fs.writeFile('package.json', JSON.stringify(packageJson, null, 2), (err) => {
         if (err) throw err;
         console.log(`Success - check package.json`);
+        shellCommand(`cat package.json`);
 
         shellCommand('npm install');
         
@@ -51,7 +52,7 @@ const main = () => {
         shellCommand(`git push --set-upstream origin ${branchName}`);
         // https://github.com/github/hub
         // auto create the new PR
-        shellCommand(`hub pull-request -m "bump ng v${newVersion}" ${uniqueStr}`);
+        shellCommand(`hub pull-request -m "bump ng v${newVersion} ${uniqueStr}"`);
     });
 };
 
