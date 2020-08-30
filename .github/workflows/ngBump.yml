@@ -73,6 +73,7 @@ jobs:
       if: ${{env.EXISTING_PR_FOR_BUMP_NG == 'false' && env.BUMP_NG == 'true' }}
       run: |
         cp -R scriptUtilities/bump-ng-and-create-PR.js master-src/scriptUtilities
+        cp -R scriptUtilities/uniqueStr.js master-src/scriptUtilities
         cd master-src
         node scriptUtilities/bump-ng-and-create-PR.js
       env:
