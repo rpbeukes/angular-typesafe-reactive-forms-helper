@@ -62,15 +62,17 @@ jobs:
       with:
         ref: master
         path: master-src
-    
-    - name: create new PR when existing dependabot PR detected
+
+    - name: copy script files to ./master-src
       if: ${{env.EXISTING_PR_FOR_BUMP_NG == 'false' && env.BUMP_NG == 'true' }}
       run: |
         cp -R scriptUtilities/bump-ng-and-create-PR.js master-src/scriptUtilities
         cp -R scriptUtilities/uniqueStr.js master-src/scriptUtilities
+  
+    - name: cd ./master-src and execute script to create PR
+      if: ${{env.EXISTING_PR_FOR_BUMP_NG == 'false' && env.BUMP_NG == 'true' }}
+      run: |
         cd master-src
         node scriptUtilities/bump-ng-and-create-PR.js
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-   
-
