@@ -28,7 +28,7 @@ const main = () => {
     shellCommand(`git branch ${branchName}`);
     shellCommand(`git checkout ${branchName}`);
 
-    let packageJson = require('../package.json');
+    let packageJson = require('../../package.json');
     packageJson.devDependencies["@angular/common"] = newVersion;
     packageJson.devDependencies["@angular/compiler"] = newVersion;
     packageJson.devDependencies["@angular/core"] = newVersion;
