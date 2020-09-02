@@ -7,7 +7,7 @@ on:
 jobs:
      
   create-BUMP_NG-PR:
-    name: create-new-BUMP_NG-if-update-required
+    name: create-BUMP_NG-PR
     runs-on: ubuntu-latest
 
     steps:
@@ -47,15 +47,16 @@ jobs:
         ref: master
         path: master-src
 
-    - name: copy ./scriptUtilities to ./master-src
+    - name: copy ./scriptUtilities to ./master-src/temp
       if: ${{env.EXISTING_PR_FOR_BUMP_NG == 'false' && env.BUMP_NG == 'true' }}
       run: |
-        cp -R ./scriptUtilities master-src/scriptUtilities
+        mkdir master-src/temp
+        cp -R -v ./scriptUtilities master-src/temp
   
-    - name: cd ./master-src and execute script to create PR
+    - name: cd ./master-src/temp and execute create PR script
       if: ${{env.EXISTING_PR_FOR_BUMP_NG == 'false' && env.BUMP_NG == 'true' }}
       run: |
-        cd master-src
-        node scriptUtilities/bump-ng-and-create-PR.js
+        cd master-src/temp
+        node bump-ng-and-create-PR.js
       env:
         GITHUB_TOKEN: ${{ secrets.BOT_PAT }}
