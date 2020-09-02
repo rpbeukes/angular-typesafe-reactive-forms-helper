@@ -75,4 +75,4 @@ jobs:
         cd master-src
         node scriptUtilities/bump-ng-and-create-PR.js
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.BOT_PAT }}
