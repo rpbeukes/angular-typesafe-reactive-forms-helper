@@ -43,7 +43,7 @@ jobs:
     - name: get list of pending PRs and search for a dependabot PR which will bump angular version
       run: npm run is-ng-bump-required 
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.BOT_PAT }}
     
     # - name: print when EXISTING_PR_FOR_BUMP_NG=TRUE
     #   if: ${{env.EXISTING_PR_FOR_BUMP_NG == 'true'}}
