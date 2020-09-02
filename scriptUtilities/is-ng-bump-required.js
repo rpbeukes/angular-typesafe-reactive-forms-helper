@@ -1,5 +1,5 @@
-const shelljs = require('shelljs');
 const { UNIQUE_STR } = require('./uniqueStr')
+const { shellCommand } = require('./utils')
 
 const main = () => {
     let ngCurrentVersion;
@@ -48,14 +48,6 @@ const main = () => {
     console.log('process.env.NEW_NG_VER', process.env.NEW_NG_VER);
 
 };
-
-const shellCommand = (command) => {
-    console.log(`> ${command}`);
-    const r = shelljs.exec(command);
-    
-    if (r.code && r.stderr) throw Error(r.stderr);
-    return r.stdout;
-}
 
 const isDependabotPRWhichBumpsAngular = (prTitleWithCommas) => {
     const isDependabotPR = prTitleWithCommas.includes('dependencies') && prTitleWithCommas.includes('[bot]');

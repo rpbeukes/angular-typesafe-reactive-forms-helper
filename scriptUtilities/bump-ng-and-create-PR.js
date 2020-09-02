@@ -1,5 +1,4 @@
 const fs = require('fs');
-let packageJson = require('../package.json');
 const { UNIQUE_STR } = require('./uniqueStr')
 const { shellCommand } = require('./utils')
 
@@ -29,6 +28,7 @@ const main = () => {
     shellCommand(`git branch ${branchName}`);
     shellCommand(`git checkout ${branchName}`);
 
+    let packageJson = require('../package.json');
     packageJson.devDependencies["@angular/common"] = newVersion;
     packageJson.devDependencies["@angular/compiler"] = newVersion;
     packageJson.devDependencies["@angular/core"] = newVersion;
@@ -37,7 +37,7 @@ const main = () => {
 
     fs.writeFile('package.json', JSON.stringify(packageJson, null, 2), (err) => {
         if (err) throw err;
-        console.log(`Success - check package.json`);
+        console.log(`Success - check package.json\n`);
         shellCommand(`cat package.json`);
 
         shellCommand('npm install');

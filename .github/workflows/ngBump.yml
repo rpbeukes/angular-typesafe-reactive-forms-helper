@@ -6,14 +6,9 @@ on:
 
 jobs:
      
-  create-new-BUMP_NG-if-update-required:
+  create-BUMP_NG-PR:
     name: create-new-BUMP_NG-if-update-required
     runs-on: ubuntu-latest
-    # env:
-    #   BUMP_NG: false
-    #   EXISTING_PR_FOR_BUMP_NG: false
-    #   CURRENT_NG_VER: '-'
-    #   NEW_NG_VER: '-'
 
     steps:
     # - name: print GitHub context
@@ -45,29 +40,17 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.BOT_PAT }}
     
-    # - name: print when EXISTING_PR_FOR_BUMP_NG=TRUE
-    #   if: ${{env.EXISTING_PR_FOR_BUMP_NG == 'true'}}
-    #   run: echo 'print EXISTING_PR_FOR_BUMP_NG true!'
-
-    # - name: print when EXISTING_PR_FOR_BUMP_NG=false
-    #   if: ${{env.EXISTING_PR_FOR_BUMP_NG == 'false'}}
-    #   run: echo 'print EXISTING_PR_FOR_BUMP_NG false!'
-
-    #- name: create new PR when existing dependabot PR detected        
-    #  if: env.EXISTING_PR_FOR_BUMP_NG && env.BUMP_NG 
-    #  run: echo This works!
-
     - uses: actions/checkout@v2
+      name: checkout master to ./master-src
       if: ${{env.EXISTING_PR_FOR_BUMP_NG == 'false' && env.BUMP_NG == 'true' }}
       with:
         ref: master
         path: master-src
 
-    - name: copy script files to ./master-src
+    - name: copy ./scriptUtilities to ./master-src
       if: ${{env.EXISTING_PR_FOR_BUMP_NG == 'false' && env.BUMP_NG == 'true' }}
       run: |
-        cp -R scriptUtilities/bump-ng-and-create-PR.js master-src/scriptUtilities
-        cp -R scriptUtilities/uniqueStr.js master-src/scriptUtilities
+        cp -R ./scriptUtilities master-src/scriptUtilities
   
     - name: cd ./master-src and execute script to create PR
       if: ${{env.EXISTING_PR_FOR_BUMP_NG == 'false' && env.BUMP_NG == 'true' }}
