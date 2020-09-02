@@ -1,7 +1,7 @@
 const fs = require('fs');
 let packageJson = require('../package.json');
-const shelljs = require('shelljs');
-const { uniqueStr } = require('./uniqueStr')
+const { UNIQUE_STR } = require('./uniqueStr')
+const { shellCommand } = require('./utils')
 
 const main = () => {
     if (!process.env.BUMP_NG) {
@@ -51,16 +51,8 @@ const main = () => {
         shellCommand(`git push --set-upstream origin ${branchName}`);
         // https://github.com/github/hub
         // auto create the new PR
-        shellCommand(`hub pull-request -m "bump ng v${newVersion} ${uniqueStr}"`);
+        shellCommand(`hub pull-request -m "bump ng v${newVersion} ${UNIQUE_STR}"`);
     });
 };
-
-const shellCommand = (command) => {
-    console.log(`> ${command}`);
-    const r = shelljs.exec(command);
-    
-    if (r.code && r.stderr) throw Error(r.stderr);
-    return r.stdout;
-}
 
 main();

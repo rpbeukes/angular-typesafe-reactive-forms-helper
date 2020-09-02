@@ -1,5 +1,5 @@
 const shelljs = require('shelljs');
-const { uniqueStr } = require('./uniqueStr')
+const { UNIQUE_STR } = require('./uniqueStr')
 
 const main = () => {
     let ngCurrentVersion;
@@ -8,7 +8,7 @@ const main = () => {
     console.log('process.env.BUMP_NG', process.env.BUMP_NG);
     console.log('process.env.EXISTING_PR_FOR_BUMP_NG', process.env.EXISTING_PR_FOR_BUMP_NG);
 
-    const existingPRDetected = shellCommand(`hub pr list --format="%t,%au,%l%n" | grep "${uniqueStr}"`);
+    const existingPRDetected = shellCommand(`hub pr list --format="%t,%au,%l%n" | grep "${UNIQUE_STR}"`);
     if (existingPRDetected) {
         console.log(`Bump already detected: \n${existingPRDetected}\nNo action required.`);
         process.env.BUMP_NG = false;
@@ -46,15 +46,6 @@ const main = () => {
     console.log('process.env.EXISTING_PR_FOR_BUMP_NG', process.env.EXISTING_PR_FOR_BUMP_NG);
     console.log('process.env.CURRENT_NG_VER', process.env.CURRENT_NG_VER);
     console.log('process.env.NEW_NG_VER', process.env.NEW_NG_VER);
-
-    // const state = {
-    //     BUMP_NG: process.env.BUMP_NG,
-    //     EXISTING_PR_FOR_BUMP_NG: "true", /*process.env.EXISTING_PR_FOR_BUMP_NG,*/
-    //     CURRENT_NG_VER: process.env.CURRENT_NG_VER,
-    //     NEW_NG_VER: process.env.NEW_NG_VER,
-    // };
-
-    // shellCommand(`echo "${JSON.stringify(state, null, 2)}" > state.json`);
 
 };
 
