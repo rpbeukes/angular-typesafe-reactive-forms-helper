@@ -47,16 +47,15 @@ jobs:
         ref: master
         path: master-src
 
-    - name: copy ./scriptUtilities to ./master-src/temp
+    - name: copy ./scriptUtilities to ./master-src
       if: ${{env.EXISTING_PR_FOR_BUMP_NG == 'false' && env.BUMP_NG == 'true' }}
       run: |
-        mkdir master-src/temp
-        cp -R -v ./scriptUtilities master-src/temp
+        cp -R -v ./scriptUtilities master-src
   
-    - name: cd ./master-src/temp/scriptUtilities and execute create PR script
+    - name: cd ./master-src/scriptUtilities and execute create PR script
       if: ${{env.EXISTING_PR_FOR_BUMP_NG == 'false' && env.BUMP_NG == 'true' }}
       run: |
-        cd master-src/temp/scriptUtilities
-        node bump-ng-and-create-PR.js
+        cd master-src
+        node scriptUtilities/bump-ng-and-create-PR.js
       env:
         GITHUB_TOKEN: ${{ secrets.BOT_PAT }}
