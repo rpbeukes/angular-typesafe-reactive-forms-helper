@@ -53,10 +53,10 @@ jobs:
         mkdir master-src/temp
         cp -R -v ./scriptUtilities master-src/temp
   
-    - name: cd ./master-src/temp and execute create PR script
+    - name: cd ./master-src/temp/scriptUtilities and execute create PR script
       if: ${{env.EXISTING_PR_FOR_BUMP_NG == 'false' && env.BUMP_NG == 'true' }}
       run: |
-        cd master-src/temp
+        cd master-src/temp/scriptUtilities
         node bump-ng-and-create-PR.js
       env:
         GITHUB_TOKEN: ${{ secrets.BOT_PAT }}
