@@ -1,6 +1,6 @@
 const fs = require('fs');
 let packageJson = require('../package.json');
-const shelljs = require('shelljs');
+
 
 const main = () => {
     const ngCurrentVersion = packageJson.devDependencies["@angular/common"];
