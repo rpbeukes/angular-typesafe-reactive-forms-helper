@@ -98,7 +98,7 @@
     "@angular/platform-browser": "~10.0.12",
     "@types/jest": "^26.0.0",
     "@types/shelljs": "^0.8.7",
-    "dtslint": "^3.6.12",
+    "dtslint": "^4.0.0",
     "jest": "^26.0.1",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.0.2",
