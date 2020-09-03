@@ -22,13 +22,22 @@ const main = () => {
     console.log('process.env.NEW_NG_VER:', process.env.NEW_NG_VER);
 
     const newVersion = process.env.NEW_NG_VER;
+
+    let packageJson = require('../package.json');
+    
+    if (packageJson.devDependencies["@angular/common"] === newVersion){
+        console.log(`No need to create PR, master's package.json matches v${newVersion}`);
+        shellCommand(`cat package.json`);
+        return;
+    }
+
+    // create branch, update package.json, commit changes, push to origin, create PR
     const branchName = 'bump-ng';
 
     shellCommand(`git branch`);
     shellCommand(`git branch ${branchName}`);
     shellCommand(`git checkout ${branchName}`);
 
-    let packageJson = require('../package.json');
     packageJson.devDependencies["@angular/common"] = newVersion;
     packageJson.devDependencies["@angular/compiler"] = newVersion;
     packageJson.devDependencies["@angular/core"] = newVersion;
