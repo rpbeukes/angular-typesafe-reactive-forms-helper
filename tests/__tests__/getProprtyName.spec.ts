@@ -2,19 +2,24 @@ import { getPropertyName } from '../../src/getPropertyName';
 
 const expectedProperty = 'hero.address.postcode';
 
+const testScenarios = [
+  'function(x) { return x.hero.address.postcode;}',
+  'function(x) { return x.hero.address.postcode; }',
+  'function(x){return x.hero.address.postcode;}',
+  'function(t){return t.hero.address.postcode}', 
+  'function(t){return t.hero.address.postcode} ', 
+  'function(t){return t.hero.address.postcode }', 
+  'function(t){return t.hero.address.postcode ;}',
+  'x => x.hero.address.postcode',
+  'function(x){cov_2imlqdpfhj.f[46]++;cov_2imlqdpfhj.s[149]++;return x.hero.address.postcode;}',
+];
+
 describe(`getPropertyName should return '${expectedProperty}' when`, () => {
-  test('function(x) { return x.hero.address.postcode;}', () => {
-    const testScenario = 'function(x) { return x.hero.address.postcode;}';
-    expect(getPropertyName(testScenario)).toBe(expectedProperty);
-  });
-
-  test('x => x.hero.address.postcode', () => {
-    const testScenario = 'x => x.hero.address.postcode';
-    expect(getPropertyName(testScenario)).toBe(expectedProperty);
-  });
-
-  test('function(x){cov_2imlqdpfhj.f[46]++;cov_2imlqdpfhj.s[149]++;return x.hero.address.postcode;}', () => {
-    const testScenario = 'function(x){cov_2imlqdpfhj.f[46]++;cov_2imlqdpfhj.s[149]++;return x.hero.address.postcode;}';
-    expect(getPropertyName(testScenario)).toBe(expectedProperty);
-  });
+  test.each(testScenarios)(
+    "%p",
+    (testScenario) => {
+      expect(getPropertyName(testScenario)).toBe(expectedProperty);
+    }
+  );
 });
+

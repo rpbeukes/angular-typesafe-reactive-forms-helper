@@ -2,7 +2,7 @@ export const getPropertyName = (propertyFunction: string) => {
   let properties: string[] = [];
 
   if (propertyFunction) {
-    if (propertyFunction.toString().indexOf('=>') !== -1) {
+    if (propertyFunction.toString().includes('=>')) {
       // propertyFunction.toString() sample value:
       // x => x.hero.address.postcode
       // we need the 'hero.address.postcode'
@@ -19,9 +19,9 @@ export const getPropertyName = (propertyFunction: string) => {
       // we need the 'hero.address.postcode'
       // for gr.get('hero.address.postcode') function
 
-      const step1 = propertyFunction && propertyFunction.match(/(return [;.a-zA-Z0-9 ]+)/gi);
-      const step2 = step1 && step1[0].match(/(?![. ])([a-z0-9_]+)(?=[};.])/gi);
-      properties = (step2 && step2.splice(1)) || [];
+      const step1 = propertyFunction.match(/return\s+([.a-zA-Z0-9]+)/i); // get the return part of the propertyFunction eg: return x.hero.address.postcode;
+	    const step2 = step1 && step1[1].match(/([a-z0-9_]+)/gi); // split the step1[1] text to return an array eg: ['x','hero','address','postcode']
+	    properties = (step2 && step2.splice(1)) || [];
     }
   }
 
