@@ -8,4 +8,8 @@ const shellCommand = (command) => {
     return r.stdout;
 }
 
-module.exports = { shellCommand }; 
+const shellCommandAddEnvironmentVariable = (variableName, value) => {
+    shellCommand(`echo "${variableName}=${value}" >> $GITHUB_ENV`);
+}
+
+module.exports = { shellCommand, shellCommandAddEnvironmentVariable }; 

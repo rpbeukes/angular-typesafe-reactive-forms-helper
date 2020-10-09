@@ -1,5 +1,5 @@
 const { UNIQUE_STR } = require('./uniqueStr')
-const { shellCommand } = require('./utils')
+const { shellCommand, shellCommandAddEnvironmentVariable } = require('./utils')
 
 const main = () => {
     let ngCurrentVersion;
@@ -12,9 +12,9 @@ const main = () => {
     if (existingPRDetected) {
         console.log(`Bump already detected: \n${existingPRDetected}\nNo action required.`);
         process.env.BUMP_NG = false;
-        shellCommand('echo "BUMP_NG=false" >> $GITHUB_ENV');
+        shellCommandAddEnvironmentVariable("BUMP_NG", "false");
         process.env.EXISTING_PR_FOR_BUMP_NG = true;
-        shellCommand('echo "EXISTING_PR_FOR_BUMP_NG=true" >> $GITHUB_ENV');
+        shellCommandAddEnvironmentVariable("EXISTING_PR_FOR_BUMP_NG", "true");
         return;
     }
 
@@ -28,14 +28,14 @@ const main = () => {
             if (bumpVersions) {
                 [ngCurrentVersion , newVersion] = bumpVersions.split(' to ');
                 process.env.CURRENT_NG_VER = ngCurrentVersion;
-                shellCommand(`echo "CURRENT_NG_VER=${ngCurrentVersion}" >> $GITHUB_ENV`);
+                shellCommandAddEnvironmentVariable("CURRENT_NG_VER", ngCurrentVersion);
        
                 if (ngCurrentVersion && newVersion) {
                     newVersion = `~${newVersion}`
                     process.env.NEW_NG_VER = newVersion;
-                    shellCommand(`echo "NEW_NG_VER=${newVersion}" >> $GITHUB_ENV`);
+                    shellCommandAddEnvironmentVariable("NEW_NG_VER", newVersion);
                     process.env.BUMP_NG = true;
-                    shellCommand('echo "BUMP_NG=true" >> $GITHUB_ENV');
+                    shellCommandAddEnvironmentVariable("BUMP_NG", "true");
                     break;
                 }
             }
