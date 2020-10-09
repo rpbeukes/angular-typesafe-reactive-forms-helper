@@ -9,7 +9,11 @@ const shellCommand = (command) => {
 }
 
 const shellCommandAddEnvironmentVariable = (variableName, value) => {
-    shellCommand(`echo "${variableName}=${value}" >> $GITHUB_ENV`);
+    if (process.env.GITHUB_ENV) {
+        shellCommand(`echo "${variableName}=${value}" >> $GITHUB_ENV`);
+    } else {
+        console.log('No $GITHUB_ENV detected, most likely you are running locally.')
+    }
 }
 
 module.exports = { shellCommand, shellCommandAddEnvironmentVariable }; 
