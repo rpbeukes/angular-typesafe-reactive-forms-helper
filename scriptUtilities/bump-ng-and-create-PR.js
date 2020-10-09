@@ -32,7 +32,7 @@ const main = () => {
     }
 
     // create branch, update package.json, commit changes, push to origin, create PR
-    const branchName = 'bump-ng-test';
+    const branchName = 'bump-ng';
 
     shellCommand(`git branch`);
     shellCommand(`git branch ${branchName}`);
