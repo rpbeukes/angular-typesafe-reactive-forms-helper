@@ -22,13 +22,13 @@ jobs:
     - name: Set vars
       run: |
         export BUMP_NG=false
-        echo "::set-env name=BUMP_NG::$BUMP_NG"
+        echo "BUMP_NG=false" >> $GITHUB_ENV
         export EXISTING_PR_FOR_BUMP_NG=false
-        echo "::set-env name=EXISTING_PR_FOR_BUMP_NG::$EXISTING_PR_FOR_BUMP_NG"
+        echo "EXISTING_PR_FOR_BUMP_NG=false" >> $GITHUB_ENV
         export CURRENT_NG_VER='-'
-        echo "::set-env name=CURRENT_NG_VER::$CURRENT_NG_VER"
+        echo "CURRENT_NG_VER='-'" >> $GITHUB_ENV
         export NEW_NG_VER='-'
-        echo "::set-env name=NEW_NG_VER::$NEW_NG_VER"
+        echo "NEW_NG_VER='-'" >> $GITHUB_ENV
 
     - uses: actions/checkout@v2
 
