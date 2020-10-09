@@ -12,9 +12,9 @@ const main = () => {
     if (existingPRDetected) {
         console.log(`Bump already detected: \n${existingPRDetected}\nNo action required.`);
         process.env.BUMP_NG = false;
-        shellCommand('echo "::set-env name=BUMP_NG::false"')
+        shellCommand('echo "BUMP_NG=false" >> $GITHUB_ENV');
         process.env.EXISTING_PR_FOR_BUMP_NG = true;
-        shellCommand('echo "::set-env name=EXISTING_PR_FOR_BUMP_NG::true"')
+        shellCommand('echo "EXISTING_PR_FOR_BUMP_NG=true" >> $GITHUB_ENV');
         return;
     }
 
@@ -28,14 +28,14 @@ const main = () => {
             if (bumpVersions) {
                 [ngCurrentVersion , newVersion] = bumpVersions.split(' to ');
                 process.env.CURRENT_NG_VER = ngCurrentVersion;
-                shellCommand(`echo "::set-env name=CURRENT_NG_VER::${ngCurrentVersion}"`)
+                shellCommand(`echo "CURRENT_NG_VER=${ngCurrentVersion}" >> $GITHUB_ENV`);
        
                 if (ngCurrentVersion && newVersion) {
                     newVersion = `~${newVersion}`
                     process.env.NEW_NG_VER = newVersion;
-                    shellCommand(`echo "::set-env name=NEW_NG_VER::${newVersion}"`)
+                    shellCommand(`echo "NEW_NG_VER=${newVersion}" >> $GITHUB_ENV`);
                     process.env.BUMP_NG = true;
-                    shellCommand('echo "::set-env name=BUMP_NG::true"')
+                    shellCommand('echo "BUMP_NG=true" >> $GITHUB_ENV');
                     break;
                 }
             }

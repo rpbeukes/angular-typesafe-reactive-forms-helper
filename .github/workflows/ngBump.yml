@@ -22,13 +22,13 @@ jobs:
     - name: Set vars
       run: |
         export BUMP_NG=false
-        echo "::set-env name=BUMP_NG::$BUMP_NG"
+        echo "BUMP_NG=false" >> $GITHUB_ENV
         export EXISTING_PR_FOR_BUMP_NG=false
-        echo "::set-env name=EXISTING_PR_FOR_BUMP_NG::$EXISTING_PR_FOR_BUMP_NG"
+        echo "EXISTING_PR_FOR_BUMP_NG=false" >> $GITHUB_ENV
         export CURRENT_NG_VER='-'
-        echo "::set-env name=CURRENT_NG_VER::$CURRENT_NG_VER"
+        echo "CURRENT_NG_VER='-'" >> $GITHUB_ENV
         export NEW_NG_VER='-'
-        echo "::set-env name=NEW_NG_VER::$NEW_NG_VER"
+        echo "NEW_NG_VER='-'" >> $GITHUB_ENV
 
     - uses: actions/checkout@v2
 
@@ -52,10 +52,10 @@ jobs:
       run: |
         cp -R -v ./scriptUtilities master-src
   
-    - name: cd ./master-src/scriptUtilities and execute create PR script
-      if: ${{env.EXISTING_PR_FOR_BUMP_NG == 'false' && env.BUMP_NG == 'true' }}
-      run: |
-        cd master-src
-        node scriptUtilities/bump-ng-and-create-PR.js
-      env:
-        GITHUB_TOKEN: ${{ secrets.BOT_PAT }}
+    # - name: cd ./master-src/scriptUtilities and execute create PR script
+    #   if: ${{env.EXISTING_PR_FOR_BUMP_NG == 'false' && env.BUMP_NG == 'true' }}
+    #   run: |
+    #     cd master-src
+    #     node scriptUtilities/bump-ng-and-create-PR.js
+    #   env:
+    #     GITHUB_TOKEN: ${{ secrets.BOT_PAT }}
