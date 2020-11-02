@@ -1,5 +1,6 @@
 node_modules
 /lib
+/dist
 .history
 package
 angular-typesafe-reactive-forms-helper-*.tgz
