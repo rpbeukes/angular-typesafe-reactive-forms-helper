@@ -2,12 +2,12 @@
   "name": "angular-typesafe-reactive-forms-helper",
   "version": "1.8.2",
   "description": "Use angular reactive forms with type-safety.",
-  "main": "lib/angularTypesafeReactiveFormsHelper.js",
-  "types": "lib/angularTypesafeReactiveFormsHelper.d.ts",
+  "main": "dist/src/angularTypesafeReactiveFormsHelper.d.ts",
+  "types": "dist/src/angularTypesafeReactiveFormsHelper.d.ts",
   "scripts": {
     "build": "npm-run-all --sequential build:**",
-    "build:remove-lib": "rimraf ./lib",
-    "build:tsc": "tsc",
+    "build:remove-lib": "rimraf ./dist",
+    "build:packagr": "npm run packagr",
     "test": "npm-run-all --sequential test:**",
     "test:dtslint": "dtslint --expectOnly ./tests/__typeTests__",
     "test:jest": "jest --config jestconfig.json",
@@ -17,6 +17,7 @@
     "prepublishOnly": "npm test && npm run lint",
     "perversion": "npm run lint",
     "version": "npm run format",
+    "packagr": "ng-packagr --project ng-package.json",
     "package-version-published": "npm show ./ version",
     "package-json-version": "cat package.json | grep version | head -1 | awk -F: '{print $2}' | sed 's/[\",]//g' | sed 's/[ ]//g'",
     "update-latest-integration-tests": "npm-run-all --sequential update-latest-integration-tests:**",
@@ -25,7 +26,7 @@
     "update-latest-integration-tests:ng8": "cp -R ./integrationTests/ng10/test-package-with-ng10/src/app/form/testform.component.spec.ts ./integrationTests/ng10/test-package-with-ng10/src/app/form/testform.component.ts ./integrationTests/ng10/test-package-with-ng10/src/app/form/testform.component.html ./integrationTests/ng8/test-package-with-ng8/src/app/form/",
     "update-latest-integration-tests:ng8:replace-ViewChild": "node ./buildScripts/replace-ng8-component-viewchild.js ./integrationTests/ng8/test-package-with-ng8/src/app/form/testform.component.ts",
     "update-latest-integration-tests:ng9": "cp -R ./integrationTests/ng10/test-package-with-ng10/src/app/form/testform.component.spec.ts ./integrationTests/ng10/test-package-with-ng10/src/app/form/testform.component.ts ./integrationTests/ng10/test-package-with-ng10/src/app/form/testform.component.html ./integrationTests/ng9/test-package-with-ng9/src/app/form/",
-    "pack-tgz": "npm pack",
+    "pack-tgz": "npm run build && npm pack ./dist && npm run integration-tests:copy-to-tests && npm run integration-tests:install:ng10 && npm run start:ng10",
     "pack-to-dist-directory": "npm run pack-tgz && rimraf ./dist && mkdir ./dist && cp -R angular-typesafe-reactive-forms-helper*.tgz ./dist",
     "unpack-tgz": "rimraf ./package && tar -xzvf *.tgz",
     "remove-all-tgz": "rm -rf angular-typesafe-reactive-forms-helper-*.tgz",
@@ -60,7 +61,7 @@
     "start:ng7": "cd ./integrationTests/ng7/test-package-with-ng7 && npm run build && npm run start -- --port 4207",
     "start:ng8": "cd ./integrationTests/ng8/test-package-with-ng8 && npm run build && npm run start -- --port 4208",
     "start:ng9": "cd ./integrationTests/ng9/test-package-with-ng9 && npm run build && npm run start -- --port 4209",
-    "start:ng10": "cd ./integrationTests/ng10/test-package-with-ng10 && npm run build && npm run start -- --port 4210",
+    "start:ng10": "cd ./integrationTests/ng10/test-package-with-ng10 && npm run start -- --port 4210",
     "test-karma:ng6-deprecated": "cd ./integrationTests/ng6/test-package-with-ng6 && npm run test",
     "test-karma:ng7": "cd ./integrationTests/ng7/test-package-with-ng7 && npm run test",
     "test-karma:ng8": "cd ./integrationTests/ng8/test-package-with-ng8 && npm run test",
@@ -94,6 +95,7 @@
   "devDependencies": {
     "@angular/common": "~10.2.1",
     "@angular/compiler": "~10.2.1",
+    "@angular/compiler-cli": "^10.2.1",
     "@angular/core": "~10.2.1",
     "@angular/forms": "~10.2.1",
     "@angular/platform-browser": "~10.2.1",
@@ -101,6 +103,7 @@
     "@types/shelljs": "^0.8.7",
     "dtslint": "^4.0.0",
     "jest": "^26.0.1",
+    "ng-packagr": "^10.1.2",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.0.2",
     "rimraf": "^3.0.0",
@@ -112,8 +115,5 @@
     "tslint": "^6.1.1",
     "tslint-config-prettier": "^1.18.0",
     "typescript": "^4.0.2"
-  },
-  "files": [
-    "lib/**/*"
-  ]
+  }
 }
