@@ -56,7 +56,7 @@ jobs:
         run: npm run integration-tests:test-ci:${{ matrix.ng-version }}
 
       - name: run end-to-end tests
-        run: npm run integration-tests:e2e:${{ matrix.ng-version }}:prod
+        run: npm run integration-tests:e2e-ci:${{ matrix.ng-version }}:prod
 
   create-artifact:
     needs: [build, integration-test]
