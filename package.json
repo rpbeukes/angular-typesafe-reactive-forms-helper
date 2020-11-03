@@ -51,7 +51,7 @@
     "integration-tests:build:ng9": "cd ./integrationTests/ng9/test-package-with-ng9 && npm run build",
     "integration-tests:version:ng9": "cd ./integrationTests/ng9/test-package-with-ng9 && npm run ng -- --version",
     "integration-tests:test-ci:ng9": "cd ./integrationTests/ng9/test-package-with-ng9 && export CI=true && npm run test -- --watch=false",
-    "integration-tests:e2e:ng9:prod": "cd ./integrationTests/ng9/test-package-with-ng9 && export CI=true && npm run e2e -- --prod",
+    "integration-tests:e2e-ci:ng9:prod": "cd ./integrationTests/ng9/test-package-with-ng9 && export CI=true && npm run e2e -- --prod",
     "integration-tests:install:ng10": "cd ./integrationTests/ng10/test-package-with-ng10 && npm i && npm i ../../angular-typesafe-reactive-forms-helper.tgz",
     "integration-tests:list-installs:ng10": "cd ./integrationTests/ng10/test-package-with-ng10 && (npm ls --prod --depth 0 || exit 0) && (npm ls --dev --depth 0 || exit 0)",
     "integration-tests:build:ng10": "cd ./integrationTests/ng10/test-package-with-ng10 && npm run build",
