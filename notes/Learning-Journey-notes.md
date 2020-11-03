@@ -55,12 +55,14 @@ tsconfig.json:
 
 [guide-to-formarray](https://netbasal.com/angular-reactive-forms-the-ultimate-guide-to-formarray-3adbe6b0b61a) - Thanx Netanel Basal
 
-## Configure E2E tests in your CI pipeline
+## Configure E2E tests in your CI pipeline with Puppeteer
 [How to setup Angular e2e tests on VSTS CI Builds using Puppeteer](https://medium.com/@danharris_io/how-to-setup-angular-e2e-tests-on-vsts-ci-be0872f9dc31) (Thanks to Dan Harris)
+
+[StackOverflow](https://stackoverflow.com/questions/51536244/how-to-use-puppeteer-in-an-angular-application)
 
 Add packages:
 ```
-npm i -D jasmine-reporters puppeteer protractor-console-plugin
+npm i -D jasmine-reporters puppeteer @types/puppeteer protractor-console-plugin
 ```
 
 Update `protractor.conf.js`:
@@ -77,6 +79,7 @@ Update `protractor.conf.js` within the `exports.config object`, add new property
 capabilities: {
   browserName: "chrome",
 + chromeOptions: {
++   args: ['--headless'],  
 +   binary: process.env.CHROME_BIN
 + }
 },
