@@ -5,7 +5,7 @@
 
 `npx @angular/cli@6.2.1 new test-package-with-ng6`
 
-### Add the Reactive Test Forms to ng6 app
+### Add the Reactive Test Forms to ngX app
 
 1. delete content `~/src/app/app.component.html` and replace with `<router-outlet></router-outlet>`
 2. delete `~/src/app/app.component.spec.ts`
@@ -54,6 +54,31 @@ export class AppComponent {
 9.  change `karma.conf.js` to support `puppeteer` so that the test can run on build server.
    - `npm i puppeteer -D`
 11. Update the tests
+12. Update `protractor.conf.js`
+13. add end-to-end tests `app.e2e-spec.ts`:
+
+```
+npm i -D jasmine-reporters puppeteer @types/puppeteer protractor-console-plugin
+```
+
+```
+import * as puppeteer from 'puppeteer';
+
+describe('End-to-End tests', () => {
+  it('should render app-test-form', async () => {
+    const browser = await puppeteer.launch();
+    const page = await browser.newPage();
+
+    await page.goto('http://localhost:4200');
+
+    const headerEl = await page.$('app-test-form h1');
+    const text = await page.evaluate(element => element.textContent, headerEl);
+    expect(text).toEqual('test-package-with-ng10');
+    await browser.close();
+  });
+});
+
+```
 
 ### Some issues I found in ng6
 
