@@ -32,6 +32,7 @@
     "@types/node": "^12.11.1",
     "codelyzer": "^6.0.0-next.1",
     "jasmine-core": "~3.5.0",
+    "jasmine-reporters": "^2.3.2",
     "jasmine-spec-reporter": "~5.0.0",
     "karma": "~5.0.0",
     "karma-chrome-launcher": "~3.1.0",
@@ -39,7 +40,8 @@
     "karma-jasmine": "~3.3.0",
     "karma-jasmine-html-reporter": "^1.5.0",
     "protractor": "~7.0.0",
-    "puppeteer": "^4.0.1",
+    "protractor-console-plugin": "^0.1.1",
+    "puppeteer": "^5.4.1",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
     "typescript": "~3.9.5"
