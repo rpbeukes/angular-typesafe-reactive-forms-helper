@@ -9,7 +9,7 @@ describe('End-to-End tests', () => {
 
     const headerEl = await page.$('app-test-form h1');
     const text = await page.evaluate(element => element.textContent, headerEl);
-    expect(text).toEqual('test-package-with-ng10');
+    expect(text).toEqual('test-package-with-ng9');
     await browser.close();
   });
 });
