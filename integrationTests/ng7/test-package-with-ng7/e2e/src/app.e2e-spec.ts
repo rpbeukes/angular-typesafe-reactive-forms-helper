@@ -1,24 +1,23 @@
-import * as puppeteer from 'puppeteer';
+import { AppPage } from './app.po';
+import { browser, logging } from 'protractor';
 
-describe('End-to-End tests', () => {
-  it('should render app-test-form', async () => {
-    process.env.NG_VERSION = process.env.NG_VERSION || 'process-env-VERSION-not-set';
+describe('workspace-project App', () => {
+  let page: AppPage;
 
-    const browser = await puppeteer.launch();
-    const page = await browser.newPage();
+  beforeEach(() => {
+    page = new AppPage();
+  });
 
-    await page.goto('http://localhost:4200');
+  it('should display welcome message', () => {
+    page.navigateTo();
+    expect(page.getTitleText()).toEqual('Welcome to test-package-with-ng7!');
+  });
 
-    const headerEl = await page.$('app-test-form h1');
-
-    if (!headerEl) {
-      await browser.close();
-      throw Error('Did not find \'app-test-form h1\'. More than likely the component did not render as expected :(');
-    }
-
-    const text = await page.evaluate(element => element && element.textContent, headerEl);
-    expect(text).toEqual(`test-package-with-ng${process.env.NG_VERSION}`);
-
-    await browser.close();
+  afterEach(async () => {
+    // Assert that there are no errors emitted from the browser
+    const logs = await browser.manage().logs().get(logging.Type.BROWSER);
+    expect(logs).not.toContain(jasmine.objectContaining({
+      level: logging.Level.SEVERE,
+    } as logging.Entry));
   });
 });
