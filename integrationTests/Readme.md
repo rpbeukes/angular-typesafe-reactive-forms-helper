@@ -54,30 +54,49 @@ export class AppComponent {
 9.  change `karma.conf.js` to support `puppeteer` so that the test can run on build server.
    - `npm i puppeteer -D`
 11. Update the tests
-12. Update `protractor.conf.js`
-13. add end-to-end tests `app.e2e-spec.ts`:
+12. Configure headless e2e tests 
 
+```
+npm run update-latest-integration-tests:ng9:e2e
+```
+This will copy the latest version integration tests eg: ng10, and copy it to all older versions.
+- Update `protractor.conf.js`
+- add end-to-end tests `app.e2e-spec.ts`
+- make sure that the new integration test ng version's devDependencies has `"jasmine-spec-reporter": "~5.0.0"`.
 ```
 npm i -D jasmine-reporters puppeteer @types/puppeteer protractor-console-plugin
 ```
-
+Content of `app.e2e-spec.ts` should be something like this:
 ```
 import * as puppeteer from 'puppeteer';
 
 describe('End-to-End tests', () => {
   it('should render app-test-form', async () => {
+    process.env.NG_VERSION = process.env.NG_VERSION || 'process-env-VERSION-not-set';
+
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
 
     await page.goto('http://localhost:4200');
 
     const headerEl = await page.$('app-test-form h1');
-    const text = await page.evaluate(element => element.textContent, headerEl);
-    expect(text).toEqual('test-package-with-ng10');
+
+    if (!headerEl) {
+      await browser.close();
+      throw Error('Did not find \'app-test-form h1\'. More than likely the component did not render as expected :(');
+    }
+
+    const text = await page.evaluate(element => element && element.textContent, headerEl);
+    expect(text).toEqual(`test-package-with-ng${process.env.NG_VERSION}`);
+
     await browser.close();
   });
 });
+```
 
+Make sure you have a similar `npm script` to execute the e2e test in CI mode, change ng versions to match new version:
+```
+"integration-tests:e2e-ci:ng10:prod": "export NG_VERSION=10 && cd ./integrationTests/ng10/test-package-with-ng10 && export CI=true && npm run e2e -- --prod",
 ```
 
 ### Some issues I found in ng6
