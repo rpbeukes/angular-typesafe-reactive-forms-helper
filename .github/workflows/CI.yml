@@ -17,6 +17,9 @@ jobs:
       - name: list
         run: ls
 
+      - name: versions
+        run: echo Node `node -v` && echo npm `npm -v`
+
       - name: install dependencies
         run: npm install
 
