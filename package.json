@@ -44,7 +44,6 @@
     "integration-tests:build:ng7": "cd ./integrationTests/ng7/test-package-with-ng7 && npm run build",
     "integration-tests:version:ng7": "cd ./integrationTests/ng7/test-package-with-ng7 && npm run ng -- --version",
     "integration-tests:test-ci:ng7": "cd ./integrationTests/ng7/test-package-with-ng7 && export CI=true && npm run test -- --watch=false",
-    "integration-tests:e2e-ci:ng7:prod": "export NG_VERSION=7 && cd ./integrationTests/ng7/test-package-with-ng7 && export CI=true && npm run e2e -- --prod",
     "integration-tests:install:ng8": "cd ./integrationTests/ng8/test-package-with-ng8 && npm i && npm i ../../angular-typesafe-reactive-forms-helper.tgz",
     "integration-tests:list-installs:ng8": "cd ./integrationTests/ng8/test-package-with-ng8 && (npm ls --prod --depth 0 || exit 0) && (npm ls --dev --depth 0 || exit 0)",
     "integration-tests:build:ng8": "cd ./integrationTests/ng8/test-package-with-ng8 && npm run build",
