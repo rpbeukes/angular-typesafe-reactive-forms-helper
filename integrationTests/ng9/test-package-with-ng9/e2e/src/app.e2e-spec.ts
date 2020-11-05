@@ -1,7 +1,11 @@
 import * as puppeteer from 'puppeteer';
 
+
+
 describe('End-to-End tests', () => {
   it('should render app-test-form', async () => {
+    process.env.NG_VERSION = process.env.NG_VERSION || 'process-env-VERSION-not-set';
+
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
 
@@ -15,7 +19,7 @@ describe('End-to-End tests', () => {
     }
 
     const text = await page.evaluate(element => element?.textContent, headerEl);
-    expect(text).toEqual('test-package-with-ng9');
+    expect(text).toEqual(`test-package-with-ng${process.env.NG_VERSION}`);
 
     await browser.close();
   });
