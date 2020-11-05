@@ -1,23 +1,24 @@
-import { AppPage } from './app.po';
-import { browser, logging } from 'protractor';
+import * as puppeteer from 'puppeteer';
 
-describe('workspace-project App', () => {
-  let page: AppPage;
+describe('End-to-End tests', () => {
+  it('should render app-test-form', async () => {
+    process.env.NG_VERSION = process.env.NG_VERSION || 'process-env-VERSION-not-set';
 
-  beforeEach(() => {
-    page = new AppPage();
-  });
+    const browser = await puppeteer.launch();
+    const page = await browser.newPage();
 
-  it('should display welcome message', () => {
-    page.navigateTo();
-    expect(page.getTitleText()).toEqual('test-package-with-ng8 app is running!');
-  });
+    await page.goto('http://localhost:4200');
 
-  afterEach(async () => {
-    // Assert that there are no errors emitted from the browser
-    const logs = await browser.manage().logs().get(logging.Type.BROWSER);
-    expect(logs).not.toContain(jasmine.objectContaining({
-      level: logging.Level.SEVERE,
-    } as logging.Entry));
+    const headerEl = await page.$('app-test-form h1');
+
+    if (!headerEl) {
+      await browser.close();
+      throw Error('Did not find \'app-test-form h1\'. More than likely the component did not render as expected :(');
+    }
+
+    const text = await page.evaluate(element => element?.textContent, headerEl);
+    expect(text).toEqual(`test-package-with-ng${process.env.NG_VERSION}`);
+
+    await browser.close();
   });
 });
