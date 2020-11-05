@@ -89,7 +89,7 @@ describe('End-to-End tests', () => {
     const text = await page.evaluate(element => element && element.textContent, headerEl);
     expect(text).toEqual(`test-package-with-ng${process.env.NG_VERSION}`);
 
-    await browser.close();
+    await browser.close(); 
   });
 });
 ```
