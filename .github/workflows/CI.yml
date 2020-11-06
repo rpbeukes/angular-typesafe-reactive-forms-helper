@@ -20,8 +20,8 @@ jobs:
       - name: tests
         run: npm run test
 
-      - name: package file structure `tree dist`
-        run: tree dist
+      - name: package file structure `ls -alR`
+        run: ls -alR
 
   integration-test:
     strategy:
