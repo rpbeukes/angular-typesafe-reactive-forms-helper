@@ -15,6 +15,67 @@ interface WeaponModel {
 
 ## FormGroupTypeSafe\<T> extends Angular's FormGroup class 
 
+### [V2.0.0](https://github.com/rpbeukes/angular-typesafe-reactive-forms-helper/compare/V1.8.2...V2.0.0) (2020-11-06)
+- use [ng-packagr](https://github.com/ng-packagr/ng-packagr) to fix [bug](https://github.com/rpbeukes/angular-typesafe-reactive-forms-helper/issues/146) - main.ts:15 Error: Angular JIT compilation failed
+- add end-to-end-tests Angular 8, 9, 10
+- removed Angular 7 integration tests from build pipeline as it is no longer supported by Angular team 
+
+New `dist` file structure:
+
+```
+./dist:
+LICENSE
+README.md
+angular-typesafe-reactive-forms-helper.d.ts
+angular-typesafe-reactive-forms-helper.metadata.json
+bundles
+esm2015
+fesm2015
+package.json
+public_api.d.ts
+src
+
+./dist/bundles:
+angular-typesafe-reactive-forms-helper.umd.js
+angular-typesafe-reactive-forms-helper.umd.js.map
+angular-typesafe-reactive-forms-helper.umd.min.js
+angular-typesafe-reactive-forms-helper.umd.min.js.map
+
+./dist/esm2015:
+angular-typesafe-reactive-forms-helper.js
+public_api.js
+src
+
+./dist/esm2015/src:
+angularTypesafeReactiveFormsHelper.js
+getPropertyName.js
+
+./dist/fesm2015:
+angular-typesafe-reactive-forms-helper.js
+angular-typesafe-reactive-forms-helper.js.map
+
+./dist/src:
+angularTypesafeReactiveFormsHelper.d.ts
+getPropertyName.d.ts
+```
+
+Old `dist` file structure:
+
+```
+./dist:
+LICENSE
+README.md
+lib
+package.json
+
+./lib:
+angularTypesafeReactiveFormsHelper.d.ts
+angularTypesafeReactiveFormsHelper.js
+getPropertyName.d.ts
+getPropertyName.js
+```
+
+---
 ### [V1.8.2](https://github.com/rpbeukes/angular-typesafe-reactive-forms-helper/compare/V1.8.1...V1.8.2) (2020-09-04)
 - Fix [bug](https://github.com/rpbeukes/angular-typesafe-reactive-forms-helper/issues/113) - getSafe() call fails and returns null when compiled to ES5.
 

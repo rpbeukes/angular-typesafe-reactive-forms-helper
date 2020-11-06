@@ -2,58 +2,63 @@ name: CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
-
   build:
     name: build and test
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    - name: install dependencies
-      run: npm install
-      
-    - name: tests
-      run:  npm run test
+      - name: install dependencies
+        run: npm install
+
+      - name: tests
+        run: npm run test
+
+      - name: package file structure `ls -alR ./dist`
+        run: ls -alR ./dist
 
   integration-test:
     strategy:
       matrix:
-        ng-version: [ng10, ng9, ng8, ng7]
+        ng-version: [ng10, ng9, ng8]
     name: integration-test-${{ matrix.ng-version }}
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    
-    - name: install dependencies
-      run: npm install
+      - uses: actions/checkout@v2
 
-    - name: create package
-      run:  npm run remove-all-tgz && npm run pack-tgz
+      - name: install dependencies
+        run: npm install
 
-    - name: copy package to integration directory
-      run:  npm run integration-tests:copy-to-tests   
-         
-    - name: install package to angular
-      run:  npm run integration-tests:install:${{ matrix.ng-version }}
+      - name: create package
+        run: npm run remove-all-tgz && npm run pack-tgz
 
-    - name: list installed packages
-      run:  npm run integration-tests:list-installs:${{ matrix.ng-version }}
+      - name: copy package to integration directory
+        run: npm run integration-tests:copy-to-tests
 
-    - name: print angular version
-      run:  npm run integration-tests:version:${{ matrix.ng-version }}
+      - name: install package to angular
+        run: npm run integration-tests:install:${{ matrix.ng-version }}
 
-    - name: build angular
-      run:  npm run integration-tests:build:${{ matrix.ng-version }}
+      - name: list installed packages
+        run: npm run integration-tests:list-installs:${{ matrix.ng-version }}
 
-    - name: run angular test
-      run:  npm run integration-tests:test-ci:${{ matrix.ng-version }}
+      - name: print angular version
+        run: npm run integration-tests:version:${{ matrix.ng-version }}
+
+      - name: build angular
+        run: npm run integration-tests:build:${{ matrix.ng-version }}
+
+      - name: run angular test
+        run: npm run integration-tests:test-ci:${{ matrix.ng-version }}
+
+      - name: run end-to-end prod tests 'ng e2e --prod'
+        run: npm run integration-tests:e2e-ci:${{ matrix.ng-version }}:prod
 
   create-artifact:
     needs: [build, integration-test]
@@ -61,16 +66,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    - name: install dependencies
-      run: npm install
-           
-    - name: Create package to ./dist
-      run:  npm run pack-to-dist-directory
+      - name: install dependencies
+        run: npm install
 
-    - name: Create artifact from ./dist
-      uses: actions/upload-artifact@v1
-      with:
-        name: angular-typesafe-reactive-forms-helper
-        path: ./dist
+      - name: Create package to ./dist
+        run: npm run pack-to-dist-directory
+
+      - name: Create artifact from ./dist
+        uses: actions/upload-artifact@v1
+        with:
+          name: angular-typesafe-reactive-forms-helper
+          path: ./dist
