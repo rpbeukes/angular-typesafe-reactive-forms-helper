@@ -20,6 +20,9 @@ jobs:
       - name: tests
         run: npm run test
 
+      - name: package file structure `tree dist`
+        run: tree dist
+
   integration-test:
     strategy:
       matrix:
