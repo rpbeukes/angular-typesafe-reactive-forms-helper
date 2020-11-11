@@ -106,7 +106,7 @@ interface ICustomerModel {
 
 This package has been tested with Angular 8, 9, 10.
 
-(Should work with Angular 4, 5, 6. 7 too)
+(Should work with Angular 4, 5, 6, 7 too)
 
 I would encourage you to use versions Angular still support, see [Angular's Support policy and schedule](https://angular.io/guide/releases#support-policy-and-schedule).
 
