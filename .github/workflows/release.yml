@@ -3,7 +3,7 @@ name: release
 on:
   push:
     tags:
-    - 'V[0-9]+.[0-9]+.[0-9]+' # Push events matching all semantic versioning tags, i.e. 1.16.11, 1.0, V20.15.10
+      - 'V[0-9]+.[0-9]+.[0-9]+' # Push events matching all semantic versioning tags, i.e. 1.16.11, 1.0, V20.15.10
 
 env:
   NODE_VERSION: '12.x'
@@ -22,6 +22,6 @@ jobs:
       - name: Install Dependencies
         run: npm i
       - name: Publish
-        run: npm publish
+        run: npm publish ./dist
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
