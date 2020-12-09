@@ -15,6 +15,9 @@ interface WeaponModel {
 
 ## FormGroupTypeSafe\<T> extends Angular's FormGroup class 
 
+### [V2.0.1](https://github.com/rpbeukes/angular-typesafe-reactive-forms-helper/compare/V2.0.0...V2.0.1) (2020-12-09)
+Package the correct library files, instead of the repository - rookie mistake :)
+
 ### [V2.0.0](https://github.com/rpbeukes/angular-typesafe-reactive-forms-helper/compare/V1.8.2...V2.0.0) (2020-11-06)
 - use [ng-packagr](https://github.com/ng-packagr/ng-packagr) to fix [bug](https://github.com/rpbeukes/angular-typesafe-reactive-forms-helper/issues/146) - main.ts:15 Error: Angular JIT compilation failed
 - add end-to-end-tests Angular 8, 9, 10
