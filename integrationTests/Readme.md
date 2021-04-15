@@ -12,46 +12,25 @@
 ? Which stylesheet format would you like to use? Sass   [ https://sass-lang.com/documentation/syntax#the-indented-syntax ]
 ```
 ---
-## Install a new Angular 10 app
 
-`npx @angular/cli@10.0.0 new test-package-with-ng10`
-
-```javascript
-? Would you like to add Angular routing? Yes
-? Which stylesheet format would you like to use? Sass   [ https://sass-lang.com/documentation/syntax#the-indented-syntax ]
-```
----
-## Install a new Angular 9 app
-
-`npx @angular/cli@9.0.7 new test-package-with-ng9`
-
-```javascript
-? Would you like to add Angular routing? Yes
-? Which stylesheet format would you like to use? Sass   [ https://sass-lang.com/documentation/syntax#the-indented-syntax ]
-```
-
----
-## Install a new Angular 8 app
-
-`npx @angular/cli@8.3.25 new test-package-with-ng8`
-
-```javascript
-? Would you like to add Angular routing? Yes
-? Which stylesheet format would you like to use? Sass   [ https://sass-lang.com/documentation/syntax#the-indented-syntax ]
-```
----
-## Install a new Angular 6 app
-
-`npx @angular/cli@6.2.1 new test-package-with-ng6`
-
-### Add the Reactive Test Forms to ngX app
+## Add the Reactive Test Forms to ngX app
 
 1. delete content `~/src/app/app.component.html` and replace with `<router-outlet></router-outlet>`
 2. delete `~/src/app/app.component.spec.ts`
 3. add `~/src/app/forms` directory to app
 4. add the `~/src/app/forms/testform.component`
 5. update `~/src/app/app.modules.ts` with:
+
 ```
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { TestFormComponent } from './form/testform.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormBuilderTypeSafe } from 'angular-typesafe-reactive-forms-helper';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,8 +46,13 @@
 })
 export class AppModule { }
 ```
+
 6. update `app-routing.module.ts` with:
 ```
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { TestFormComponent } from './form/testform.component';
+
 const routes: Routes = [
   { path: '', component: TestFormComponent },
   { path: '**', redirectTo: '' }
@@ -154,3 +138,36 @@ Fixed it by updating the ng6 project's `tsconfig.json` to skip the typescript li
 ```
 
 `angular-typesafe-reactive-forms-helper` is using the latest typescript and it is not recognized by ng6 version of typescript.  
+
+
+## Install a new Angular 10 app
+
+`npx @angular/cli@10.0.0 new test-package-with-ng10`
+
+```javascript
+? Would you like to add Angular routing? Yes
+? Which stylesheet format would you like to use? Sass   [ https://sass-lang.com/documentation/syntax#the-indented-syntax ]
+```
+---
+## Install a new Angular 9 app
+
+`npx @angular/cli@9.0.7 new test-package-with-ng9`
+
+```javascript
+? Would you like to add Angular routing? Yes
+? Which stylesheet format would you like to use? Sass   [ https://sass-lang.com/documentation/syntax#the-indented-syntax ]
+```
+
+---
+## Install a new Angular 8 app
+
+`npx @angular/cli@8.3.25 new test-package-with-ng8`
+
+```javascript
+? Would you like to add Angular routing? Yes
+? Which stylesheet format would you like to use? Sass   [ https://sass-lang.com/documentation/syntax#the-indented-syntax ]
+```
+---
+## Install a new Angular 6 app
+
+`npx @angular/cli@6.2.1 new test-package-with-ng6`
