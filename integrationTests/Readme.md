@@ -1,6 +1,45 @@
 
 # How these different Angular versions were created
 
+## Install a new Angular 11 app
+`npx @angular/cli@11.0.0 new test-package-with-ng11`
+
+```javascript
+? Do you want to enforce stricter type checking and stricter bundle budgets in the workspace?
+  This setting helps improve maintainability and catch bugs ahead of time.
+  For more information, see https://angular.io/strict Yes
+? Would you like to add Angular routing? Yes
+? Which stylesheet format would you like to use? Sass   [ https://sass-lang.com/documentation/syntax#the-indented-syntax ]
+```
+---
+## Install a new Angular 10 app
+
+`npx @angular/cli@10.0.0 new test-package-with-ng10`
+
+```javascript
+? Would you like to add Angular routing? Yes
+? Which stylesheet format would you like to use? Sass   [ https://sass-lang.com/documentation/syntax#the-indented-syntax ]
+```
+---
+## Install a new Angular 9 app
+
+`npx @angular/cli@9.0.7 new test-package-with-ng9`
+
+```javascript
+? Would you like to add Angular routing? Yes
+? Which stylesheet format would you like to use? Sass   [ https://sass-lang.com/documentation/syntax#the-indented-syntax ]
+```
+
+---
+## Install a new Angular 8 app
+
+`npx @angular/cli@8.3.25 new test-package-with-ng8`
+
+```javascript
+? Would you like to add Angular routing? Yes
+? Which stylesheet format would you like to use? Sass   [ https://sass-lang.com/documentation/syntax#the-indented-syntax ]
+```
+---
 ## Install a new Angular 6 app
 
 `npx @angular/cli@6.2.1 new test-package-with-ng6`
@@ -98,6 +137,7 @@ Make sure you have a similar `npm script` to execute the e2e test in CI mode, ch
 ```
 "integration-tests:e2e-ci:ng10:prod": "export NG_VERSION=10 && cd ./integrationTests/ng10/test-package-with-ng10 && export CI=true && npm run e2e -- --prod",
 ```
+---
 
 ### Some issues I found in ng6
 
@@ -114,39 +154,3 @@ Fixed it by updating the ng6 project's `tsconfig.json` to skip the typescript li
 ```
 
 `angular-typesafe-reactive-forms-helper` is using the latest typescript and it is not recognized by ng6 version of typescript.  
-
-## Install a new Angular 7 app
-
-`npx @angular/cli@7.3.9 new test-package-with-ng7`
-
-```javascript
-? Would you like to add Angular routing? Yes
-? Which stylesheet format would you like to use? Sass   [ https://sass-lang.com/documentation/syntax#the-indented-syntax ]
-```
-
-## Install a new Angular 8 app
-
-`npx @angular/cli@8.3.25 new test-package-with-ng8`
-
-```javascript
-? Would you like to add Angular routing? Yes
-? Which stylesheet format would you like to use? Sass   [ https://sass-lang.com/documentation/syntax#the-indented-syntax ]
-```
-
-## Install a new Angular 9 app
-
-`npx @angular/cli@9.0.7 new test-package-with-ng9`
-
-```javascript
-? Would you like to add Angular routing? Yes
-? Which stylesheet format would you like to use? Sass   [ https://sass-lang.com/documentation/syntax#the-indented-syntax ]
-```
-
-## Install a new Angular 10 app
-
-`npx @angular/cli@10.0.0 new test-package-with-ng10`
-
-```javascript
-? Would you like to add Angular routing? Yes
-? Which stylesheet format would you like to use? Sass   [ https://sass-lang.com/documentation/syntax#the-indented-syntax ]
-```
