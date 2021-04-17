@@ -20,8 +20,8 @@ interface HeroFormModel {
 export class TestFormComponent implements OnInit {
   title = new AppComponent().title;
 
-  testForm: FormGroupTypeSafe<HeroFormModel>;
-  @ViewChild('testFormTextArea') testFormTextArea: ElementRef;
+  testForm!: FormGroupTypeSafe<HeroFormModel>;
+  @ViewChild('testFormTextArea') testFormTextArea!: ElementRef;
   dataChangeRecorded: any[] = [];
   statusChangeRecorded: any[] = [];
 
@@ -46,7 +46,7 @@ export class TestFormComponent implements OnInit {
   }
 
   getHeroNameByValue = () => this.testForm.value.heroName;
-  getHeroNameByGetSafe = () => this.testForm.getSafe(x => x.heroName).value;
+  getHeroNameByGetSafe = () => this.testForm.getSafe(x => x.heroName)?.value;
 
   get weapons() {
     return this.testForm.getSafe(x => x.weapons) as FormArray;
@@ -71,22 +71,22 @@ export class TestFormComponent implements OnInit {
       this.dataChangeRecorded.push({ value, scenario: 1, message: 'valueChanges - testForm value => HeroFormModel change' });
     });
     // valueChanges - heroName => string change
-    this.testForm.getSafe(x => x.heroName).valueChanges.subscribe(value => {
+    this.testForm.getSafe(x => x.heroName)?.valueChanges.subscribe(value => {
       this.dataChangeRecorded.push({ value, scenario: 2, message: 'valueChanges - heroName => string change' });
     });
     // valueChanges - weapons => array change
-    this.testForm.getSafe(x => x.weapons).valueChanges.subscribe(value => {
+    this.testForm.getSafe(x => x.weapons)?.valueChanges.subscribe(value => {
       this.dataChangeRecorded.push({ value, scenario: 3, message: 'valueChanges - weapons => array change' });
     });
     // valueChanges - weapons[0] => specific index in a array change
-    this.testForm.getSafe(x => x.weapons).get([0]).valueChanges.subscribe(value => {
+    this.testForm.getSafe(x => x.weapons)?.get([0])?.valueChanges.subscribe(value => {
       this.dataChangeRecorded.push({ value, scenario: 4, message: 'valueChanges - weapons[0] => specific index in a array change' });
     });
   }
 
   private onStatusChanges() {
     // control status change (monitor specific control change)
-    this.testForm.getSafe(x => x.heroName).statusChanges.subscribe(value => {
+    this.testForm.getSafe(x => x.heroName)?.statusChanges.subscribe(value => {
       this.statusChangeRecorded.push(`ControlChange - ${value}`);
     });
 
