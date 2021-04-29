@@ -1,0 +1,30 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "16:30"
+    timezone: Australia/Perth
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: rxjs
+    versions:
+    - "> 6.6.2, < 6.7"
+  - dependency-name: "@types/jest"
+    versions:
+    - 26.0.20
+    - 26.0.21
+    - 26.0.22
+  - dependency-name: ts-jest
+    versions:
+    - 26.5.0
+    - 26.5.2
+    - 26.5.3
+  - dependency-name: typescript
+    versions:
+    - 4.0.6
+    - 4.0.7
+  - dependency-name: tslib
+    versions:
+    - 2.1.0
