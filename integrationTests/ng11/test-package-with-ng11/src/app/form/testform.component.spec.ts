@@ -1,4 +1,4 @@
-import { TestBed, async, ComponentFixture } from '@angular/core/testing/testing';
+import { TestBed, async, ComponentFixture } from '@angular/core/testing/';
 import { TestFormComponent } from './testform.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormBuilderTypeSafe } from 'angular-typesafe-reactive-forms-helper';

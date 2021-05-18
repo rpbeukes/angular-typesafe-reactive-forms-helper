@@ -25,7 +25,7 @@ module.exports = function (config) {
       suppressAll: true, // removes the duplicated traces
     },
     coverageIstanbulReporter: {
-      dir: require('path').join(__dirname, './coverage/test-package-with-ng10'),
+      dir: require('path').join(__dirname, './coverage/test-package-with-ng11'),
       reports: ['html', 'lcovonly', 'text-summary'],
       fixWebpackSourcePaths: true,
     },
