@@ -27,7 +27,6 @@ jobs:
     strategy:
       matrix:
         ng-version: [ng11, ng10, ng9]
-
     name: integration-test-${{ matrix.ng-version }}
     runs-on: ubuntu-latest
 
