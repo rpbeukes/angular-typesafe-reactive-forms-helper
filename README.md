@@ -104,9 +104,9 @@ interface ICustomerModel {
 
 `@angular/forms` and all its peer dependencies.
 
-This package has been tested with Angular 8, 9, 10.
+This package has been tested with Angular 9, 10, 11.
 
-(Should work with Angular 4, 5, 6, 7 too)
+(Should work with Angular 4, 5, 6, 7, 8 too)
 
 I would encourage you to use versions Angular still support, see [Angular's Support policy and schedule](https://angular.io/guide/releases#support-policy-and-schedule).
 
@@ -142,6 +142,10 @@ interface WeaponModel {
 }
 ```
 ### FormGroupTypeSafe\<T> extends Angular's FormGroup class 
+
+#### [V2.0.2](https://github.com/rpbeukes/angular-typesafe-reactive-forms-helper/compare/V2.0.1...V2.0.2) (2021-05-18)
+- Bump to [Angular 11](https://blog.angular.io/version-11-of-angular-now-available-74721b7952f7).
+- Stop integration tests for Angular 8.
 
 #### [V2.0.1](https://github.com/rpbeukes/angular-typesafe-reactive-forms-helper/compare/V2.0.0...V2.0.1) (2020-12-09)
 Package the correct library files, instead of the repository - rookie mistake :)
