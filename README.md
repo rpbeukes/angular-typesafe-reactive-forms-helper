@@ -143,6 +143,10 @@ interface WeaponModel {
 ```
 ### FormGroupTypeSafe\<T> extends Angular's FormGroup class 
 
+#### [V2.0.2](https://github.com/rpbeukes/angular-typesafe-reactive-forms-helper/compare/V2.0.1...V2.0.2) (2021-05-18)
+- Bump to [Angular 11](https://blog.angular.io/version-11-of-angular-now-available-74721b7952f7).
+- Stop integration tests for Angular 8.
+
 #### [V2.0.1](https://github.com/rpbeukes/angular-typesafe-reactive-forms-helper/compare/V2.0.0...V2.0.1) (2020-12-09)
 Package the correct library files, instead of the repository - rookie mistake :)
 
