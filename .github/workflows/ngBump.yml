@@ -1,61 +1,61 @@
-name: ngBump-when-detected
+#  name: ngBump-when-detected
 
-on:
-  pull_request:
-    branches: [ master ]
+#  on:
+#   pull_request:
+#     branches: [ master ]
 
-jobs:
-     
-  create-BUMP_NG-PR:
-    name: create-BUMP_NG-PR
-    runs-on: ubuntu-latest
+# jobs:
 
-    steps:
-    # - name: print GitHub context
-    #   env:
-    #     GITHUB_CONTEXT: ${{ toJson(github) }}
-    #   run: |
-    #     echo "$GITHUB_CONTEXT"
-    #     echo ${{ github.event.pull_request.title }}
+#   create-BUMP_NG-PR:
+#     name: create-BUMP_NG-PR
+#     runs-on: ubuntu-latest
 
-    # share the variables with steps below
-    - name: Set vars
-      run: |
-        export BUMP_NG=false
-        echo "BUMP_NG=false" >> $GITHUB_ENV
-        export EXISTING_PR_FOR_BUMP_NG=false
-        echo "EXISTING_PR_FOR_BUMP_NG=false" >> $GITHUB_ENV
-        export CURRENT_NG_VER='-'
-        echo "CURRENT_NG_VER='-'" >> $GITHUB_ENV
-        export NEW_NG_VER='-'
-        echo "NEW_NG_VER='-'" >> $GITHUB_ENV
+#     steps:
+#     # - name: print GitHub context
+#     #   env:
+#     #     GITHUB_CONTEXT: ${{ toJson(github) }}
+#     #   run: |
+#     #     echo "$GITHUB_CONTEXT"
+#     #     echo ${{ github.event.pull_request.title }}
 
-    - uses: actions/checkout@v2
+#     # share the variables with steps below
+#     - name: Set vars
+#       run: |
+#         export BUMP_NG=false
+#         echo "BUMP_NG=false" >> $GITHUB_ENV
+#         export EXISTING_PR_FOR_BUMP_NG=false
+#         echo "EXISTING_PR_FOR_BUMP_NG=false" >> $GITHUB_ENV
+#         export CURRENT_NG_VER='-'
+#         echo "CURRENT_NG_VER='-'" >> $GITHUB_ENV
+#         export NEW_NG_VER='-'
+#         echo "NEW_NG_VER='-'" >> $GITHUB_ENV
 
-    - name: install dependencies
-      run: npm install
+#     - uses: actions/checkout@v2
 
-    - name: get list of pending PRs and search for a dependabot PR which will bump angular version
-      run: npm run is-ng-bump-required 
-      env:
-        GITHUB_TOKEN: ${{ secrets.BOT_PAT }}
-    
-    - uses: actions/checkout@v2
-      name: checkout master to ./master-src
-      if: ${{env.EXISTING_PR_FOR_BUMP_NG == 'false' && env.BUMP_NG == 'true' }}
-      with:
-        ref: master
-        path: master-src
+#     - name: install dependencies
+#       run: npm install
 
-    - name: copy ./scriptUtilities to ./master-src
-      if: ${{env.EXISTING_PR_FOR_BUMP_NG == 'false' && env.BUMP_NG == 'true' }}
-      run: |
-        cp -R -v ./scriptUtilities master-src
-  
-    - name: cd ./master-src/scriptUtilities and execute create PR script
-      if: ${{env.EXISTING_PR_FOR_BUMP_NG == 'false' && env.BUMP_NG == 'true' }}
-      run: |
-        cd master-src
-        node scriptUtilities/bump-ng-and-create-PR.js
-      env:
-        GITHUB_TOKEN: ${{ secrets.BOT_PAT }}
+#     - name: get list of pending PRs and search for a dependabot PR which will bump angular version
+#       run: npm run is-ng-bump-required
+#       env:
+#         GITHUB_TOKEN: ${{ secrets.BOT_PAT }}
+
+#     - uses: actions/checkout@v2
+#       name: checkout master to ./master-src
+#       if: ${{env.EXISTING_PR_FOR_BUMP_NG == 'false' && env.BUMP_NG == 'true' }}
+#       with:
+#         ref: master
+#         path: master-src
+
+#     - name: copy ./scriptUtilities to ./master-src
+#       if: ${{env.EXISTING_PR_FOR_BUMP_NG == 'false' && env.BUMP_NG == 'true' }}
+#       run: |
+#         cp -R -v ./scriptUtilities master-src
+
+#     - name: cd ./master-src/scriptUtilities and execute create PR script
+#       if: ${{env.EXISTING_PR_FOR_BUMP_NG == 'false' && env.BUMP_NG == 'true' }}
+#       run: |
+#         cd master-src
+#         node scriptUtilities/bump-ng-and-create-PR.js
+#       env:
+#         GITHUB_TOKEN: ${{ secrets.BOT_PAT }}
