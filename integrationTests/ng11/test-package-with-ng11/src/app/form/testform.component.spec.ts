@@ -1,4 +1,4 @@
-import { TestBed, async, ComponentFixture } from '@angular/core/testing';
+import { TestBed, async, ComponentFixture } from '@angular/core/testing/testing';
 import { TestFormComponent } from './testform.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormBuilderTypeSafe } from 'angular-typesafe-reactive-forms-helper';
@@ -145,7 +145,7 @@ describe('TestFormComponent', () => {
         expect(component.statusChangeRecorded.length > 0).toBe(true);
         expect(component.statusChangeRecorded).toEqual(['ControlChange - INVALID', 'FormChange - INVALID']);
         expect(component.testForm.status).toBe('INVALID');
-        expect(component.testForm.getSafe((x) => x.heroName).status).toBe('INVALID');
+        expect(component.testForm.getSafe((x) => x.heroName)?.status).toBe('INVALID');
       });
     });
   });
