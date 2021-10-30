@@ -1,6 +1,8 @@
 
 # How these different Angular versions were created
 
+## Install a new Angular 12 app
+`npx @angular/cli@12 new test-package-with-ng12`
 ## Install a new Angular 11 app
 `npx @angular/cli@11.0.0 new test-package-with-ng11`
 
