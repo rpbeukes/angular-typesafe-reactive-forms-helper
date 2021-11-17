@@ -30,7 +30,7 @@
     "integration-tests:copy-to-tests": "cp -vR angular-typesafe-reactive-forms-helper*.tgz ./integrationTests/angular-typesafe-reactive-forms-helper.tgz",
     "integration-tests:install:ng10": "cd ./integrationTests/ng10/test-package-with-ng10 && npm i && npm i ../../angular-typesafe-reactive-forms-helper.tgz",
     "integration-tests:install:ng11": "cd ./integrationTests/ng11/test-package-with-ng11 && npm i && npm i ../../angular-typesafe-reactive-forms-helper.tgz",
-    "integration-tests:install:ng12": "cd ./integrationTests/ng12/test-package-with-ng12 && npm i && ls ../../ && npm i ../../angular-typesafe-reactive-forms-helper.tgz",
+    "integration-tests:install:ng12": "ls ./integrationTests && cd ./integrationTests/ng12/test-package-with-ng12 && npm i &&  npm i ../../angular-typesafe-reactive-forms-helper.tgz",
     "integration-tests:build:ng10": "cd ./integrationTests/ng10/test-package-with-ng10 && npm run build",
     "integration-tests:build:ng11": "cd ./integrationTests/ng11/test-package-with-ng11 && npm run build",
     "integration-tests:build:ng12": "cd ./integrationTests/ng12/test-package-with-ng12 && npm run build",
