@@ -27,7 +27,7 @@
     "remove-all-tgz": "rm -rf angular-typesafe-reactive-forms-helper-*.tgz",
     "install-tgz-to-all-integration-tests": "npm run remove-all-tgz && npm run pack-tgz && npm run integration-tests:copy-to-tests && npm-run-all --sequential integration-tests:install:**",
     "integration-tests": "npm run remove-all-tgz && npm run pack-tgz && npm-run-all --sequential integration-tests:**",
-    "integration-tests:copy-to-tests": "cp -R angular-typesafe-reactive-forms-helper*.tgz ./integrationTests/angular-typesafe-reactive-forms-helper.tgz",
+    "integration-tests:copy-to-tests": "cp -vR angular-typesafe-reactive-forms-helper*.tgz ./integrationTests/angular-typesafe-reactive-forms-helper.tgz",
     "integration-tests:install:ng10": "cd ./integrationTests/ng10/test-package-with-ng10 && npm i && npm i ../../angular-typesafe-reactive-forms-helper.tgz",
     "integration-tests:install:ng11": "cd ./integrationTests/ng11/test-package-with-ng11 && npm i && npm i ../../angular-typesafe-reactive-forms-helper.tgz",
     "integration-tests:install:ng12": "cd ./integrationTests/ng12/test-package-with-ng12 && npm i && npm i ../../angular-typesafe-reactive-forms-helper.tgz",
