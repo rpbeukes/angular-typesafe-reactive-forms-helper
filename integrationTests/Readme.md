@@ -3,8 +3,6 @@
 
 ## Install a new Angular 12 app
 `npx @angular/cli@12 new test-package-with-ng12`
-## Install a new Angular 11 app
-`npx @angular/cli@11.0.0 new test-package-with-ng11`
 
 ```javascript
 ? Do you want to enforce stricter type checking and stricter bundle budgets in the workspace?
@@ -78,13 +76,14 @@ export class AppComponent {
 8. add some karma test to verify functionality
 9.  change `karma.conf.js` to support `puppeteer` so that the test can run on build server.
    - `npm i puppeteer -D`
+   - `npm i karma-coverage-istanbul-reporter -D`
 11. Update the tests
 12. Configure headless e2e tests 
 
 ```
-npm run update-latest-integration-tests:ng9:e2e
+npm run update-latest-integration-tests:ng11:e2e
 ```
-This will copy the latest version integration tests eg: ng10, and copy it to all older versions.
+This will copy the latest version integration tests eg: ng11, and copy it to all older versions.
 - Update `protractor.conf.js`
 - add end-to-end tests `app.e2e-spec.ts`
 - make sure that the new integration test ng version's devDependencies has `"jasmine-spec-reporter": "~5.0.0"`.
