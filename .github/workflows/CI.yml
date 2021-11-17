@@ -59,8 +59,8 @@ jobs:
 
       - name: run end-to-end prod tests 'ng e2e --prod'
         run: npm run integration-tests:e2e-ci:${{ matrix.ng-version }}:prod
-        condition: and(succeeded(), ne(${{ matrix.ng-version }}, 12))
-
+        if: ${{ matrix.ng-version }} == 12
+        
   create-artifact:
     needs: [build, integration-test]
     name: create-artifact
