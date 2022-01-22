@@ -19,6 +19,7 @@
     "@angular/platform-browser": "~9.1.11",
     "@angular/platform-browser-dynamic": "~9.1.11",
     "@angular/router": "~9.1.11",
+    "angular-typesafe-reactive-forms-helper": "file:../../angular-typesafe-reactive-forms-helper.tgz",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
@@ -40,7 +41,7 @@
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage-istanbul-reporter": "~2.1.0",
     "karma-jasmine": "~2.0.1",
-    "karma-jasmine-html-reporter": "^1.4.2",
+    "karma-jasmine-html-reporter": "~1.4.2",
     "protractor": "~5.4.3",
     "protractor-console-plugin": "^0.1.1",
     "puppeteer": "^2.1.1",
