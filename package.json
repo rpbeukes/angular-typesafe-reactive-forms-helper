@@ -87,7 +87,7 @@
     "@angular/core": "~11.2.14",
     "@angular/forms": "~11.2.14",
     "@angular/platform-browser": "~11.2.14",
-    "@types/jest": "^26.0.0",
+    "@types/jest": "^27.4.0",
     "@types/puppeteer": "^5.4.3",
     "@types/shelljs": "^0.8.7",
     "cross-env": "^7.0.3",
