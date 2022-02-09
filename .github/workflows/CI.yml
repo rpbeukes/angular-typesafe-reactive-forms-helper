@@ -37,9 +37,6 @@ jobs:
       - name: install dependencies
         run: npm install
 
-      - name: chrome version
-        run: google-chrome --version
-
       - name: create package
         run: npm run remove-all-tgz && npm run pack-tgz
 
@@ -57,6 +54,9 @@ jobs:
 
       - name: webdriver-manager clean
         run: npm run integration-tests:webdriver:clean:${{ matrix.ng-version }}
+
+      - name: chrome version
+        run: google-chrome --version
 
       - name: update webdriver-manager to 97.0.4692.71 
         run: |
