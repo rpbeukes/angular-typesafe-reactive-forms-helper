@@ -37,6 +37,9 @@ jobs:
       - name: install dependencies
         run: npm install
 
+      - name: chrome version
+        run: google-chrome --version
+
       - name: create package
         run: npm run remove-all-tgz && npm run pack-tgz
 
