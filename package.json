@@ -61,7 +61,9 @@
     "upgrade:ng10": "cd ./integrationTests/ng10/test-package-with-ng10 && npm run ng -- update @angular/cli@^10 @angular/core@^10",
     "upgrade:ng11": "cd ./integrationTests/ng11/test-package-with-ng11 && npm run ng -- update @angular/cli@^11 @angular/core@^11",
     "bump-ng-and-create-PR": "node ./scriptUtilities/bump-ng-and-create-PR.js",
-    "is-ng-bump-required": "node ./scriptUtilities/is-ng-bump-required.js"
+    "is-ng-bump-required": "node ./scriptUtilities/is-ng-bump-required.js",
+    "integration-tests:webdriver:install:ng11": "cd ./integrationTests/ng11/test-package-with-ng11 && npm i webdriver-manager",
+    "integration-tests:webdriver:update:ng11": "cd ./integrationTests/ng11/test-package-with-ng11 && ./node_modules/.bin/webdriver-manager update --versions.chrome 97.0.4692.71 && ./node_modules/.bin/webdriver-manager status"
   },
   "repository": {
     "type": "git",
