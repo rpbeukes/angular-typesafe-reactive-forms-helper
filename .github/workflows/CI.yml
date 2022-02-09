@@ -53,7 +53,7 @@ jobs:
         run: npm run integration-tests:webdriver:install:${{ matrix.ng-version }}
       
       - name: view latest chromedriver_X.X.X.X.zip
-        run: npm run integration-tests:webdriver:install:${{ matrix.ng-version }}
+        run: npm run integration-tests:webdriver:view:latest:${{ matrix.ng-version }}
 
       - name: webdriver-manager clean
         run: npm run integration-tests:webdriver:clean:${{ matrix.ng-version }}
