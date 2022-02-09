@@ -7,21 +7,21 @@ on:
     branches: [master]
 
 jobs:
-  # build:
-    #name: build and test
-    #runs-on: ubuntu-latest
+  build:
+    name: build and test
+    runs-on: ubuntu-latest
 
-    #steps:
-    #   - uses: actions/checkout@v2
+    steps:
+      - uses: actions/checkout@v2
 
-    #   - name: install dependencies
-    #     run: npm install
+#       - name: install dependencies
+#         run: npm install
 
-    #   - name: tests
-    #     run: npm run test
+#       - name: tests
+#         run: npm run test
 
-    #   - name: package file structure `ls -alR ./dist`
-    #     run: ls -alR ./dist
+#       - name: package file structure `ls -alR ./dist`
+#         run: ls -alR ./dist
 
   integration-test:
     strategy:
