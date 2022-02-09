@@ -52,8 +52,17 @@ jobs:
       - name: install webdriver-manager 
         run: npm run integration-tests:webdriver:install:${{ matrix.ng-version }}
       
-      - name: update (downgrade) webdriver-manager 
+      - name: view latest chromedriver_X.X.X.X.zip
+        run: npm run integration-tests:webdriver:install:${{ matrix.ng-version }}
+
+      - name: webdriver-manager clean
+        run: npm run integration-tests:webdriver:clean:${{ matrix.ng-version }}
+
+      - name: update webdriver-manager 
         run: npm run integration-tests:webdriver:update:${{ matrix.ng-version }}
+      
+      - name: webdriver-manager status
+        run: npm run integration-tests:webdriver:status:${{ matrix.ng-version }}
 
       - name: list installed packages
         run: npm run integration-tests:list-installs:${{ matrix.ng-version }}
