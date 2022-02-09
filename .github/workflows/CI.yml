@@ -7,11 +7,11 @@ on:
     branches: [master]
 
 jobs:
-  build:
-    name: build and test
-    runs-on: ubuntu-latest
+  # build:
+    #name: build and test
+    #runs-on: ubuntu-latest
 
-    # steps:
+    #steps:
     #   - uses: actions/checkout@v2
 
     #   - name: install dependencies
