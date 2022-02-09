@@ -58,8 +58,10 @@ jobs:
       - name: webdriver-manager clean
         run: npm run integration-tests:webdriver:clean:${{ matrix.ng-version }}
 
-      - name: update webdriver-manager 
-        run: npm run integration-tests:webdriver:update:${{ matrix.ng-version }}
+      - name: update webdriver-manager to 97.0.4692.71 
+        run: |
+        echo "Find the latest ChromeDriver builds here - https://chromedriver.chromium.org/downloads"
+        npm run integration-tests:webdriver:update:${{ matrix.ng-version }}
       
       - name: webdriver-manager status
         run: npm run integration-tests:webdriver:status:${{ matrix.ng-version }}
