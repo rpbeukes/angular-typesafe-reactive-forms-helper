@@ -62,8 +62,11 @@
     "upgrade:ng11": "cd ./integrationTests/ng11/test-package-with-ng11 && npm run ng -- update @angular/cli@^11 @angular/core@^11",
     "bump-ng-and-create-PR": "node ./scriptUtilities/bump-ng-and-create-PR.js",
     "is-ng-bump-required": "node ./scriptUtilities/is-ng-bump-required.js",
-    "integration-tests:webdriver:install:ng11": "cd ./integrationTests/ng11/test-package-with-ng11 && npm i webdriver-manager",
-    "integration-tests:webdriver:update:ng11": "cd ./integrationTests/ng11/test-package-with-ng11 && ./node_modules/.bin/webdriver-manager update --versions.chrome 97.0.4692.71 && ./node_modules/.bin/webdriver-manager status"
+    "integration-tests:webdriver:install:ng11": "cd ./integrationTests/ng11/test-package-with-ng11 && npm i webdriver-manager -D",
+    "integration-tests:webdriver:view:latest:ng11": "cd ./integrationTests/ng11/test-package-with-ng11 && ./node_modules/.bin/webdriver-manager update",
+    "integration-tests:webdriver:clean:ng11": "cd ./integrationTests/ng11/test-package-with-ng11 && ./node_modules/.bin/webdriver-manager clean",
+    "integration-tests:webdriver:update:ng11": "cd ./integrationTests/ng11/test-package-with-ng11 && ./node_modules/.bin/webdriver-manager update --versions.chrome 97.0.4692.71",
+    "integration-tests:webdriver:status:ng11": "cd ./integrationTests/ng11/test-package-with-ng11 && ./node_modules/.bin/webdriver-manager status"
   },
   "repository": {
     "type": "git",
