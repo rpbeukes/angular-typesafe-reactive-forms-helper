@@ -49,6 +49,12 @@ jobs:
       - name: install package to angular
         run: npm run integration-tests:install:${{ matrix.ng-version }}
 
+      - name: install webdriver-manager 
+        run: npm run integration-tests:webdriver:install:${{ matrix.ng-version }}
+      
+      - name: update (downgrade) webdriver-manager 
+        run: npm run integration-tests:webdriver:update:${{ matrix.ng-version }}
+
       - name: list installed packages
         run: npm run integration-tests:list-installs:${{ matrix.ng-version }}
 
