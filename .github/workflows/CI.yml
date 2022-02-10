@@ -46,7 +46,9 @@ jobs:
         run: npm run integration-tests:install:${{ matrix.ng-version }}
 
       - name: install webdriver-manager 
-        run: cd ./integrationTests/${{ matrix.ng-version }}/test-package-with-${{ matrix.ng-version }} && npm run integration-tests:webdriver:install
+        run: | 
+          cd ./integrationTests/${{ matrix.ng-version }}/test-package-with-${{ matrix.ng-version }} 
+          npm i webdriver-manager -D
       
       - name: view latest chromedriver_X.X.X.X.zip
         run: npm run integration-tests:webdriver:view:latest:${{ matrix.ng-version }}
