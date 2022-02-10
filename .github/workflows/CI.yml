@@ -46,24 +46,33 @@ jobs:
         run: npm run integration-tests:install:${{ matrix.ng-version }}
 
       - name: install webdriver-manager 
-        run: npm run integration-tests:webdriver:install:${{ matrix.ng-version }}
+        run: | 
+          cd ./integrationTests/${{ matrix.ng-version }}/test-package-with-${{ matrix.ng-version }} 
+          npm i webdriver-manager -D
       
       - name: view latest chromedriver_X.X.X.X.zip
-        run: npm run integration-tests:webdriver:view:latest:${{ matrix.ng-version }}
+        run: |
+          cd ./integrationTests/${{ matrix.ng-version }}/test-package-with-${{ matrix.ng-version }}
+          ./node_modules/.bin/webdriver-manager update
 
       - name: webdriver-manager clean
-        run: npm run integration-tests:webdriver:clean:${{ matrix.ng-version }}
-
+        run: |
+          cd ./integrationTests/${{ matrix.ng-version }}/test-package-with-${{ matrix.ng-version }}
+          ./node_modules/.bin/webdriver-manager clean
+      
       - name: chrome version
         run: google-chrome --version
 
       - name: update webdriver-manager to 97.0.4692.71 
         run: |
           echo "Find the latest ChromeDriver builds here - https://chromedriver.chromium.org/downloads"
-          npm run integration-tests:webdriver:update:${{ matrix.ng-version }}
-      
+          cd ./integrationTests/${{ matrix.ng-version }}/test-package-with-${{ matrix.ng-version }}
+          ./node_modules/.bin/webdriver-manager update --versions.chrome 97.0.4692.71
+
       - name: webdriver-manager status
-        run: npm run integration-tests:webdriver:status:${{ matrix.ng-version }}
+        run: |
+          cd ./integrationTests/${{ matrix.ng-version }}/test-package-with-${{ matrix.ng-version }}
+          ./node_modules/.bin/webdriver-manager status
 
       - name: list installed packages
         run: npm run integration-tests:list-installs:${{ matrix.ng-version }}
