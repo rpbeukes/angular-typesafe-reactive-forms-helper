@@ -8,6 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "e2e": "ng e2e",
+    "e2e:ci": "start-server-and-test start http://localhost:4200 cypress:run",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run"
   },
@@ -41,6 +42,7 @@
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
     "puppeteer": "^11.0.0",
+    "start-server-and-test": "^1.14.0",
     "typescript": "~4.3.5"
   }
 }
