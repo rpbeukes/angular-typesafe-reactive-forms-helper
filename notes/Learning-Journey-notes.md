@@ -112,3 +112,7 @@ Update `protractor.conf.js` within `exports.config` add console plugin:
 + ]
 ...
 ```
+
+## Cypress
+
+https://dev.to/angular/ci-ready-e2e-tests-for-angular-with-cypress-and-typescript-in-under-60-minutes-4f30
