@@ -17,6 +17,9 @@ jobs:
       - name: install dependencies
         run: npm install
 
+      - name: list packages
+        run: npm ls --dev --depth 0
+
       - name: tests
         run: npm run test
 
