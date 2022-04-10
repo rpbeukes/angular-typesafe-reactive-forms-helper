@@ -8,7 +8,7 @@
     "build:remove-lib": "rimraf ./dist",
     "build:packagr": "npm run packagr",
     "test": "npm-run-all --sequential test:**",
-    "test:dtslint": "dtslint --expectOnly ./tests/__typeTests__",
+    "test:dtslint": "dtslint --localTs node_modules/typescript/lib --expectOnly ./tests/__typeTests__",
     "test:jest": "jest --config jestconfig.json",
     "format": "prettier --write 'src/**/*.ts' 'src/**/*.js'",
     "prepare": "npm run build",
