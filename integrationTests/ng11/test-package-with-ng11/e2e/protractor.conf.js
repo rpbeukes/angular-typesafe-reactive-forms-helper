@@ -5,7 +5,7 @@
 const { SpecReporter, StacktraceOption } = require('jasmine-spec-reporter');
 const jasmineReporters = require('jasmine-reporters');
 
-process.env.CHROME_BIN = process.env.CHROME_BIN || require('puppeteer').executablePath();
+process.env.CHROME_BIN = require('puppeteer').executablePath();
 console.log('process.env.CHROME_BIN: ' + process.env.CHROME_BIN);
 
 /**
