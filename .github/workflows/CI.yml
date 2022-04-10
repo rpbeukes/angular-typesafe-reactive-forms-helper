@@ -48,6 +48,9 @@ jobs:
       - name: install package to angular
         run: npm run integration-tests:install:${{ matrix.ng-version }}
 
+     - name: printenv | sort
+        run: printenv | sort
+
       - name: install webdriver-manager 
         run: | 
           cd ./integrationTests/${{ matrix.ng-version }}/test-package-with-${{ matrix.ng-version }} 
@@ -66,6 +69,9 @@ jobs:
       - name: chrome version
         run: google-chrome --version
 
+      - name: printenv | sort
+        run: printenv | sort
+
       - name: update webdriver-manager to 97.0.4692.71 
         run: |
           echo "Find the latest ChromeDriver builds here - https://chromedriver.chromium.org/downloads"
@@ -76,6 +82,9 @@ jobs:
         run: |
           cd ./integrationTests/${{ matrix.ng-version }}/test-package-with-${{ matrix.ng-version }}
           ./node_modules/.bin/webdriver-manager status
+
+      - name: printenv | sort
+        run: printenv | sort
 
       - name: list installed packages
         run: npm run integration-tests:list-installs:${{ matrix.ng-version }}
@@ -88,6 +97,9 @@ jobs:
 
       - name: run angular test
         run: npm run integration-tests:test-ci:${{ matrix.ng-version }}
+
+      - name: printenv | sort
+        run: printenv | sort
 
       - name: run end-to-end prod tests 'ng e2e --prod'
         run: npm run integration-tests:e2e-ci:${{ matrix.ng-version }}:prod
