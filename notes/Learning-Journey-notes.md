@@ -112,3 +112,28 @@ Update `protractor.conf.js` within `exports.config` add console plugin:
 + ]
 ...
 ```
+
+## Chrome Driver version with end-to-end testing
+
+Error: 
+```
+[09:35:03] E/launcher - session not created: This version of ChromeDriver only supports Chrome version 97
+Current browser version is 100.0.4896.75 with binary path /usr/bin/google-chrome
+  (Driver info: chromedriver=97.0.4692.71 (adefa7837d02a07a604c1e6eff0b3a09422ab88d-refs/branch-heads/4692@{#1247}),platform=Linux 5.13.0-1021-azure x86_64)
+[09:35:03] E/launcher - SessionNotCreatedError: session not created: This version of ChromeDriver only supports Chrome version 97
+Current browser version is 100.0.4896.75 with binary path /usr/bin/google-chrome
+```
+Thanx to [StackOverflow](https://stackoverflow.com/questions/59515800/angular-cli-e2e-testing-wrong-chromedriver#answer-59516098), I found a solution. 
+
+Turns out that every Puppeteer version corresponds to a specific major version of Chromium.
+
+See Puppeteer [versions](https://github.com/puppeteer/puppeteer/blob/main/docs/api.md).
+
+I updated each `protractor.conf.js` with this line:
+```
+process.env.CHROME_BIN = require('puppeteer').executablePath();
+```
+
+eg: `~/angular-typesafe-reactive-forms-helper/integrationTests/ngXX/test-package-with-ngXX/e2e/protractor.conf.js`
+
+
