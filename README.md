@@ -2,7 +2,7 @@
 
 [![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/rpbeukes/angular-typesafe-reactive-forms-helper/CI/master)](https://github.com/rpbeukes/angular-typesafe-reactive-forms-helper/actions?query=branch%3Amaster+) [![GitHub package.json version](https://img.shields.io/github/package-json/v/rpbeukes/angular-typesafe-reactive-forms-helper)](https://github.com/rpbeukes/angular-typesafe-reactive-forms-helper/releases) [![GitHub commit activity](https://img.shields.io/github/commit-activity/m/rpbeukes/angular-typesafe-reactive-forms-helper)](https://github.com/rpbeukes/angular-typesafe-reactive-forms-helper/pulse/monthly) ![GitHub](https://img.shields.io/github/license/rpbeukes/angular-typesafe-reactive-forms-helper) [![npm](https://img.shields.io/npm/dt/angular-typesafe-reactive-forms-helper)](https://www.npmjs.com/package/angular-typesafe-reactive-forms-helper) ![GitHub forks](https://img.shields.io/github/forks/rpbeukes/angular-typesafe-reactive-forms-helper?style=social) 
 
-<img  src="./assets/coffee.png" alt="drawing" width="25"/><a href="https://buy.stripe.com/eVa7w16MSehn9QA3ccc" target="_blank"> Buy me a coffee <img  src="./assets/coffee.png" alt="drawing" width="25"/></a>
+<img  src="./assets/coffee.png" alt="drawing" width="25"/><a href="https://buy.stripe.com/eVa7w16MSehn9QA3ccc" target="_blank" rel="noreferrer noopener"> Buy me a coffee <img  src="./assets/coffee.png" alt="drawing" width="25"/></a>
 
 ## Install
 ```
