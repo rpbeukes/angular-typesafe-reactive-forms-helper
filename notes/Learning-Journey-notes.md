@@ -136,4 +136,7 @@ process.env.CHROME_BIN = require('puppeteer').executablePath();
 
 eg: `~/angular-typesafe-reactive-forms-helper/integrationTests/ngXX/test-package-with-ngXX/e2e/protractor.conf.js`
 
+## Cypress
+
+https://dev.to/angular/ci-ready-e2e-tests-for-angular-with-cypress-and-typescript-in-under-60-minutes-4f30
 
